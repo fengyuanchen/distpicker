@@ -1,4 +1,4 @@
-A simple, lightweight jQuery plugin for pick Chinese districts.
+A simple, lightweight jQuery plugin for pick districts of China.
 
 ## Installation
 

@@ -1,6 +1,6 @@
 {
   "name": "distpicker",
-  "description": "A picker of Chinese districts.",
+  "description": "A district picker for China.",
   "version": "0.1.0",
   "keywords": [
     "district",
