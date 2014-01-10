@@ -23,7 +23,9 @@ Create HTML elements:
 
 ## Usage
 
-### 1. Auto init by add the `data-distpicker` attribute to the container:
+### Method 1:
+
+Auto init by add the `data-distpicker` attribute to the container.
 
 ```html
 <div data-distpicker>
@@ -33,7 +35,9 @@ Create HTML elements:
 </div>
 ```
 
-### 2. Init with the jQuery method `distpicker`:
+### Method 1:
+
+Init with the jQuery method `distpicker`.
 
 ```html
 <div class="districts">
@@ -47,7 +51,9 @@ Create HTML elements:
 $(".districts").distpicker();
 ```
 
-### 3. Init with a district value, which is a existing value from `jquery.distpicker.data.js`:
+### Method 3:
+
+Init with a district value, which is a existing value from `jquery.distpicker.data.js`.
 
 ```html
 <div data-distpicker>
@@ -75,7 +81,9 @@ $(".districts").distpicker({
 });
 ```
 
-### 4. Init with a custom message:
+### Method 4:
+
+Init with a custom message.
 
 ```html
 <div data-distpicker>
