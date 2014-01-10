@@ -19,13 +19,21 @@ module.exports = function (grunt) {
 			},
 			build: {
 				files: {
-					"jquery.<%= pkg.name %>.min.js": "jquery.<%= pkg.name %>.js"
+					"dist/jquery.<%= pkg.name %>.data.min.js": "jquery.<%= pkg.name %>.data.js",
+					"dist/jquery.<%= pkg.name %>.min.js": "jquery.<%= pkg.name %>.js",
 				}
 			}
 		},
+		copy: {
+			main: {
+				cwd: "dist/",
+				src: "dist/*.js",
+				dest: "build/<%= pkg.version %>/"
+			},
+		},
 		watch: {
 			files: [
-				"jquery.<%= pkg.name %>.js"
+				"jquery.*.js"
 			],
 			tasks: "default"
 		},
@@ -38,5 +46,5 @@ module.exports = function (grunt) {
 		}
 	}
 
-	grunt.registerTask("default", ["jshint", "uglify"]);
+	grunt.registerTask("default", ["jshint", "uglify", "copy"]);
 };
