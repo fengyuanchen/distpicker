@@ -23,7 +23,7 @@ Create HTML elements:
 
 ## Usage
 
-### Method 1:
+#### Method 1:
 
 Auto init by add the `data-distpicker` attribute to the container.
 
@@ -35,7 +35,7 @@ Auto init by add the `data-distpicker` attribute to the container.
 </div>
 ```
 
-### Method 1:
+#### Method 2:
 
 Init with the jQuery method `distpicker`.
 
@@ -51,9 +51,9 @@ Init with the jQuery method `distpicker`.
 $(".districts").distpicker();
 ```
 
-### Method 3:
+#### Method 3:
 
-Init with a district value, which is a existing value from `jquery.distpicker.data.js`.
+Init with a district value, which must be a existing value from `jquery.distpicker.data.js`.
 
 ```html
 <div data-distpicker>
@@ -81,15 +81,15 @@ $(".districts").distpicker({
 });
 ```
 
-### Method 4:
+#### Method 4:
 
 Init with a custom message.
 
 ```html
 <div data-distpicker>
 	<select data-province="----选择省----"></select>
-	<select data-city="----选择省----"></select>
-	<select data-district="----选择省----"></select>
+	<select data-city="----选择市----"></select>
+	<select data-district="----选择区----"></select>
 </div>
 ```
 
