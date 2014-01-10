@@ -10,7 +10,8 @@ module.exports = function (grunt) {
 		jshint: {
 			files: [
 				"Gruntfile.js",
-				"jquery.<%= pkg.name %>.js"
+				"jquery.<%= pkg.name %>.js",
+				"jquery.<%= pkg.name %>.data.js"
 			]
 		},
 		uglify: {
@@ -26,9 +27,12 @@ module.exports = function (grunt) {
 		},
 		copy: {
 			main: {
+				expand: true,
 				cwd: "dist/",
-				src: "dist/*.js",
-				dest: "build/<%= pkg.version %>/"
+				src: "*.js",
+				dest: "build/<%= pkg.version %>/",
+				flatten: true,
+				filter: "isFile"
 			},
 		},
 		watch: {
