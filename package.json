@@ -2,31 +2,15 @@
   "name": "distpicker",
   "description": "A district picker for China.",
   "version": "0.1.0",
-  "keywords": [
-    "district",
-    "picker",
-    "china"
-  ],
-  "homepage": "",
   "author": "Fengyuan Chen",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/fengyuanchen/distpicker.git"
-  },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/fengyuanchen/distpicker/LICENSE"
-    }
-  ],
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-banner": "~0.2.0",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-jshint": "~0.8.0",
-	"grunt-contrib-copy": "~0.5.0",
-	"grunt-contrib-uglify": "~0.2.7",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-uglify": "~0.2.7",
     "grunt-contrib-watch": "~0.5.3"
   }
 }
