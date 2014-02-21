@@ -1,60 +1,71 @@
 module.exports = function(grunt) {
 
-	"use strict";
+    "use strict";
 
-	var pkg = grunt.file.readJSON("package.json"),
-		key;
+    var pkg = grunt.file.readJSON("package.json"),
+        key;
 
-	grunt.initConfig({
-		pkg: pkg,
-		jshint: {
-			files: [
-				"Gruntfile.js",
-				"jquery.<%= pkg.name %>.js",
-				"jquery.<%= pkg.name %>.data.js"
-			]
-		},
-		uglify: {
-			options: {
-				banner: "/*! jQuery Distpicker Plugin v<%= pkg.version %> | (c) 2014 <%= pkg.author %> */\n"
-			},
-			build: {
-				files: {
-					"dist/jquery.<%= pkg.name %>.data.min.js": "jquery.<%= pkg.name %>.data.js",
-					"dist/jquery.<%= pkg.name %>.min.js": "jquery.<%= pkg.name %>.js"
-				}
-			}
-		},
-		copy: {
-			main: {
-				files: [{
-					expand: true,
-					src: "jquery.*.js",
-					dest: "build/<%= pkg.version %>/",
-					filter: "isFile"
-				}, {
-					expand: true,
-					cwd: "dist/",
-					src: "jquery.*.js",
-					dest: "build/<%= pkg.version %>/",
-					filter: "isFile"
-				}]
-			}
-		},
-		watch: {
-			files: [
-				"jquery.*.js"
-			],
-			tasks: "default"
-		}
-	});
+    grunt.initConfig({
+        pkg: pkg,
+        banner: "/*!\n" +
+                " * <%= pkg.title %> v<%= pkg.version %>\n" +
+                " * <%= pkg.homepage %>\n" +
+                " *\n" +
+                " * Copyright <%= grunt.template.today('yyyy') %> <%= pkg.author %>\n" +
+                " * Released under the <%= pkg.license %> license\n" +
+                " */\n",
+        clean: {
+            files: ["build/<%= pkg.version %>", "dist/"]
+        },
+        jshint: {
+            options: {
+                jshintrc: ".jshintrc"
+            },
+            files: ["*.js", "src/*.js"]
+        },
+        uglify: {
+            dist: {
+                files: {
+                    "dist/<%= pkg.name %>.min.js": "src/<%= pkg.name %>.js",
+                    "dist/<%= pkg.name %>.data.min.js": "src/<%= pkg.name %>.data.js"
+                }
+            }
+        },
+        usebanner: {
+            options: {
+                position: "top",
+                banner: "<%= banner %>"
+            },
+            files: ["dist/*.js"]
+        },
+        copy: {
+            dist: {
+                expand: true,
+                cwd: "src/",
+                src: "*.js",
+                dest: "dist/",
+                filter: "isFile"
+            },
+            build: {
+                expand: true,
+                cwd: "dist/",
+                src: "*.js",
+                dest: "build/<%= pkg.version %>/",
+                filter: "isFile"
+            }
+        },
+        watch: {
+            files: ["src/*.js"],
+            tasks: "default"
+        }
+    });
 
-	// Loading dependencies
-	for (key in pkg.devDependencies) {
-		if (key !== "grunt" && key.indexOf("grunt") === 0) {
-			grunt.loadNpmTasks(key);
-		}
-	}
+    // Loading dependencies
+    for (key in pkg.devDependencies) {
+        if (key !== "grunt" && key.indexOf("grunt") === 0) {
+            grunt.loadNpmTasks(key);
+        }
+    }
 
-	grunt.registerTask("default", ["jshint", "uglify", "copy"]);
+    grunt.registerTask("default", ["clean", "jshint", "uglify", "copy:dist", "usebanner", "copy:build"]);
 };

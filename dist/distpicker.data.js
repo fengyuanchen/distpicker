@@ -1,6 +1,12 @@
-/*! distpicker v0.1.0 | (c) 2014 Fengyuan Chen */
+/*!
+ * Distpicker v0.1.0
+ * https://github.com/fengyuanchen/distpicker
+ *
+ * Copyright 2014 Fengyuan Chen
+ * Released under the MIT license
+ */
 
-var DistPickerData = {
+var ChineseDistricts = {
     1: {
         110000: "北京",
         120000: "天津",

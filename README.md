@@ -1,113 +1,87 @@
-A simple, lightweight jQuery plugin for pick districts of China.
+# District Picker
+A jQuery plugin for pick provinces, citys and districts of Chinese.
 
-## Installation
+* [Demos](http://fengyuanchen.github.io/distpicker)
+
+## Getting started
+
+### Installation
 
 Include files:
 
 ```html
 <script src="/path/to/jquery.js"></script><!-- jQuery is required -->
-<script src="/path/to/jquery.distpicker.data.js"></script>
-<script src="/path/to/jquery.distpicker.js"></script>
+<script src="/path/to/distpicker.data.js"></script>
+<script src="/path/to/distpicker.js"></script>
 ```
 
 Create HTML elements:
 
 ```html
 <div><!-- container -->
-	<select></select><!-- province -->
-	<select></select><!-- city -->
-	<select></select><!-- district -->
+    <select></select><!-- province -->
+    <select></select><!-- city -->
+    <select></select><!-- district -->
 </div>
 ```
 
 
-## Usage
+### Initialize with `distpicker` attribute
 
-#### Method 1:
-
-Auto init by add the `data-distpicker` attribute to the container.
+#### Basic
 
 ```html
-<div data-distpicker>
-	<select></select>
-	<select></select>
-	<select></select>
+<div distpicker>
+    <select></select>
+    <select></select>
+    <select></select>
 </div>
 ```
 
-#### Method 2:
-
-Init with the jQuery method `distpicker`.
+#### Custom texts
 
 ```html
-<div class="districts">
-	<select></select>
-	<select></select>
-	<select></select>
+<div distpicker>
+    <select data-province="---- 选择省 ----"></select>
+    <select data-city="---- 选择市 ----"></select>
+    <select data-district="---- 选择区 ----"></select>
 </div>
 ```
+
+#### Custom districts
+
+```html
+<div distpicker>
+    <select data-province="浙江省"></select>
+    <select data-city="杭州市"></select>
+    <select data-district="滨江区"></select>
+</div>
+```
+
+
+### Initialize with `$.fn.distpicker` method
+
+#### Basic
+```javascript
+$("#target").distpicker();
+```
+
+#### Custom texts:
 
 ```javascript
-$(".districts").distpicker();
-```
-
-#### Method 3:
-
-Init with a district value, which must be a existing value from `jquery.distpicker.data.js`.
-
-```html
-<div data-distpicker>
-	<select data-province="浙江省"></select>
-	<select data-city="杭州市"></select>
-	<select data-district="滨江区"></select>
-</div>
-```
-
-Or
-
-```html
-<div class="districts">
-	<select></select>
-	<select></select>
-	<select></select>
-</div>
-```
-
-```javascript
-$(".districts").distpicker({
-	province: "浙江省",
-	city: "杭州市",
-	district: "滨江区"
+$("#target").distpicker({
+    province: "---- 所在省 ----",
+    city: "---- 所在市 ----",
+    district: "---- 所在区 ----"
 });
 ```
 
-#### Method 4:
-
-Init with a custom message.
-
-```html
-<div data-distpicker>
-	<select data-province="----选择省----"></select>
-	<select data-city="----选择市----"></select>
-	<select data-district="----选择区----"></select>
-</div>
-```
-
-Or
-
-```html
-<div class="districts">
-	<select></select>
-	<select></select>
-	<select></select>
-</div>
-```
+#### Custom districts:
 
 ```javascript
-$(".districts").distpicker({
-	province: "----选择省----",
-	city: "----选择市----",
-	district: "----选择区----"
+$("#target").distpicker({
+    province: "浙江省",
+    city: "杭州市",
+    district: "滨江区"
 });
 ```
-
