@@ -1,7 +1,8 @@
 # District Picker
-A jQuery plugin for pick provinces, citys and districts of Chinese.
 
-* [Demos](http://fengyuanchen.github.io/distpicker)
+A jQuery plugin for pick provinces, citys and districts of China.
+
+[http://fengyuanchen.github.io/distpicker](http://fengyuanchen.github.io/distpicker)
 
 ## Getting started
 

@@ -21,7 +21,7 @@ module.exports = function(grunt) {
             options: {
                 jshintrc: ".jshintrc"
             },
-            files: ["*.js", "src/*.js"]
+            files: ["*.js", "src/<%= pkg.name %>.js"]
         },
         uglify: {
             dist: {

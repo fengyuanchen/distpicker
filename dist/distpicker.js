@@ -29,12 +29,6 @@
         this.init();
     }
 
-    DistPicker.defaults = {
-        province: "—— 省 ——",
-        city: "—— 市 ——",
-        district: "—— 区 ——"
-    };
-
     DistPicker.prototype = {
         constructor: DistPicker,
 
@@ -155,6 +149,18 @@
         }
     };
 
+    // Default settings
+    DistPicker.defaults = {
+        province: "—— 省 ——",
+        city: "—— 市 ——",
+        district: "—— 区 ——"
+    };
+
+    // Set default settings
+    DistPicker.setDefaults = function(options) {
+        $.extend(DistPicker.defaults, options);
+    };
+
     // Register as jQuery plugin
     $.fn.distpicker = function(options) {
         return this.each(function() {
@@ -163,7 +169,9 @@
     };
 
     $.fn.distpicker.Constructor = DistPicker;
+    $.fn.distpicker.setDefaults = DistPicker.setDefaults;
 
+    // Initialize on DOM ready
     $(function() {
         $("[distpicker]").distpicker();
     });
