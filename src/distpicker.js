@@ -1,13 +1,13 @@
-(function(fn, undefined) {
+(function(factory) {
     if (typeof define === "function" && define.amd) {
         // AMD. Register as anonymous module.
-        define(["jquery"], fn);
+        define(["jquery", "ChineseDistricts"], factory);
     } else {
         // Browser globals.
-        fn(window.jQuery);
+        factory(jQuery, ChineseDistricts);
     }
-}(function($) {
-
+}(function($, ChineseDistricts) {
+    
     "use strict";
 
     if (typeof ChineseDistricts === "undefined") {

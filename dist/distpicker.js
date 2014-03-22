@@ -1,21 +1,21 @@
 /*!
- * Distpicker v0.1.0
+ * Distpicker v0.1.1
  * https://github.com/fengyuanchen/distpicker
  *
  * Copyright 2014 Fengyuan Chen
  * Released under the MIT license
  */
 
-(function(fn, undefined) {
+(function(factory) {
     if (typeof define === "function" && define.amd) {
         // AMD. Register as anonymous module.
-        define(["jquery"], fn);
+        define(["jquery", "ChineseDistricts"], factory);
     } else {
         // Browser globals.
-        fn(window.jQuery);
+        factory(jQuery, ChineseDistricts);
     }
-}(function($) {
-
+}(function($, ChineseDistricts) {
+    
     "use strict";
 
     if (typeof ChineseDistricts === "undefined") {
