@@ -2,7 +2,7 @@
     "name": "distpicker",
     "title": "Distpicker",
     "description": "A jQuery plugin for pick provinces, citys and districts of China.",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "author": "Fengyuan Chen",
     "homepage": "https://github.com/fengyuanchen/distpicker",
     "license": "MIT",

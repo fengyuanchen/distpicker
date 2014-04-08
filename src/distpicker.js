@@ -7,7 +7,7 @@
         factory(jQuery, ChineseDistricts);
     }
 }(function($, ChineseDistricts) {
-    
+
     "use strict";
 
     if (typeof ChineseDistricts === "undefined") {
@@ -97,6 +97,7 @@
                       type === "district" ? this.$city.find("option:selected").data().zipcode : zipcode;
 
             data = $.isNumeric(zipcode) ? this.data[zipcode] : {};
+            data = $.isPlainObject(data) ? data : {};
 
             $.each(data, function(zipcode, address) {
                 var selected = address === value;
@@ -167,5 +168,5 @@
     $(function() {
         $("[distpicker]").distpicker();
     });
-    
+
 }));

@@ -1,5 +1,5 @@
 /*!
- * Distpicker v0.1.1
+ * Distpicker v0.1.2
  * https://github.com/fengyuanchen/distpicker
  *
  * Copyright 2014 Fengyuan Chen
@@ -15,7 +15,7 @@
         factory(jQuery, ChineseDistricts);
     }
 }(function($, ChineseDistricts) {
-    
+
     "use strict";
 
     if (typeof ChineseDistricts === "undefined") {
@@ -105,6 +105,7 @@
                       type === "district" ? this.$city.find("option:selected").data().zipcode : zipcode;
 
             data = $.isNumeric(zipcode) ? this.data[zipcode] : {};
+            data = $.isPlainObject(data) ? data : {};
 
             $.each(data, function(zipcode, address) {
                 var selected = address === value;
@@ -175,5 +176,5 @@
     $(function() {
         $("[distpicker]").distpicker();
     });
-    
+
 }));

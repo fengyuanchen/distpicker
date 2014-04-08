@@ -2,7 +2,6 @@
 
 A jQuery plugin for pick provinces, citys and districts of China.
 
----
 
 ## Getting started
 
