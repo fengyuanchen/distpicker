@@ -1,6 +1,5 @@
 {
     "name": "distpicker",
-    "title": "Distpicker",
     "description": "A jQuery plugin for pick provinces, citys and districts of China.",
     "version": "0.1.2",
     "keywords": [

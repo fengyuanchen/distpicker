@@ -1,8 +1,7 @@
-# District Picker
+# [District Picker](http://fengyuanchen.github.io/distpicker)
 
 A jQuery plugin for pick provinces, citys and districts of China.
 
-[http://fengyuanchen.github.io/distpicker](http://fengyuanchen.github.io/distpicker)
 
 ## Getting started
 
@@ -27,9 +26,11 @@ Create HTML elements:
 ```
 
 
-### Initialize with `distpicker` attribute
+### Usage
 
-#### Basic
+#### Initialize with `distpicker` attribute
+
+##### Basic
 
 ```html
 <div distpicker>
@@ -39,7 +40,7 @@ Create HTML elements:
 </div>
 ```
 
-#### Custom texts
+##### Custom texts
 
 ```html
 <div distpicker>
@@ -49,7 +50,7 @@ Create HTML elements:
 </div>
 ```
 
-#### Custom districts
+##### Custom districts
 
 ```html
 <div distpicker>
@@ -59,15 +60,14 @@ Create HTML elements:
 </div>
 ```
 
+#### Initialize with `$.fn.distpicker` method
 
-### Initialize with `$.fn.distpicker` method
-
-#### Basic
+##### Basic
 ```javascript
 $("#target").distpicker();
 ```
 
-#### Custom texts:
+##### Custom texts:
 
 ```javascript
 $("#target").distpicker({
@@ -77,7 +77,7 @@ $("#target").distpicker({
 });
 ```
 
-#### Custom districts:
+##### Custom districts:
 
 ```javascript
 $("#target").distpicker({

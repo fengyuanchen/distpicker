@@ -1,20 +1,20 @@
 /*!
- * Distpicker v0.1.0
+ * Distpicker v0.1.2
  * https://github.com/fengyuanchen/distpicker
  *
  * Copyright 2014 Fengyuan Chen
  * Released under the MIT license
  */
 
-(function(fn, undefined) {
+(function(factory) {
     if (typeof define === "function" && define.amd) {
         // AMD. Register as anonymous module.
-        define(["jquery"], fn);
+        define(["jquery", "ChineseDistricts"], factory);
     } else {
         // Browser globals.
-        fn(window.jQuery);
+        factory(jQuery, ChineseDistricts);
     }
-}(function($) {
+}(function($, ChineseDistricts) {
 
     "use strict";
 
@@ -105,6 +105,7 @@
                       type === "district" ? this.$city.find("option:selected").data().zipcode : zipcode;
 
             data = $.isNumeric(zipcode) ? this.data[zipcode] : {};
+            data = $.isPlainObject(data) ? data : {};
 
             $.each(data, function(zipcode, address) {
                 var selected = address === value;
@@ -175,5 +176,5 @@
     $(function() {
         $("[distpicker]").distpicker();
     });
-    
+
 }));
