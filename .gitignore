@@ -1,6 +1,9 @@
 # Files to ignore
 node_modules
+relsease
 build
 tests
 demos
+docs
+workspace
 CHANGELOG.md
