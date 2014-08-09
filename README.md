@@ -2,10 +2,12 @@
 
 A jQuery plugin for pick provinces, citys and districts of China.
 
+[Documentation](http://fengyuanchen.github.io/distpicker)
 
-## Getting started
 
-### Installation
+# Getting started
+
+## Installation
 
 Include files:
 
@@ -26,11 +28,11 @@ Create HTML elements:
 ```
 
 
-### Usage
+## Usage
 
-#### Initialize with `distpicker` attribute
+### Initialize with `distpicker` attribute
 
-##### Basic
+#### Basic
 
 ```html
 <div distpicker>
@@ -40,7 +42,7 @@ Create HTML elements:
 </div>
 ```
 
-##### Custom texts
+#### Custom texts
 
 ```html
 <div distpicker>
@@ -50,24 +52,25 @@ Create HTML elements:
 </div>
 ```
 
-##### Custom districts
+#### Custom districts
 
 ```html
 <div distpicker>
-    <select data-province="浙江省"></select>
-    <select data-city="杭州市"></select>
-    <select data-district="滨江区"></select>
+    <select data-province="北京"></select>
+    <select data-city="北京市"></select>
+    <select data-district="朝阳区"></select>
 </div>
 ```
 
-#### Initialize with `$.fn.distpicker` method
 
-##### Basic
+### Initialize with `$.fn.distpicker` method
+
+#### Basic
 ```javascript
 $("#target").distpicker();
 ```
 
-##### Custom texts:
+#### Custom texts:
 
 ```javascript
 $("#target").distpicker({
@@ -77,12 +80,28 @@ $("#target").distpicker({
 });
 ```
 
-##### Custom districts:
+#### Custom districts:
 
 ```javascript
 $("#target").distpicker({
-    province: "浙江省",
-    city: "杭州市",
-    district: "滨江区"
+    province: "北京",
+    city: "北京市",
+    district: "朝阳区"
 });
 ```
+
+
+## Browser Support
+
+- IE 6+
+- Chrome 33+
+- Firefox 27+
+- Safari 5.1+
+- Opera 19+
+
+As a jQuery plugin, you can reference to the [jQuery Browser Support](http://jquery.com/browser-support/).
+
+
+## [License](https://github.com/fengyuanchen/distpicker/blob/master/LICENSE.md)
+
+Released under the [MIT](http://opensource.org/licenses/mit-license.html) license.

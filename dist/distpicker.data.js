@@ -1,12 +1,12 @@
 /*!
- * Distpicker v0.1.2
+ * Distpicker v0.1.3
  * https://github.com/fengyuanchen/distpicker
  *
  * Copyright 2014 Fengyuan Chen
  * Released under the MIT license
  */
 
-(function(factory) {
+(function (factory) {
     if (typeof define === "function" && define.amd) {
         // AMD. Register as anonymous module.
         define("ChineseDistricts", ["jquery"], factory);
@@ -14,8 +14,8 @@
         // Browser globals.
         factory(jQuery);
     }
-}(function($) {
-    
+})(function ($) {
+
     var ChineseDistricts = {
         1: {
             110000: "北京",
@@ -4504,4 +4504,4 @@
 
     return ChineseDistricts;
 
-}));
+});

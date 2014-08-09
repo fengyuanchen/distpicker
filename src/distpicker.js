@@ -1,4 +1,4 @@
-(function(factory) {
+(function (factory) {
     if (typeof define === "function" && define.amd) {
         // AMD. Register as anonymous module.
         define(["jquery", "ChineseDistricts"], factory);
@@ -6,7 +6,7 @@
         // Browser globals.
         factory(jQuery, ChineseDistricts);
     }
-}(function($, ChineseDistricts) {
+})(function ($, ChineseDistricts) {
 
     "use strict";
 
@@ -14,24 +14,23 @@
         throw new Error("The file \"distpicker.data.js\" must be included first!");
     }
 
-    function DistPicker(element, options) {
-        options = $.isPlainObject(options) ? options : {};
-        this.$element = $(element);
-        this.defaults = $.extend({}, DistPicker.defaults, options);
-        this.init();
-    }
+    var DistPicker = function (element, options) {
+            this.$element = $(element);
+            this.defaults = $.extend({}, DistPicker.defaults, $.isPlainObject(options) ? options : {});
+            this.init();
+        };
 
     DistPicker.prototype = {
         constructor: DistPicker,
 
         data: ChineseDistricts,
 
-        init: function() {
+        init: function () {
             var $select = this.$element.find("select"),
                 length = $select.length,
                 settings = {};
 
-            $select.each(function() {
+            $select.each(function () {
                 $.extend(settings, $(this).data());
             });
 
@@ -62,24 +61,24 @@
             this.addListener();
         },
 
-        addListener: function() {
+        addListener: function () {
             var that = this;
 
             if (this.$province) {
-                this.$province.change(function() {
+                this.$province.change(function () {
                     that.output("city");
                     that.output("district");
                 });
             }
 
             if (this.$city) {
-                this.$city.change(function() {
+                this.$city.change(function () {
                     that.output("district");
                 });
             }
         },
 
-        output: function(type) {
+        output: function (type) {
             var zipcode = 1,
                 data = {},
                 options = [],
@@ -99,7 +98,7 @@
             data = $.isNumeric(zipcode) ? this.data[zipcode] : {};
             data = $.isPlainObject(data) ? data : {};
 
-            $.each(data, function(zipcode, address) {
+            $.each(data, function (zipcode, address) {
                 var selected = address === value;
 
                 if (selected) {
@@ -124,7 +123,7 @@
             $select.html(options.join(""));
         },
 
-        template: function(options) {
+        template: function (options) {
             var defaults = {
                     zipcode: "",
                     address: "",
@@ -150,23 +149,22 @@
     };
 
     // Set default settings
-    DistPicker.setDefaults = function(options) {
+    DistPicker.setDefaults = function (options) {
         $.extend(DistPicker.defaults, options);
     };
 
     // Register as jQuery plugin
-    $.fn.distpicker = function(options) {
-        return this.each(function() {
+    $.fn.distpicker = function (options) {
+        return this.each(function () {
             $(this).data("distpicker", new DistPicker(this, options));
         });
     };
 
-    $.fn.distpicker.Constructor = DistPicker;
+    $.fn.distpicker.constructor = DistPicker;
     $.fn.distpicker.setDefaults = DistPicker.setDefaults;
 
     // Initialize on DOM ready
-    $(function() {
+    $(function () {
         $("[distpicker]").distpicker();
     });
-
-}));
+});

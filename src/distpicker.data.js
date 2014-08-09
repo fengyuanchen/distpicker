@@ -1,4 +1,4 @@
-(function(factory) {
+(function (factory) {
     if (typeof define === "function" && define.amd) {
         // AMD. Register as anonymous module.
         define("ChineseDistricts", ["jquery"], factory);
@@ -6,8 +6,8 @@
         // Browser globals.
         factory(jQuery);
     }
-}(function($) {
-    
+})(function ($) {
+
     var ChineseDistricts = {
         1: {
             110000: "北京",
@@ -4496,4 +4496,4 @@
 
     return ChineseDistricts;
 
-}));
+});
