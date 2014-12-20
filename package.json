@@ -1,47 +1,56 @@
 {
-    "name": "distpicker",
-    "description": "A jQuery plugin for pick provinces, citys and districts of China.",
-    "version": "0.1.3",
-    "keywords": [
-        "html",
-        "css",
-        "javacript",
-        "front-end",
-        "web",
-        "development",
-        "jquery",
-        "plugin",
-        "districts",
-        "picker",
-        "China"
-    ],
-    "author": {
-        "name": "Fengyuan Chen",
-        "url": "https://github.com/fengyuanchen"
-    },
-    "homepage": "https://github.com/fengyuanchen/distpicker",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/fengyuanchen/distpicker.git"
-    },
-    "bugs": {
-        "url": "https://github.com/fengyuanchen/distpicker/issues"
-    },
-    "license": {
-        "type": "MIT",
-        "url": "https://github.com/fengyuanchen/distpicker/blob/master/LICENSE"
-    },
-    "dependencies": {
-        "jquery": ">= 1.9.0"
-    },
-    "devDependencies": {
-        "grunt": "~0.4.5",
-        "grunt-banner": "~0.2.3",
-        "grunt-contrib-clean": "~0.6.0",
-        "grunt-contrib-jshint": "~0.10.0",
-        "grunt-contrib-uglify": "~0.5.1",
-        "grunt-contrib-copy": "~0.5.0",
-        "grunt-contrib-watch": "~0.6.1",
-        "load-grunt-tasks": "~0.6.0"
-    }
+  "name": "distpicker",
+  "description": "A jQuery plugin for picking provinces, cities and districts of China.",
+  "version": "0.2.0",
+  "main": "dist/distpicker.js",
+  "keywords": [
+    "中国",
+    "省市区",
+    "三级联动",
+    "地址选择器",
+    "China",
+    "provinces",
+    "cities",
+    "districts",
+    "picker",
+    "jquery",
+    "plugin",
+    "html",
+    "css",
+    "javacript",
+    "front-end",
+    "web",
+    "development"
+  ],
+  "author": {
+    "name": "Fengyuan Chen",
+    "url": "https://github.com/fengyuanchen"
+  },
+  "homepage": "https://github.com/fengyuanchen/distpicker",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fengyuanchen/distpicker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fengyuanchen/distpicker/issues"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/fengyuanchen/distpicker/blob/master/LICENSE.md"
+  },
+  "dependencies": {
+    "jquery": ">= 1.9.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-uglify": "~0.6.0",
+    "grunt-contrib-htmlmin": "~0.3.0",
+    "grunt-contrib-copy": "~0.7.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-replace": "~0.8.0",
+    "grunt-jscs": "~1.0.0",
+    "load-grunt-tasks": "~1.0.0"
+  }
 }

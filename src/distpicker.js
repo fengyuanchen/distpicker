@@ -1,170 +1,262 @@
+/*!
+ * Distpicker v@VERSION
+ * https://github.com/fengyuanchen/distpicker
+ *
+ * Copyright 2014 Fengyuan Chen
+ * Released under the MIT license
+ *
+ * Date: @DATE
+ */
+
 (function (factory) {
-    if (typeof define === "function" && define.amd) {
-        // AMD. Register as anonymous module.
-        define(["jquery", "ChineseDistricts"], factory);
-    } else {
-        // Browser globals.
-        factory(jQuery, ChineseDistricts);
-    }
+  if (typeof define === "function" && define.amd) {
+    // AMD. Register as anonymous module.
+    define(["jquery", "ChineseDistricts"], factory);
+  } else {
+    // Browser globals.
+    factory(jQuery, ChineseDistricts);
+  }
 })(function ($, ChineseDistricts) {
 
-    "use strict";
+  "use strict";
 
-    if (typeof ChineseDistricts === "undefined") {
-        throw new Error("The file \"distpicker.data.js\" must be included first!");
-    }
+  if (typeof ChineseDistricts === "undefined") {
+    throw new Error("The file \"distpicker.data.js\" must be included first!");
+  }
 
-    var DistPicker = function (element, options) {
-            this.$element = $(element);
-            this.defaults = $.extend({}, DistPicker.defaults, $.isPlainObject(options) ? options : {});
-            this.init();
-        };
+  var NAMESPACE = ".distpicker",
+      EVENT_CHANGE = "change" + NAMESPACE,
 
-    DistPicker.prototype = {
-        constructor: DistPicker,
+      Distpicker = function (element, options) {
+        this.$element = $(element);
+        this.defaults = $.extend({}, Distpicker.defaults, $.isPlainObject(options) ? options : {});
+        this.placeholders = $.extend({}, Distpicker.defaults);
+        this.init();
+      };
 
-        data: ChineseDistricts,
+  Distpicker.prototype = {
+    constructor: Distpicker,
 
-        init: function () {
-            var $select = this.$element.find("select"),
-                length = $select.length,
-                settings = {};
+    data: ChineseDistricts,
 
-            $select.each(function () {
-                $.extend(settings, $(this).data());
-            });
+    init: function () {
+      var defaults = this.defaults,
+          $select = this.$element.find("select"),
+          length = $select.length,
+          data = {};
 
-            if (settings.province) {
-                this.defaults.province = settings.province;
-                this.$province = $select.filter("[data-province]");
-            } else {
-                this.$province = length > 0 ? $select.eq(0) : null;
-            }
+      $select.each(function () {
+        $.extend(data, $(this).data());
+      });
 
-            if (settings.city) {
-                this.defaults.city = settings.city;
-                this.$city = $select.filter("[data-city]");
-            } else {
-                this.$city = length > 1 ? $select.eq(1) : null;
-            }
+      if (data.province) {
+        defaults.province = data.province;
+        this.$province = $select.filter("[data-province]");
+      } else {
+        this.$province = length > 0 ? $select.eq(0) : null;
+      }
 
-            if (settings.district) {
-                this.defaults.district = settings.district;
-                this.$district = $select.filter("[data-district]");
-            } else {
-                this.$district = length >= 2 ? $select.eq(2) : null;
-            }
+      if (data.city) {
+        defaults.city = data.city;
+        this.$city = $select.filter("[data-city]");
+      } else {
+        this.$city = length > 1 ? $select.eq(1) : null;
+      }
 
-            this.output("province");
-            this.output("city");
-            this.output("district");
-            this.addListener();
-        },
+      if (data.district) {
+        defaults.district = data.district;
+        this.$district = $select.filter("[data-district]");
+      } else {
+        this.$district = length > 2 ? $select.eq(2) : null;
+      }
 
-        addListener: function () {
-            var that = this;
+      this.reset(); // Reset all the selects.
+      this.addListeners();
+    },
 
-            if (this.$province) {
-                this.$province.change(function () {
-                    that.output("city");
-                    that.output("district");
-                });
-            }
+    addListeners: function () {
+      var that = this;
 
-            if (this.$city) {
-                this.$city.change(function () {
-                    that.output("district");
-                });
-            }
-        },
-
-        output: function (type) {
-            var zipcode = 1,
-                data = {},
-                options = [],
-                value = "",
-                $select = this["$" + type],
-                that = this;
-
-            if (!$select) {
-                return;
-            }
-
-            value = this.defaults[type] || "";
-            zipcode = type === "province" ? 1 :
-                      type === "city"     ? this.$province.find("option:selected").data().zipcode :
-                      type === "district" ? this.$city.find("option:selected").data().zipcode : zipcode;
-
-            data = $.isNumeric(zipcode) ? this.data[zipcode] : {};
-            data = $.isPlainObject(data) ? data : {};
-
-            $.each(data, function (zipcode, address) {
-                var selected = address === value;
-
-                if (selected) {
-                    that.selected = true;
-                }
-
-                options.push(that.template({
-                    zipcode: zipcode,
-                    address: address,
-                    selected: selected
-                }));
-            });
-
-            if (!this.selected) {
-                options.unshift(that.template({
-                    zipcode: "",
-                    address: value,
-                    selected: false
-                }));
-            }
-
-            $select.html(options.join(""));
-        },
-
-        template: function (options) {
-            var defaults = {
-                    zipcode: "",
-                    address: "",
-                    selected: false
-                };
-
-            $.extend(defaults, options);
-
-            return [
-                "<option value=\"" + (defaults.address && defaults.zipcode ? defaults.address : "") + "\"",
-                " data-zipcode=\"" + (defaults.zipcode ? defaults.zipcode : "") + "\"",
-                (defaults.selected ? " selected" : ""),
-                ">" + (defaults.address ? defaults.address : "") + "</option>"
-            ].join("");
-        }
-    };
-
-    // Default settings
-    DistPicker.defaults = {
-        province: "—— 省 ——",
-        city: "—— 市 ——",
-        district: "—— 区 ——"
-    };
-
-    // Set default settings
-    DistPicker.setDefaults = function (options) {
-        $.extend(DistPicker.defaults, options);
-    };
-
-    // Register as jQuery plugin
-    $.fn.distpicker = function (options) {
-        return this.each(function () {
-            $(this).data("distpicker", new DistPicker(this, options));
+      if (this.$province) {
+        this.$province.on(EVENT_CHANGE, function () {
+          that.output("city");
+          that.output("district");
         });
-    };
+      }
 
-    $.fn.distpicker.constructor = DistPicker;
-    $.fn.distpicker.setDefaults = DistPicker.setDefaults;
+      if (this.$city) {
+        this.$city.on(EVENT_CHANGE, function () {
+          that.output("district");
+        });
+      }
+    },
 
-    // Initialize on DOM ready
-    $(function () {
-        $("[distpicker]").distpicker();
+    removeListeners: function () {
+      if (this.$province) {
+        this.$province.off(EVENT_CHANGE);
+      }
+
+      if (this.$city) {
+        this.$city.off(EVENT_CHANGE);
+      }
+    },
+
+    output: function (type) {
+      var defaults = this.defaults,
+          placeholders = this.placeholders,
+          $select = this["$" + type],
+          zipcode = 1,
+          data = {},
+          options = [],
+          value = "",
+          matched;
+
+      if (!$select) {
+        return;
+      }
+
+      value = defaults[type] || "";
+      zipcode = (
+        type === "province" ? 1 :
+        type === "city"   ? this.$province.find("option:selected").data().zipcode :
+        type === "district" ? this.$city.find("option:selected").data().zipcode : zipcode
+      );
+
+      data = $.isNumeric(zipcode) ? this.data[zipcode] : {};
+      data = $.isPlainObject(data) ? data : {};
+
+      $.each(data, function (zipcode, address) {
+        var selected = address === value;
+
+        if (selected) {
+          matched = true;
+        }
+
+        options.push({
+          zipcode: zipcode,
+          address: address,
+          selected: selected
+        });
+      });
+
+      if (!matched) {
+        if (defaults.autoSelect || defaults.autoselect) { // Triggered be change event of select element.
+          options[0].selected = true;
+        } else {
+          placeholders[type] = value; // Save the unmatched value as a placeholder
+        }
+      }
+
+      // Add placeholder option
+      if (defaults.placeholder) {
+        options.unshift({
+          zipcode: "",
+          address: placeholders[type],
+          selected: false
+        });
+      }
+
+      $select.html(this.template(options));
+    },
+
+    template: function (options) {
+      var html = "";
+
+      $.each(options, function (i, option) {
+        html += (
+          "<option value=\"" +
+          (option.address && option.zipcode ? option.address : "") +
+          "\"" +
+          " data-zipcode=\"" +
+          (option.zipcode || "") +
+          "\"" +
+          (option.selected ? " selected" : "") +
+          ">" +
+          (option.address || "") +
+          "</option>"
+        );
+      });
+
+      return html;
+    },
+
+    reset: function (deep) {
+      var defaults = this.defaults;
+
+      if (!deep) {
+        this.output("province");
+        this.output("city");
+        this.output("district");
+        return;
+      }
+
+      if (this.$province) {
+        this.$province.find(":first").prop("selected", true);
+      }
+
+      if (this.$city) {
+        if (defaults.placeholder) {
+          this.$city.find(":gt(0)").remove();
+        } else {
+          this.output("city");
+        }
+      }
+
+      if (this.$district) {
+        if (defaults.placeholder) {
+          this.$district.find(":gt(0)").remove();
+        } else {
+          this.output("district");
+        }
+      }
+    },
+
+    destroy: function () {
+      this.removeListeners();
+      this.$element.removeData("distpicker");
+    }
+  };
+
+  // Default settings
+  Distpicker.defaults = {
+    autoSelect: true,
+    placeholder: true,
+    province: "—— 省 ——",
+    city: "—— 市 ——",
+    district: "—— 区 ——"
+  };
+
+  // Set default settings
+  Distpicker.setDefaults = function (options) {
+    $.extend(Distpicker.defaults, options);
+  };
+
+  // Register as jQuery plugin
+  $.fn.distpicker = function (options) {
+    var args = [].slice.call(arguments, 1),
+        result;
+
+    this.each(function () {
+      var $this = $(this),
+          data = $this.data("distpicker"),
+          fn;
+
+      if (!data) {
+        $this.data("distpicker", (data = new Distpicker(this, options)));
+      }
+
+      if (typeof options === "string" && $.isFunction((fn = data[options]))) {
+        result = fn.apply(data, args);
+      }
     });
+
+    return (typeof result !== "undefined" ? result : this);
+  };
+
+  $.fn.distpicker.Constructor = Distpicker;
+  $.fn.distpicker.setDefaults = Distpicker.setDefaults;
+
+  $(function () {
+    $("[data-distpicker]").distpicker();
+  });
 });
