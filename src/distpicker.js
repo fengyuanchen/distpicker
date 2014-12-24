@@ -142,7 +142,7 @@
       if (!matched) {
         if (defaults.autoSelect || defaults.autoselect) { // Triggered be change event of select element.
           options[0].selected = true;
-        } else {
+        } else if (defaults.selectedAsPlaceholder) {
           placeholders[type] = value; // Save the unmatched value as a placeholder
         }
       }
@@ -221,6 +221,7 @@
   Distpicker.defaults = {
     autoSelect: true,
     placeholder: true,
+    selectedAsPlaceholder: true,
     province: "—— 省 ——",
     city: "—— 市 ——",
     district: "—— 区 ——"
