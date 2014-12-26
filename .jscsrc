@@ -42,7 +42,7 @@
   "validateIndentation": 2,
   "validateLineBreaks": "LF",
   "validateQuoteMarks": {
-    "mark": "\"",
+    "mark": "'",
     "escape": true
   }
 }

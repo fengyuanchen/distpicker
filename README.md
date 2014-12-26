@@ -41,12 +41,12 @@ Create HTML elements:
 
 ## Usage
 
-### Initialize with `data-distpicker` attribute
+### Initialize with `data-toggle="distpicker"` attribute
 
 #### Basic
 
 ```html
-<div data-distpicker>
+<div data-toggle="distpicker">
   <select></select>
   <select></select>
   <select></select>
@@ -55,7 +55,7 @@ Create HTML elements:
 
 #### Custom placeholders
 ```html
-<div data-distpicker>
+<div data-toggle="distpicker">
   <select data-province="---- 选择省 ----"></select>
   <select data-city="---- 选择市 ----"></select>
   <select data-district="---- 选择区 ----"></select>
@@ -65,10 +65,10 @@ Create HTML elements:
 #### Custom districts
 
 ```html
-<div data-distpicker>
+<div data-toggle="distpicker">
   <select data-province="北京"></select>
   <select data-city="北京市"></select>
-  <select data-district="朝阳区"></select>
+  <select data-district="海淀区"></select>
 </div>
 ```
 
@@ -77,31 +77,35 @@ Create HTML elements:
 
 #### Basic
 ```javascript
-$("#target").distpicker();
+$('#target').distpicker();
 ```
 
 #### Custom placeholders
 
 ```javascript
-$("#target").distpicker({
-  province: "---- 所在省 ----",
-  city: "---- 所在市 ----",
-  district: "---- 所在区 ----"
+$('#target').distpicker({
+  province: '---- 所在省 ----',
+  city: '---- 所在市 ----',
+  district: '---- 所在区 ----'
 });
 ```
 
 #### Custom districts
 
 ```javascript
-$("#target").distpicker({
-  province: "北京",
-  city: "北京市",
-  district: "朝阳区"
+$('#target').distpicker({
+  province: '北京',
+  city: '北京市',
+  district: '海淀区'
 });
 ```
 
 
 ## Options
+
+- Change the default options with `$().distpicker(options)`.
+- Change the global default options with `$.fn.distpicker.setDefaults(options)`.
+
 
 #### autoSelect
 
@@ -124,7 +128,7 @@ Show placeholder option.
 - Type: `String`
 - Default: `—— 省 ——`
 
-Set the default view of province. Maybe a placeholder or a really province under China.
+Defines the initial value of province `<select>`. If it is a existing province in `distpicker.data.js`, it will be selected. If not, it will be used as a placeholder.
 
 
 #### city
@@ -132,7 +136,7 @@ Set the default view of province. Maybe a placeholder or a really province under
 - Type: `String`
 - Default: `—— 市 ——`
 
-Set the default view of city. Maybe a placeholder or a really city under the selected province.
+Defines the initial value of city `<select>`. If it is a existing city under the selected province, it will be selected. If not, it will be used as a placeholder.
 
 
 #### district
@@ -140,7 +144,7 @@ Set the default view of city. Maybe a placeholder or a really city under the sel
 - Type: `String`
 - Default: `—— 区 ——`
 
-Set the default view of district. Maybe a placeholder or a really district under the selected city.
+Defines the initial value of district `<select>`. If it is a existing district under the selected city, it will be selected. If not, it will be used as a placeholder.
 
 
 
@@ -150,9 +154,9 @@ Set the default view of district. Maybe a placeholder or a really district under
 
 Params | Type | Default | Description
 ------ | ---- | ------- | -----------
-deep | `Boolean` | `false` | Undo changed
+deep | `Boolean` | `false` | Undo selected
 
-Reset the selects to default state.
+Reset the selects to the initial state (Undo changed).
 
 **Examples:**
 
