@@ -2,7 +2,7 @@
  * Distpicker v@VERSION
  * https://github.com/fengyuanchen/distpicker
  *
- * Copyright 2014 Fengyuan Chen
+ * Copyright (c) 2014-@YEAR Fengyuan Chen
  * Released under the MIT license
  *
  * Date: @DATE
