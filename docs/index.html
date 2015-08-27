@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A simple jQuery plugin for picking provinces, cities and districts of China.">
+  <meta name="keywords" content="中国, 省份, 城市, 行政区, 省市区, 三级联动, 地址选择器, HTML, CSS, JS, JavaScript, jQuery plugin, province, city, district, pick, picker, picking, front-end, frontend, web development">
+  <meta name="author" content="Fengyuan Chen">
+  <title>Distpicker</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <!-- header -->
+  <header class="navbar navbar-static-top docs-header" id="top">
+    <div class="container">
+      <div class="navbar-header">
+        <button class="navbar-toggle" data-target="#navbar-collapse-1" data-toggle="collapse" type="button">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./">Distpicker</a>
+      </div>
+      <nav class="collapse navbar-collapse" id="navbar-collapse-1" role="navigation">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="http://github.com/fengyuanchen/distpicker/blob/master/README.md">Docs</a></li>
+          <li><a href="http://github.com/fengyuanchen/distpicker">Github</a></li>
+          <li><a href="http://chenfengyuan.com">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Jumbotron -->
+  <div class="jumbotron docs-jumbotron">
+    <div class="container">
+      <h1>Distpicker <small class="version">v1.0.0</small></h1>
+      <p class="lead">A simple jQuery plugin for picking provinces, cities and districts of China.</p>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="container">
+    <h1 class="page-header" id="getting-started">Getting started</h1>
+
+    <h2>Installation</h2>
+
+    <h5>Include files:</h5>
+    <pre class="prettyprint">&lt;script src=&quot;/path/to/jquery.js&quot;&gt;&lt;/script&gt;&lt;!-- jQuery is required --&gt;
+&lt;script src=&quot;/path/to/distpicker.data.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/path/to/distpicker.js&quot;&gt;&lt;/script&gt;</pre>
+
+    <h5>Create HTML elements:</h5>
+    <pre class="prettyprint">&lt;div&gt;&lt;!-- container --&gt;
+  &lt;select&gt;&lt;/select&gt;&lt;!-- province --&gt;
+  &lt;select&gt;&lt;/select&gt;&lt;!-- city --&gt;
+  &lt;select&gt;&lt;/select&gt;&lt;!-- district --&gt;
+&lt;/div&gt;</pre>
+
+    <h2 class="page-header">Initialize with <code>data-toggle="distpicker"</code> attribute</h2>
+
+    <h3>Basic</h3>
+
+    <h5>HTML:</h5>
+    <pre class="prettyprint">&lt;div data-toggle="distpicker"&gt;
+  &lt;select&gt;&lt;/select&gt;
+  &lt;select&gt;&lt;/select&gt;
+  &lt;select&gt;&lt;/select&gt;
+&lt;/div&gt;</pre>
+
+    <h5>Demo:</h5>
+    <form class="form-inline">
+      <div data-toggle="distpicker">
+        <div class="form-group">
+          <label class="sr-only" for="province1">Province</label>
+          <select class="form-control" id="province1"></select>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="city1">City</label>
+          <select class="form-control" id="city1"></select>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="district1">District</label>
+          <select class="form-control" id="district1"></select>
+        </div>
+      </div>
+    </form>
+
+    <h3>Custom placeholders</h3>
+    <h5>HTML:</h5>
+    <pre class="prettyprint">&lt;div data-toggle="distpicker"&gt;
+  &lt;select data-province=&quot;---- 选择省 ----&quot;&gt;&lt;/select&gt;
+  &lt;select data-city=&quot;---- 选择市 ----&quot;&gt;&lt;/select&gt;
+  &lt;select data-district=&quot;---- 选择区 ----&quot;&gt;&lt;/select&gt;
+&lt;/div&gt;</pre>
+
+    <h5>Demo:</h5>
+    <form class="form-inline">
+      <div data-toggle="distpicker">
+        <div class="form-group">
+          <label class="sr-only" for="province2">Province</label>
+          <select class="form-control" id="province2" data-province="---- 选择省 ----"></select>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="city2">City</label>
+          <select class="form-control" id="city2" data-city="---- 选择市 ----"></select>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="district2">District</label>
+          <select class="form-control" id="district2" data-district="---- 选择区 ----"></select>
+        </div>
+      </div>
+    </form>
+
+    <h3>Custom districts</h3>
+    <h5>HTML:</h5>
+    <pre class="prettyprint">&lt;div data-toggle="distpicker"&gt;
+  &lt;select data-province=&quot;浙江省&quot;&gt;&lt;/select&gt;
+  &lt;select data-city=&quot;杭州市&quot;&gt;&lt;/select&gt;
+  &lt;select data-district=&quot;西湖区&quot;&gt;&lt;/select&gt;
+&lt;/div&gt;</pre>
+
+    <h5>Demo:</h5>
+    <form class="form-inline">
+      <div data-toggle="distpicker">
+        <div class="form-group">
+          <label class="sr-only" for="province3">Province</label>
+          <select class="form-control" id="province3" data-province="浙江省"></select>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="city3">City</label>
+          <select class="form-control" id="city3" data-city="杭州市"></select>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="district3">District</label>
+          <select class="form-control" id="district3" data-district="西湖区"></select>
+        </div>
+      </div>
+    </form>
+    <br>
+    <p class="alert alert-warning"><i class="glyphicon glyphicon-exclamation-sign"></i> The districts must be existed in the <strong class="text-primary">distpicker.data.js</strong> file!</p>
+
+    <h2 class="page-header">Initialize with <code>$.fn.distpicker</code> method</h2>
+
+    <h3>Basic</h3>
+
+    <h5>HTML:</h5>
+    <pre class="prettyprint">&lt;div id="distpicker1"&gt;
+  &lt;select&gt;&lt;/select&gt;
+  &lt;select&gt;&lt;/select&gt;
+  &lt;select&gt;&lt;/select&gt;
+&lt;/div&gt;</pre>
+
+    <h5>JavaScript:</h5>
+    <pre class="prettyprint">$(&quot;#distpicker1&quot;).distpicker();</pre>
+
+    <h5>Demo:</h5>
+    <form class="form-inline">
+      <div id="distpicker1">
+        <div class="form-group">
+          <label class="sr-only" for="province4">Province</label>
+          <select class="form-control" id="province4"></select>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="city4">City</label>
+          <select class="form-control" id="city4"></select>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="district4">District</label>
+          <select class="form-control" id="district4"></select>
+        </div>
+      </div>
+    </form>
+
+    <h3>Custom placeholders</h3>
+
+    <h5>HTML:</h5>
+    <pre class="prettyprint">&lt;div id="distpicker2"&gt;
+  &lt;select&gt;&lt;/select&gt;
+  &lt;select&gt;&lt;/select&gt;
+  &lt;select&gt;&lt;/select&gt;
+&lt;/div&gt;</pre>
+
+    <h5>JavaScript:</h5>
+    <pre class="prettyprint">$(&quot;#distpicker2&quot;).distpicker({
+  province: &quot;---- 所在省 ----&quot;,
+  city: &quot;---- 所在市 ----&quot;,
+  district: &quot;---- 所在区 ----&quot;
+});</pre>
+
+    <h5>Demo:</h5>
+    <form class="form-inline">
+      <div id="distpicker2">
+        <div class="form-group">
+          <label class="sr-only" for="province5">Province</label>
+          <select class="form-control" id="province5"></select>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="city5">City</label>
+          <select class="form-control" id="city5"></select>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="district5">District</label>
+          <select class="form-control" id="district5"></select>
+        </div>
+      </div>
+    </form>
+
+    <h3>Custom districts</h3>
+
+    <h5>HTML:</h5>
+    <pre class="prettyprint">&lt;div id="distpicker3"&gt;
+  &lt;select&gt;&lt;/select&gt;
+  &lt;select&gt;&lt;/select&gt;
+  &lt;select&gt;&lt;/select&gt;
+&lt;/div&gt;</pre>
+
+    <h5>JavaScript:</h5>
+    <pre class="prettyprint">$(&quot;#distpicker3&quot;).distpicker({
+  province: &quot;浙江省&quot;,
+  city: &quot;杭州市&quot;,
+  district: &quot;西湖区&quot;
+});</pre>
+
+    <h5>Demo:</h5>
+    <form class="form-inline">
+      <div id="distpicker3">
+        <div class="form-group">
+          <label class="sr-only" for="province6">Province</label>
+          <select class="form-control" id="province6"></select>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="city6">City</label>
+          <select class="form-control" id="city6"></select>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="district6">District</label>
+          <select class="form-control" id="district6"></select>
+        </div>
+      </div>
+    </form>
+    <br>
+    <p class="alert alert-warning"><i class="glyphicon glyphicon-exclamation-sign"></i> The districts must be existed in the <strong class="text-primary">distpicker.data.js</strong> file!</p>
+
+    <h2 class="page-header">Methods</h2>
+    <div class="docs-methods">
+      <form class="form-inline">
+        <div id="distpicker">
+          <div class="form-group">
+            <label class="sr-only" for="province">Province</label>
+            <select class="form-control" id="province"></select>
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="city">City</label>
+            <select class="form-control" id="city"></select>
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="district">District</label>
+            <select class="form-control" id="district"></select>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-warning" id="reset" type="button">Reset</button>
+            <button class="btn btn-warning" id="reset-deep" type="button">Reset (deep)</button>
+            <button class="btn btn-danger" id="destroy" type="button">Destroy</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <h2 class="page-header">More examples</h2>
+
+    <h3 class="page-header">Only province and city</h3>
+
+    <h5>HTML:</h5>
+    <pre class="prettyprint">&lt;div data-toggle="distpicker"&gt;
+  &lt;select&gt;&lt;/select&gt;
+  &lt;select&gt;&lt;/select&gt;
+&lt;/div&gt;</pre>
+
+    <h5>Demo:</h5>
+    <form class="form-inline">
+      <div data-toggle="distpicker">
+        <div class="form-group">
+          <label class="sr-only" for="province7">Province</label>
+          <select class="form-control" id="province7"></select>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="city7">City</label>
+          <select class="form-control" id="city7"></select>
+        </div>
+      </div>
+    </form>
+
+    <h3 class="page-header">Only province</h3>
+
+    <h5>HTML:</h5>
+    <pre class="prettyprint">&lt;div data-toggle="distpicker"&gt;
+  &lt;select&gt;&lt;/select&gt;
+&lt;/div&gt;</pre>
+
+    <h5>Demo:</h5>
+    <form class="form-inline">
+      <div data-toggle="distpicker">
+        <div class="form-group">
+          <label class="sr-only" for="province8">Province</label>
+          <select class="form-control" id="province8"></select>
+        </div>
+      </div>
+    </form>
+
+    <h3 class="page-header">Without placeholders</h3>
+
+    <h5>JavaScript:</h5>
+    <pre class="prettyprint">$(&quot;#distpicker4&quot;).distpicker({
+  placeholder: false
+});</pre>
+
+    <h5>Demo:</h5>
+    <form class="form-inline">
+      <div id="distpicker4">
+        <div class="form-group">
+          <label class="sr-only" for="province9">Province</label>
+          <select class="form-control" id="province9"></select>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="city9">City</label>
+          <select class="form-control" id="city9"></select>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="district9">District</label>
+          <select class="form-control" id="district9"></select>
+        </div>
+      </div>
+    </form>
+
+    <h3 class="page-header">Without automatic selection</h3>
+
+    <h5>JavaScript:</h5>
+    <pre class="prettyprint">$(&quot;#distpicker5&quot;).distpicker({
+  autoSelect: false
+});</pre>
+
+    <h5>Demo:</h5>
+    <form class="form-inline">
+      <div id="distpicker5">
+        <div class="form-group">
+          <label class="sr-only" for="province10">Province</label>
+          <select class="form-control" id="province10"></select>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="city10">City</label>
+          <select class="form-control" id="city10"></select>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="district10">District</label>
+          <select class="form-control" id="district10"></select>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <footer class="docs-footer">
+    <div class="container">
+      <span class="hearts"></span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+  <script src="js/distpicker.data.js"></script>
+  <script src="js/distpicker.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
