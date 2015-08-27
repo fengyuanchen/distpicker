@@ -1,11 +1,11 @@
 /*!
- * Distpicker v0.2.1
+ * Distpicker v1.0.0
  * https://github.com/fengyuanchen/distpicker
  *
- * Copyright 2014 Fengyuan Chen
+ * Copyright (c) 2014-2015 Fengyuan Chen
  * Released under the MIT license
  *
- * Date: 2014-12-26T03:58:37.444Z
+ * Date: 2015-08-27T13:42:36.311Z
  */
 
 (function (factory) {
@@ -3061,6 +3061,12 @@
       460107: '琼山区',
       460108: '美兰区',
       460109: '其它区'
+    },
+    460200: {
+      460202: '海棠区',
+      460203: '吉阳区',
+      460204: '天涯区',
+      460205: '崖州区'
     },
     500000: {
       500100: '重庆市'

@@ -1,18 +1,26 @@
 {
   "name": "distpicker",
-  "description": "A jQuery plugin for picking provinces, cities and districts of China.",
-  "version": "0.2.1",
+  "description": "A simple jQuery plugin for picking provinces, cities and districts of China.",
+  "version": "1.0.0",
   "main": "dist/distpicker.js",
   "keywords": [
     "中国",
+    "省份",
+    "城市",
+    "行政区",
     "省市区",
     "三级联动",
     "地址选择器",
     "China",
+    "province",
     "provinces",
+    "city",
     "cities",
+    "district",
     "districts",
+    "pick",
     "picker",
+    "picking",
     "jquery",
     "plugin",
     "html",
@@ -34,23 +42,17 @@
   "bugs": {
     "url": "https://github.com/fengyuanchen/distpicker/issues"
   },
-  "license": {
-    "type": "MIT",
-    "url": "https://github.com/fengyuanchen/distpicker/blob/master/LICENSE.md"
-  },
+  "license": "MIT",
   "dependencies": {
-    "jquery": ">= 1.9.0"
+    "jquery": ">= 1.9.1"
   },
   "devDependencies": {
-    "grunt": "~0.4.5",
-    "grunt-contrib-clean": "~0.6.0",
-    "grunt-contrib-jshint": "~0.10.0",
-    "grunt-contrib-uglify": "~0.6.0",
-    "grunt-contrib-htmlmin": "~0.3.0",
-    "grunt-contrib-copy": "~0.7.0",
-    "grunt-contrib-watch": "~0.6.1",
-    "grunt-replace": "~0.8.0",
-    "grunt-jscs": "~1.0.0",
-    "load-grunt-tasks": "~1.0.0"
+    "gulp": "^3.9.0",
+    "gulp-jscs": "^2.0.0",
+    "gulp-jshint": "^1.11.0",
+    "gulp-load-plugins": "^1.0.0-rc.1",
+    "gulp-rename": "^1.2.0",
+    "gulp-replace": "^0.5.3",
+    "gulp-uglify": "^1.1.0"
   }
 }

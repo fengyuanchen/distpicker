@@ -1,13 +1,27 @@
 # [Distpicker](https://github.com/fengyuanchen/distpicker)
 
-A jQuery plugin for picking provinces, cities and districts of China.
+> A simple jQuery plugin for picking provinces, cities and districts of China.
 
-- [Documentation](http://fengyuanchen.github.io/distpicker)
+- [Demo](http://fengyuanchen.github.io/distpicker)
 
 
-# Getting started
 
-## Quick start
+## Main
+
+```
+dist/
+├── distpicker.js          (  6 KB)
+├── distpicker.min.js      (  3 KB)
+├── distpicker.data.js     (112 KB)
+└── distpicker.data.min.js ( 78 KB)
+```
+
+
+
+## Getting started
+
+
+### Quick start
 
 Four quick start options are available:
 
@@ -17,7 +31,7 @@ Four quick start options are available:
 - Install with [Bower](http://bower.io): `bower install distpicker`.
 
 
-## Installation
+### Installation
 
 Include files:
 
@@ -26,6 +40,7 @@ Include files:
 <script src="/path/to/distpicker.data.js"></script>
 <script src="/path/to/distpicker.js"></script>
 ```
+
 
 Create HTML elements:
 
@@ -39,11 +54,12 @@ Create HTML elements:
 
 
 
-## Usage
+### Usage
 
-### Initialize with `data-toggle="distpicker"` attribute
+#### Initialize with `data-toggle="distpicker"` attribute
 
-#### Basic
+
+Basic
 
 ```html
 <div data-toggle="distpicker">
@@ -53,7 +69,9 @@ Create HTML elements:
 </div>
 ```
 
-#### Custom placeholders
+
+Custom placeholders
+
 ```html
 <div data-toggle="distpicker">
   <select data-province="---- 选择省 ----"></select>
@@ -62,27 +80,29 @@ Create HTML elements:
 </div>
 ```
 
-#### Custom districts
+
+Custom districts
 
 ```html
 <div data-toggle="distpicker">
-  <select data-province="北京"></select>
-  <select data-city="北京市"></select>
-  <select data-district="海淀区"></select>
+  <select data-province="浙江省"></select>
+  <select data-city="杭州市"></select>
+  <select data-district="西湖区"></select>
 </div>
 ```
 
 
-### Initialize with `$.fn.distpicker` method
+#### Initialize with `$.fn.distpicker` method
 
-#### Basic
-```javascript
+Basic
+
+```js
 $('#target').distpicker();
 ```
 
-#### Custom placeholders
+Custom placeholders
 
-```javascript
+```js
 $('#target').distpicker({
   province: '---- 所在省 ----',
   city: '---- 所在市 ----',
@@ -90,15 +110,16 @@ $('#target').distpicker({
 });
 ```
 
-#### Custom districts
+Custom districts
 
-```javascript
+```js
 $('#target').distpicker({
-  province: '北京',
-  city: '北京市',
-  district: '海淀区'
+  province: '浙江省',
+  city: '杭州市',
+  district: '西湖区'
 });
 ```
+
 
 
 ## Options
@@ -107,7 +128,7 @@ $('#target').distpicker({
 - Change the global default options with `$.fn.distpicker.setDefaults(options)`.
 
 
-#### autoSelect
+### autoSelect
 
 - Type: `Boolean`
 - Default: `true`
@@ -115,15 +136,15 @@ $('#target').distpicker({
 Selects the city and district automatically when the province changes.
 
 
-#### placeholder
+### placeholder
 
 - Type: `Boolean`
 - Default: `true`
 
-Show placeholder option.
+Show placeholder (with an `<option>` element).
 
 
-#### province
+### province
 
 - Type: `String`
 - Default: `—— 省 ——`
@@ -131,7 +152,7 @@ Show placeholder option.
 Defines the initial value of province `<select>`. If it is a existing province in `distpicker.data.js`, it will be selected. If not, it will be used as a placeholder.
 
 
-#### city
+### city
 
 - Type: `String`
 - Default: `—— 市 ——`
@@ -139,7 +160,7 @@ Defines the initial value of province `<select>`. If it is a existing province i
 Defines the initial value of city `<select>`. If it is a existing city under the selected province, it will be selected. If not, it will be used as a placeholder.
 
 
-#### district
+### district
 
 - Type: `String`
 - Default: `—— 区 ——`
@@ -150,22 +171,23 @@ Defines the initial value of district `<select>`. If it is a existing district u
 
 ## Methods
 
-#### reset([deep])
+### reset([deep])
 
-Params | Type | Default | Description
------- | ---- | ------- | -----------
-deep | `Boolean` | `false` | Undo selected
+- **deep** (optional):
+  - Type: `Boolean`
+  - Default: `false`
+  - Reset the selects to default states (Undo selected).
 
-Reset the selects to the initial state (Undo changed).
+Reset the selects to the initial states (Undo changed).
 
 **Examples:**
 
-```javascript
-$().distpicker('reset')
-$().distpicker('reset', true)
+```js
+$().distpicker('reset');
+$().distpicker('reset', true);
 ```
 
-#### destroy()
+### destroy()
 
 Destroy the distpicker instance, but keep the selected districts.
 
@@ -173,18 +195,34 @@ If you want to remove the selected districts, you can call `reset` method first 
 
 
 
-## Browser Support
+## No conflict
 
-- Chrome 33+
-- Firefox 27+
-- Internet Explorer 6+
-- Opera 19+
-- Safari 5.1+
+If you have to use other plugin with the same namespace, just call the `$.fn.distpicker.noConflict` method to revert to it.
 
-As a jQuery plugin, you can reference to the [jQuery Browser Support](http://jquery.com/browser-support/).
+```html
+<script src="other-plugin.js"></script>
+<script src="distpicker.js"></script>
+<script>
+  $.fn.distpicker.noConflict();
+  // Code that uses other plugin's "$().distpicker" can follow here.
+</script>
+```
 
 
 
-## [License](https://github.com/fengyuanchen/distpicker/blob/master/LICENSE.md)
+## Browser support
+
+- Chrome (latest 2)
+- Firefox (latest 2)
+- Internet Explorer 8+
+- Opera (latest 2)
+- Safari (latest 2)
+
+As a jQuery plugin, you also need to see the [jQuery Browser Support](http://jquery.com/browser-support/).
+
+
+
+## [License](LICENSE.md)
 
 Released under the [MIT](http://opensource.org/licenses/mit-license.html) license.
+
