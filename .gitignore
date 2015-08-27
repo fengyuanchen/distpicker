@@ -1,11 +1,4 @@
 # Files to ignore
 
 node_modules
-_gh_pages
-releases
-build
-tests
-demos
-docs
-workspace
-CHANGELOG.md
+_*
