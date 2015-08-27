@@ -205,6 +205,9 @@
     $.extend(Distpicker.DEFAULTS, options);
   };
 
+  // Save the other distpicker
+  Distpicker.other = $.fn.distpicker;
+
   // Register as jQuery plugin
   $.fn.distpicker = function (option) {
     var args = [].slice.call(arguments, 1);
@@ -232,6 +235,12 @@
 
   $.fn.distpicker.Constructor = Distpicker;
   $.fn.distpicker.setDefaults = Distpicker.setDefaults;
+
+  // No conflict
+  $.fn.distpicker.noConflict = function () {
+    $.fn.distpicker = Distpicker.other;
+    return this;
+  };
 
   $(function () {
     $('[data-toggle="distpicker"]').distpicker();
