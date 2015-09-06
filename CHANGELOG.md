@@ -1,6 +1,11 @@
 # Changelog
 
 
+### 1.0.1 (Sep 6, 2015)
+
+- Added new cities of Xizang (Tibet).
+
+
 ### 1.0.0 (Aug 27, 2015)
 
 - Added new districts of Sanya city.
