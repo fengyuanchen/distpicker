@@ -1,11 +1,11 @@
 /*!
- * Distpicker v1.0.0
+ * Distpicker v1.0.1
  * https://github.com/fengyuanchen/distpicker
  *
  * Copyright (c) 2014-2015 Fengyuan Chen
  * Released under the MIT license
  *
- * Date: 2015-08-27T13:42:36.315Z
+ * Date: 2015-09-06T02:23:07.124Z
  */
 
 (function (factory) {
@@ -102,7 +102,7 @@
       var $select = this['$' + type];
       var districts = {};
       var data = [];
-      var zipcode;
+      var code;
       var matched;
       var value;
 
@@ -112,16 +112,16 @@
 
       value = options[type];
 
-      zipcode = (
+      code = (
         type === PROVINCE ? 1 :
-        type === CIRY ? this.$province && this.$province.find(':selected').data('zipcode') :
-        type === DISTRICT ? this.$city && this.$city.find(':selected').data('zipcode') : zipcode
+        type === CIRY ? this.$province && this.$province.find(':selected').data('code') :
+        type === DISTRICT ? this.$city && this.$city.find(':selected').data('code') : code
       );
 
-      districts = $.isNumeric(zipcode) ? ChineseDistricts[zipcode] : null;
+      districts = $.isNumeric(code) ? ChineseDistricts[code] : null;
 
       if ($.isPlainObject(districts)) {
-        $.each(districts, function (zipcode, address) {
+        $.each(districts, function (code, address) {
           var selected = address === value;
 
           if (selected) {
@@ -129,7 +129,7 @@
           }
 
           data.push({
-            zipcode: zipcode,
+            code: code,
             address: address,
             selected: selected
           });
@@ -150,7 +150,7 @@
       // Add placeholder option
       if (options.placeholder) {
         data.unshift({
-          zipcode: '',
+          code: '',
           address: placeholders[type],
           selected: false
         });
@@ -165,8 +165,8 @@
       $.each(data, function (i, n) {
         list.push(
           '<option' +
-          ' value="' + (n.address && n.zipcode ? n.address : '') + '"' +
-          ' data-zipcode="' + (n.zipcode || '') + '"' +
+          ' value="' + (n.address && n.code ? n.address : '') + '"' +
+          ' data-code="' + (n.code || '') + '"' +
           (n.selected ? ' selected' : '') +
           '>' +
             (n.address || '') +

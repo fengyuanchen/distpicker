@@ -10,10 +10,10 @@
 
 ```
 dist/
-├── distpicker.js          (  6 KB)
-├── distpicker.min.js      (  3 KB)
-├── distpicker.data.js     (112 KB)
-└── distpicker.data.min.js ( 78 KB)
+├── distpicker.js          (  7 KB)
+├── distpicker.min.js      (  4 KB)
+├── distpicker.data.js     (110 KB)
+└── distpicker.data.min.js ( 76 KB)
 ```
 
 
@@ -224,5 +224,4 @@ As a jQuery plugin, you also need to see the [jQuery Browser Support](http://jqu
 
 ## [License](LICENSE.md)
 
-Released under the [MIT](http://opensource.org/licenses/mit-license.html) license.
-
+[MIT](http://opensource.org/licenses/MIT) © [Fengyuan Chen](http://github.com/fengyuanchen)

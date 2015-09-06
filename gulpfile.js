@@ -46,7 +46,9 @@ gulp.task('js', ['jshint', 'jscs'], function () {
   }))
   .pipe(gulp.dest(scripts.docs))
   .pipe(gulp.dest(scripts.dest))
-  .pipe(plugins.rename(pkg.name + '.min.js'))
+  .pipe(plugins.rename({
+    suffix: '.min'
+  }))
   .pipe(plugins.uglify({
     preserveComments: 'some'
   }))
