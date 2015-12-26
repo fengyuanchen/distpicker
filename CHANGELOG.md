@@ -1,6 +1,11 @@
 # Changelog
 
 
+### 1.0.2 (Dec 26, 2015)
+
+- Updated lots of districts.
+
+
 ### 1.0.1 (Sep 6, 2015)
 
 - Added new cities of Xizang (Tibet).

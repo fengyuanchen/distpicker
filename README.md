@@ -2,7 +2,7 @@
 
 > A simple jQuery plugin for picking provinces, cities and districts of China.
 
-- [Demo](http://fengyuanchen.github.io/distpicker)
+- [Homepage](http://fengyuanchen.github.io/distpicker)
 
 
 
@@ -10,10 +10,10 @@
 
 ```
 dist/
-├── distpicker.js          (  7 KB)
-├── distpicker.min.js      (  4 KB)
-├── distpicker.data.js     (110 KB)
-└── distpicker.data.min.js ( 76 KB)
+├── distpicker.js          ( 7 KB)
+├── distpicker.min.js      ( 4 KB)
+├── distpicker.data.js     (98 KB)
+└── distpicker.data.min.js (68 KB)
 ```
 
 

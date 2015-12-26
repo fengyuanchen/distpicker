@@ -1,11 +1,11 @@
 /*!
- * Distpicker v1.0.1
+ * Distpicker v1.0.2
  * https://github.com/fengyuanchen/distpicker
  *
  * Copyright (c) 2014-2015 Fengyuan Chen
  * Released under the MIT license
  *
- * Date: 2015-09-06T02:23:07.124Z
+ * Date: 2015-12-26T06:50:39.862Z
  */
 
 (function (factory) {
@@ -113,7 +113,7 @@
       value = options[type];
 
       code = (
-        type === PROVINCE ? 1 :
+        type === PROVINCE ? 86 :
         type === CIRY ? this.$province && this.$province.find(':selected').data('code') :
         type === DISTRICT ? this.$city && this.$city.find(':selected').data('code') : code
       );
