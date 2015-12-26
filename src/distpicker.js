@@ -113,7 +113,7 @@
       value = options[type];
 
       code = (
-        type === PROVINCE ? 1 :
+        type === PROVINCE ? 86 :
         type === CIRY ? this.$province && this.$province.find(':selected').data('code') :
         type === DISTRICT ? this.$city && this.$city.find(':selected').data('code') : code
       );
