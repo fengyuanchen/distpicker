@@ -1,0 +1,6 @@
+# Files to ignore
+
+docs
+/.*
+bower.json
+gulpfile.js
