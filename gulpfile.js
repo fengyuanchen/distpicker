@@ -50,7 +50,7 @@ gulp.task('js', ['jshint', 'jscs'], function () {
     suffix: '.min'
   }))
   .pipe(plugins.uglify({
-    preserveComments: 'some'
+    preserveComments: 'license'
   }))
   .pipe(gulp.dest(scripts.dest));
 });
@@ -61,14 +61,14 @@ gulp.task('jscopy', function () {
   .pipe(gulp.dest(scripts.dest));
 });
 
-gulp.task('release', ['js'], function () {
-  return gulp.src('dist/*')
-  .pipe(gulp.dest('_releases/' + pkg.version));
-});
-
 gulp.task('docs', function () {
   return gulp.src('docs/**')
   .pipe(gulp.dest('_gh_pages'));
+});
+
+gulp.task('release', ['js', 'docs'], function () {
+  return gulp.src('dist/*')
+  .pipe(gulp.dest('_releases/' + pkg.version));
 });
 
 gulp.task('watch', function () {
