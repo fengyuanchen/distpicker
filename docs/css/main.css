@@ -1,5 +1,17 @@
-/* Basic style
- * -------------------------------------------------------------------------- */
+/* Basic */
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.browserupgrade {
+  margin: 0;
+  padding: .5em 1em;
+  background-color: #fcfcfc;
+  text-align: center;
+}
+
 
 /* Header */
 
@@ -9,18 +21,18 @@
 
 .navbar-toggle:hover,
 .navbar-toggle:focus {
-  border-color: #337ab7;
+  border-color: #0074d9;
 }
 
 .navbar-toggle .icon-bar {
-  background-color: #337ab7;
+  background-color: #0074d9;
 }
 
 
 /* Jumbotron */
 
 .docs-jumbotron {
-  background-color: #3f51b5;
+  background-color: #0074d9;
   color: #fff;
 }
 
@@ -31,6 +43,12 @@
   opacity: 0.5;
 }
 
+@media (min-width: 992px) {
+  .docs-jumbotron h1,
+  .docs-jumbotron p {
+    margin-right: 380px;
+  }
+}
 
 .docs-carbonads-container {
   position: relative;
@@ -85,32 +103,6 @@
 
 /* Content */
 
-.dropzone {
-  padding: 150px 15px;
-  border: 1px dashed #eee;
-  background-color: #fcfcfc;
-  text-align: center;
-}
-
-.dropzone > input {
-  display: inline-block;
-  vertical-align: top;
-}
-
-.logs {
-  height: 320px;
-  padding: 10px 15px;
-  border: 1px solid #eee;
-  background-color: #fcfcfc;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-.logs > p {
-  margin-bottom: 5px;
-  color: #666;
-}
-
 
 /* Footer */
 
@@ -118,7 +110,12 @@
   overflow: hidden;
 }
 
-.hearts {
+.links {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.heart {
   position: relative;
   display: block;
   width: 100%;
@@ -131,11 +128,11 @@
   text-align: center;
 }
 
-.hearts:hover {
+.heart:hover {
   color: #ff4136;
 }
 
-.hearts:before {
+.heart:before {
   position: absolute;
   top: 50%;
   right: 0;
@@ -146,7 +143,7 @@
   content: " ";
 }
 
-.hearts:after {
+.heart:after {
   position: relative;
   z-index: 1;
   padding-left: 8px;
@@ -156,8 +153,7 @@
 }
 
 
-/* Google Code Prettify
- * -------------------------------------------------------------------------- */
+/* Google Code Prettify */
 
 .prettyprint {
   margin-bottom: 0;

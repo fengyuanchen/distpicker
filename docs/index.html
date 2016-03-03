@@ -18,7 +18,11 @@
   <![endif]-->
 </head>
 <body>
-  <!-- header -->
+  <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <!-- Header -->
   <header class="navbar navbar-static-top docs-header" id="top">
     <div class="container">
       <div class="navbar-header">
@@ -32,10 +36,10 @@
       </div>
       <nav class="collapse navbar-collapse" id="navbar-collapse-1" role="navigation">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="https://github.com/fengyuanchen/distpicker/tree/v1.0.2//README.md">Docs</a></li>
+          <li><a href="https://github.com/fengyuanchen/distpicker/tree/v1.0.3//README.md">Docs</a></li>
           <li><a href="https://github.com/fengyuanchen/distpicker">GitHub</a></li>
+          <li><a href="//fengyuanchen.github.io">More</a></li>
           <li><a href="http://chenfengyuan.com">About</a></li>
-          <li><a href="http://fengyuanchen.github.io">More</a></li>
         </ul>
       </nav>
     </div>
@@ -44,7 +48,7 @@
   <!-- Jumbotron -->
   <div class="jumbotron docs-jumbotron">
     <div class="container">
-      <h1>Distpicker <small class="version">v1.0.2</small></h1>
+      <h1>Distpicker <small class="version">v1.0.3</small></h1>
       <p class="lead">A simple jQuery plugin for picking provinces, cities and districts of China.</p>
       <div class="docs-carbonads-container">
         <div class="docs-carbonads">
@@ -274,7 +278,7 @@
             <select class="form-control" id="district"></select>
           </div>
           <div class="form-group">
-            <button class="btn btn-warning" id="reset" type="button">Reset</button>
+            <button class="btn btn-primary" id="reset" type="button">Reset</button>
             <button class="btn btn-warning" id="reset-deep" type="button">Reset (deep)</button>
             <button class="btn btn-danger" id="destroy" type="button">Destroy</button>
           </div>
@@ -377,15 +381,22 @@
   <!-- Footer -->
   <footer class="docs-footer">
     <div class="container">
-      <span class="hearts"></span>
+      <p class="heart"></p>
+      <ul class="list-inline links">
+        <li><a href="https://github.com/fengyuanchen/distpicker">GitHub</a></li>
+        <li><a href="https://github.com/fengyuanchen/distpicker/releases">Releases</a></li>
+        <li><a href="https://github.com/fengyuanchen/distpicker/issues">Issues</a></li>
+        <li><a href="https://github.com/fengyuanchen/distpicker/blob/master/LICENSE">License</a></li>
+        <li><a href="http://chenfengyuan.com">About</a></li>
+      </ul>
     </div>
   </footer>
 
   <!-- Scripts -->
-  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-  <script src="http://fengyuanchen.github.io/js/main.js"></script>
+  <script src="//fengyuanchen.github.io/js/common.js"></script>
   <script src="js/distpicker.data.js"></script>
   <script src="js/distpicker.js"></script>
   <script src="js/main.js"></script>
