@@ -6,6 +6,18 @@
 
 
 
+## Table of contents
+
+  - [Main](#main)
+  - [Getting started](#getting-started)
+  - [Options](#options)
+  - [Methods](#methods)
+  - [No conflict](#no-conflict)
+  - [Browser support](#browser-support)
+  - [License](#license)
+
+
+
 ## Main
 
 ```
@@ -121,6 +133,9 @@ $('#target').distpicker({
 ```
 
 
+[⬆ back to top](#table-of-contents)
+
+
 
 ## Options
 
@@ -168,6 +183,9 @@ Defines the initial value of city `<select>`. If it is a existing city under the
 Defines the initial value of district `<select>`. If it is a existing district under the selected city, it will be selected. If not, it will be used as a placeholder.
 
 
+[⬆ back to top](#table-of-contents)
+
+
 
 ## Methods
 
@@ -194,6 +212,9 @@ Destroy the distpicker instance, but keep the selected districts.
 If you want to remove the selected districts, you can call `reset` method first and then call this method.
 
 
+[⬆ back to top](#table-of-contents)
+
+
 
 ## No conflict
 
@@ -212,11 +233,12 @@ If you have to use other plugin with the same namespace, just call the `$.fn.dis
 
 ## Browser support
 
-- Chrome (latest 2)
-- Firefox (latest 2)
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Opera (latest)
+- Edge (latest)
 - Internet Explorer 8+
-- Opera (latest 2)
-- Safari (latest 2)
 
 As a jQuery plugin, you also need to see the [jQuery Browser Support](http://jquery.com/browser-support/).
 
@@ -225,3 +247,6 @@ As a jQuery plugin, you also need to see the [jQuery Browser Support](http://jqu
 ## License
 
 [MIT](http://opensource.org/licenses/MIT) © [Fengyuan Chen](http://chenfengyuan.com)
+
+
+[⬆ back to top](#table-of-contents)
