@@ -1,6 +1,11 @@
 # Changelog
 
 
+### 1.0.4 (Jun 1, 2016)
+
+- Updated districts data.
+
+
 ### 1.0.3 (Mar 3, 2016)
 
 - Updated districts data.
