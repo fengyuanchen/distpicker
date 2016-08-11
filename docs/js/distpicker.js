@@ -1,11 +1,11 @@
 /*!
- * Distpicker v2.0.0
+ * Distpicker v2.0.0-alpha.1
  * https://github.com/fengyuanchen/distpicker
  *
  * Copyright (c) 2014-2016 Fengyuan Chen
  * Released under the MIT license
  *
- * Date: 2016-08-11T12:49:13.285Z
+ * Date: 2016-08-11T13:03:05.096Z
  */
 
 /******/ (function(modules) { // webpackBootstrap

@@ -2,19 +2,19 @@
 
 > A simple jQuery plugin for picking provinces, cities and districts of China.
 
-- [Homepage](https://fengyuanchen.github.io/distpicker)
+- [Website](https://fengyuanchen.github.io/distpicker)
 
 
 
 ## Table of contents
 
-  - [Main](#main)
-  - [Getting started](#getting-started)
-  - [Options](#options)
-  - [Methods](#methods)
-  - [No conflict](#no-conflict)
-  - [Browser support](#browser-support)
-  - [License](#license)
+- [Main](#main)
+- [Getting started](#getting-started)
+- [Options](#options)
+- [Methods](#methods)
+- [No conflict](#no-conflict)
+- [Browser support](#browser-support)
+- [License](#license)
 
 
 
@@ -22,10 +22,8 @@
 
 ```
 dist/
-├── distpicker.js          ( 7 KB)
-├── distpicker.min.js      ( 4 KB)
-├── distpicker.data.js     (97 KB)
-└── distpicker.data.min.js (68 KB)
+├── distpicker.js     (104 KB)
+├── distpicker.min.js ( 72 KB)
 ```
 
 
@@ -39,8 +37,8 @@ Four quick start options are available:
 
 - [Download the latest release](https://github.com/fengyuanchen/distpicker/archive/master.zip).
 - Clone the repository: `git clone https://github.com/fengyuanchen/distpicker.git`.
-- Install with [NPM](http://npmjs.org): `npm install distpicker`.
-- Install with [Bower](http://bower.io): `bower install distpicker`.
+- Install with [NPM](https://npmjs.com): `npm install distpicker`.
+- Install with [Bower](https://bower.io): `bower install distpicker`.
 
 
 ### Installation
@@ -49,7 +47,6 @@ Include files:
 
 ```html
 <script src="/path/to/jquery.js"></script><!-- jQuery is required -->
-<script src="/path/to/distpicker.data.js"></script>
 <script src="/path/to/distpicker.js"></script>
 ```
 
@@ -159,12 +156,21 @@ Selects the city and district automatically when the province changes.
 Show placeholder (with an `<option>` element).
 
 
+### valueType
+
+- Type: `String`
+- Oprions: `'name'` and `'code'`(administrative division code)
+- Default: `'name'`
+
+Defines the value type of the `<select>` element.
+
+
 ### province
 
 - Type: `String`
 - Default: `—— 省 ——`
 
-Defines the initial value of province `<select>`. If it is a existing province in `distpicker.data.js`, it will be selected. If not, it will be used as a placeholder.
+Defines the initial value of province `<select>`. If it is a valid province, it will be selected. If not, it will be used as a placeholder.
 
 
 ### city
@@ -172,7 +178,7 @@ Defines the initial value of province `<select>`. If it is a existing province i
 - Type: `String`
 - Default: `—— 市 ——`
 
-Defines the initial value of city `<select>`. If it is a existing city under the selected province, it will be selected. If not, it will be used as a placeholder.
+Defines the initial value of city `<select>`. If it is a valid city under the selected province, it will be selected. If not, it will be used as a placeholder.
 
 
 ### district
@@ -180,7 +186,7 @@ Defines the initial value of city `<select>`. If it is a existing city under the
 - Type: `String`
 - Default: `—— 区 ——`
 
-Defines the initial value of district `<select>`. If it is a existing district under the selected city, it will be selected. If not, it will be used as a placeholder.
+Defines the initial value of district `<select>`. If it is a valid district under the selected city, it will be selected. If not, it will be used as a placeholder.
 
 
 [⬆ back to top](#table-of-contents)
@@ -188,6 +194,24 @@ Defines the initial value of district `<select>`. If it is a existing district u
 
 
 ## Methods
+
+### getDistricts([districtCode])
+
+- **districtCode** (optional):
+  - Type: `Number`
+  - The district code of target country, province or city.
+  - If not present, will return all the districts.
+
+- (return value):
+  - Type: `Object`
+
+Get districts data.
+
+```js
+$().distpicker('getDistricts'); // 中国
+$().distpicker('getDistricts', 330000); // 浙江省
+$().distpicker('getDistricts', 330100); // 杭州市
+```
 
 ### reset([deep])
 
@@ -197,8 +221,6 @@ Defines the initial value of district `<select>`. If it is a existing district u
   - Reset the selects to default states (Undo selected).
 
 Reset the selects to the initial states (Undo changed).
-
-**Examples:**
 
 ```js
 $().distpicker('reset');

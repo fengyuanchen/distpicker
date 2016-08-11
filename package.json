@@ -1,11 +1,11 @@
 {
   "name": "distpicker",
   "description": "A simple jQuery plugin for picking provinces, cities and districts of China.",
-  "version": "1.0.4",
+  "version": "2.0.0-alpha.1",
   "main": "dist/distpicker.js",
   "license": "MIT",
   "repository": "fengyuanchen/distpicker",
-  "homepage": "http://fengyuanchen.github.io/distpicker",
+  "homepage": "https://fengyuanchen.github.io/distpicker",
   "author": {
     "name": "Fengyuan Chen",
     "url": "http://chenfengyuan.com"
@@ -19,6 +19,7 @@
     "三级联动",
     "地址选择器",
     "China",
+    "Chinese",
     "province",
     "provinces",
     "city",
@@ -41,13 +42,21 @@
     "jquery": ">= 1.9.1"
   },
   "devDependencies": {
+    "babel-core": "^6.13.2",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.13.2",
+    "eslint": "^3.0.1",
+    "eslint-config-airbnb-base": "^5.0.1",
+    "eslint-plugin-import": "^1.10.3",
     "gulp": "^3.9.1",
-    "gulp-jscs": "^3.0.2",
-    "gulp-jshint": "^2.0.1",
-    "gulp-load-plugins": "^1.2.4",
+    "gulp-banner": "^0.1.3",
+    "gulp-eslint": "^3.0.1",
+    "gulp-load-plugins": "^1.2.2",
     "gulp-rename": "^1.2.2",
-    "gulp-replace": "^0.5.4",
-    "gulp-uglify": "^1.5.3",
-    "jshint": "^2.9.2"
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "webpack": "^1.13.1",
+    "webpack-stream": "^3.2.0"
   }
 }

@@ -1,6 +1,13 @@
 # Changelog
 
 
+### 2.0.0-alpha.1 (Aug 11, 2016)
+
+- Merge the `distpicker.data.js` file to the `distpicker.js` file.
+- Added a new option: `valueType`.
+- Added a new method: `getDistricts`.
+
+
 ### 1.0.4 (Jun 1, 2016)
 
 - Updated districts data.
