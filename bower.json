@@ -2,7 +2,6 @@
   "name": "distpicker",
   "description": "A simple jQuery plugin for picking provinces, cities and districts of China.",
   "main": [
-    "dist/distpicker.data.js",
     "dist/distpicker.js"
   ],
   "keywords": [
@@ -14,6 +13,7 @@
     "三级联动",
     "地址选择器",
     "China",
+    "Chinese",
     "province",
     "provinces",
     "city",

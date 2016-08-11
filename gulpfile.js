@@ -1,79 +1,81 @@
-'use strict';
+const gulp = require('gulp');
+const webpack = require('webpack-stream');
+const plugins = require('gulp-load-plugins')();
+const pkg = require('./package');
 
-var gulp = require('gulp');
-var plugins = require('gulp-load-plugins')();
-var pkg = require('./package');
-var now = new Date();
-var scripts = {
-  all: [
-    'src/*.js',
-    'gulpfile.js',
-    'docs/js/main.js'
-  ],
-  src: 'src/*.js',
+const scripts = {
   docs: 'docs/js',
-  dest: 'dist'
+  dest: 'dist',
+  entry: 'src/main.js',
+  output: 'dist/distpicker.js',
+  src: 'src/*.js',
 };
+const now = new Date();
+const banner = `/*!
+ * Distpicker v${pkg.version}
+ * https://github.com/${pkg.repository}
+ *
+ * Copyright (c) 2014-${now.getFullYear()} ${pkg.author.name}
+ * Released under the ${pkg.license} license
+ *
+ * Date: ${now.toISOString()}
+ */
 
-gulp.task('jshint', function () {
-  return gulp.src(scripts.all)
-    .pipe(plugins.jshint())
-    .pipe(plugins.jshint.reporter('default'));
-});
+`;
 
-gulp.task('jscs', function () {
-  return gulp.src(scripts.all)
-    .pipe(plugins.jscs());
-});
-
-gulp.task('js', ['jshint', 'jscs'], function () {
+gulp.task('eslint', () => {
   return gulp.src(scripts.src)
-    .pipe(plugins.replace(/@\w+/g, function (placeholder) {
-      switch (placeholder) {
-        case '@VERSION':
-          placeholder = pkg.version;
-          break;
+    .pipe(plugins.eslint())
+    .pipe(plugins.eslint.format());
+});
 
-        case '@YEAR':
-          placeholder = now.getFullYear();
-          break;
-
-        case '@DATE':
-          placeholder = now.toISOString();
-          break;
-      }
-
-      return placeholder;
+gulp.task('webpack', () => {
+  return gulp.src(scripts.entry)
+    .pipe(webpack({
+      output: {
+        filename: 'distpicker.js',
+      },
+      externals: {
+        jquery: 'window.jQuery',
+      },
+      module: {
+        loaders: [
+          {
+            test: /\.js$/,
+            loader: 'babel',
+            query: {
+              presets: ['es2015'],
+            },
+          },
+        ],
+      },
+      devtool: 'source-map',
     }))
+    .pipe(gulp.dest(scripts.dest));
+});
+
+gulp.task('js', ['eslint', 'webpack'], () => {
+  return gulp.src(scripts.output)
+    .pipe(plugins.banner(banner))
     .pipe(gulp.dest(scripts.docs))
     .pipe(gulp.dest(scripts.dest))
+    .pipe(plugins.uglify())
+    .pipe(plugins.banner(banner))
     .pipe(plugins.rename({
-      suffix: '.min'
-    }))
-    .pipe(plugins.uglify({
-      preserveComments: 'license'
+      suffix: '.min',
     }))
     .pipe(gulp.dest(scripts.dest));
 });
 
-gulp.task('jscopy', function () {
-  return gulp.src(scripts.src)
-    .pipe(gulp.dest(scripts.docs))
-    .pipe(gulp.dest(scripts.dest));
-});
-
-gulp.task('docs', ['js'], function () {
+gulp.task('site', () => {
   return gulp.src('docs/**')
-    .pipe(gulp.dest('_gh_pages'));
+    .pipe(gulp.dest('site'));
 });
 
-gulp.task('release', ['docs'], function () {
-  return gulp.src('dist/*')
-    .pipe(gulp.dest('_releases/' + pkg.version));
-});
+gulp.task('release', ['js', 'site']);
 
-gulp.task('watch', function () {
-  gulp.watch(scripts.src, ['jscopy']);
+gulp.task('watch', () => {
+  gulp.watch(scripts.src, ['webpack']);
 });
 
 gulp.task('default', ['watch']);

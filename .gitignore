@@ -1,6 +1,16 @@
 # Project
+*.map
+archives
+demo
+dev
+develop
+development
 node_modules
-/_*
+release
+releases
+resources
+site
+
 
 # Windows image file caches
 Thumbs.db
