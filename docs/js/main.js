@@ -35,13 +35,4 @@ $(function () {
     city: '杭州市',
     district: '西湖区'
   });
-
-  $('#distpicker4').distpicker({
-    placeholder: false
-  });
-
-  $('#distpicker5').distpicker({
-    autoSelect: false
-  });
-
 });

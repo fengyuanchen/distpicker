@@ -1,6 +1,13 @@
 # Changelog
 
 
+### 2.0.0-alpha.2 (Sep 6, 2016)
+
+- Rename `autoSelect` option to `autoselect`.
+- Subdivide optional values for `autoselect` option (#13).
+- Fixed the wrong value of the `<select>` elements (#18).
+
+
 ### 2.0.0-alpha.1 (Aug 11, 2016)
 
 - Merge the `distpicker.data.js` file to the `distpicker.js` file.

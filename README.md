@@ -139,13 +139,25 @@ $('#target').distpicker({
 - Change the default options with `$().distpicker(options)`.
 - Change the global default options with `$.fn.distpicker.setDefaults(options)`.
 
+Also supports to set the options by `data-*` attributes:
 
-### autoSelect
+```html
+<div data-toggle="distpicker" data-autoselect="3" data-province="浙江省">
+  ...
+</div>
+```
 
-- Type: `Boolean`
-- Default: `true`
+### autoselect
 
-Selects the city and district automatically when the province changes.
+- Type: `Number`
+- Options:
+  - `0`: Disable autoselect.
+  - `1`: Autoselect province only.
+  - `2`: Autoselect province and city only.
+  - `3`: Autoselect all (province, city and district).
+- Default: `0`
+
+Selects the districts automatically.
 
 
 ### placeholder
@@ -159,7 +171,9 @@ Show placeholder (with an `<option>` element).
 ### valueType
 
 - Type: `String`
-- Oprions: `'name'` and `'code'`(administrative division code)
+- Oprions:
+  - `'name'`: administrative division name.
+  - `'code'`: administrative division code.
 - Default: `'name'`
 
 Defines the value type of the `<select>` element.

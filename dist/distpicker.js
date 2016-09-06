@@ -1,11 +1,11 @@
 /*!
- * Distpicker v2.0.0-alpha.1
+ * Distpicker v2.0.0-alpha.2
  * https://github.com/fengyuanchen/distpicker
  *
  * Copyright (c) 2014-2016 Fengyuan Chen
  * Released under the MIT license
  *
- * Date: 2016-08-11T13:03:05.096Z
+ * Date: 2016-09-06T07:16:08.342Z
  */
 
 /******/ (function(modules) { // webpackBootstrap
@@ -246,11 +246,11 @@
 	          break;
 	
 	        case CITY:
-	          code = self.$province && self.$province.find(':selected').data('code');
+	          code = self.$province && (self.$province.find(':selected').data('code') || '');
 	          break;
 	
 	        case DISTRICT:
-	          code = self.$city && self.$city.find(':selected').data('code');
+	          code = self.$city && (self.$city.find(':selected').data('code') || '');
 	          break;
 	      }
 	
@@ -276,7 +276,9 @@
 	      }
 	
 	      if (!matched) {
-	        if (data.length && (options.autoSelect || options.autoselect)) {
+	        var autoselect = options.autoselect || options.autoSelect;
+	
+	        if (data.length && (type === PROVINCE && autoselect > 0 || type === CITY && autoselect > 1 || type === DISTRICT && autoselect > 2)) {
 	          data[0].selected = true;
 	        }
 	
@@ -295,7 +297,11 @@
 	        });
 	      }
 	
-	      $select.html(self.getList(data));
+	      if (data.length) {
+	        $select.html(self.getList(data));
+	      } else {
+	        $select.empty();
+	      }
 	    }
 	  }, {
 	    key: 'getList',
@@ -304,7 +310,7 @@
 	      var list = [];
 	
 	      _jquery2.default.each(data, function (i, n) {
-	        var attrs = ['data-code="' + n.code + '"', 'data-text="' + n.name + '"', 'value="' + (options.valueType === 'name' ? n.name : n.code) + '"'];
+	        var attrs = ['data-code="' + n.code + '"', 'data-text="' + n.name + '"', 'value="' + (options.valueType === 'name' && n.code ? n.name : n.code) + '"'];
 	
 	        if (n.selected) {
 	          attrs.push('selected');
@@ -365,8 +371,12 @@
 	  value: true
 	});
 	exports.default = {
-	  // Selects the city and district automatically when the province changes.
-	  autoSelect: true,
+	  // Selects the districts automatically.
+	  // 0 -> Disable autoselect
+	  // 1 -> Autoselect province only
+	  // 2 -> Autoselect province and city only
+	  // 3 -> Autoselect all (province, city and district)
+	  autoselect: 0,
 	
 	  // Show placeholder.
 	  placeholder: true,
