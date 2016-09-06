@@ -1,6 +1,10 @@
 export default {
-  // Selects the city and district automatically when the province changes.
-  autoSelect: true,
+  // Selects the districts automatically.
+  // 0 -> Disable autoselect
+  // 1 -> Autoselect province only
+  // 2 -> Autoselect province and city only
+  // 3 -> Autoselect all (province, city and district)
+  autoselect: 0,
 
   // Show placeholder.
   placeholder: true,
