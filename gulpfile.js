@@ -51,6 +51,7 @@ gulp.task('webpack', () => {
       },
       devtool: 'source-map',
     }))
+    .pipe(gulp.dest(scripts.docs))
     .pipe(gulp.dest(scripts.dest));
 });
 
