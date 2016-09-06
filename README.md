@@ -23,7 +23,7 @@
 ```
 dist/
 ├── distpicker.js     (104 KB)
-├── distpicker.min.js ( 72 KB)
+└── distpicker.min.js ( 72 KB)
 ```
 
 
@@ -142,9 +142,7 @@ $('#target').distpicker({
 Also supports to set the options by `data-*` attributes:
 
 ```html
-<div data-toggle="distpicker" data-autoselect="3" data-province="浙江省">
-  ...
-</div>
+<div data-toggle="distpicker" data-autoselect="3" data-province="浙江省">...</div>
 ```
 
 ### autoselect
