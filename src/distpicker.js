@@ -90,11 +90,11 @@ export default class Distpicker {
         break;
 
       case CITY:
-        code = self.$province && self.$province.find(':selected').data('code');
+        code = self.$province && (self.$province.find(':selected').data('code') || '');
         break;
 
       case DISTRICT:
-        code = self.$city && self.$city.find(':selected').data('code');
+        code = self.$city && (self.$city.find(':selected').data('code') || '');
         break;
     }
 
@@ -139,7 +139,11 @@ export default class Distpicker {
       });
     }
 
-    $select.html(self.getList(data));
+    if (data.length) {
+      $select.html(self.getList(data));
+    } else {
+      $select.empty();
+    }
   }
 
   getList(data) {
