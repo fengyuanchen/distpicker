@@ -105,7 +105,11 @@ export default class Distpicker {
 
     if ($.isPlainObject(districts)) {
       $.each(districts, (i, name) => {
-        const selected = name === value;
+        let selected = name === value;
+
+        if (options.valueType === 'code') {
+          selected = i === String(value);
+        }
 
         if (selected) {
           matched = true;
