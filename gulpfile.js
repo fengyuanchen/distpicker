@@ -68,12 +68,7 @@ gulp.task('js', ['eslint', 'webpack'], () => {
     .pipe(gulp.dest(scripts.dest));
 });
 
-gulp.task('site', () => {
-  return gulp.src('docs/**')
-    .pipe(gulp.dest('site'));
-});
-
-gulp.task('release', ['js', 'site']);
+gulp.task('release', ['js']);
 
 gulp.task('watch', () => {
   gulp.watch(scripts.src, ['webpack']);
