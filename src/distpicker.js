@@ -175,6 +175,7 @@ export default class Distpicker {
     return list.join('');
   }
 
+  // eslint-disable-next-line class-methods-use-this
   getDistricts(code = DEFAULT_CODE) {
     return DISTRICTS[code] || null;
   }
