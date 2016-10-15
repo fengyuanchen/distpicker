@@ -1,6 +1,11 @@
 # Changelog
 
 
+### 2.0.0-beta.1 (Oct 15, 2016)
+
+- Fixed the issue of restoring saved districts by code (#19).
+
+
 ### 2.0.0-alpha.2 (Sep 6, 2016)
 
 - Rename `autoSelect` option to `autoselect`.

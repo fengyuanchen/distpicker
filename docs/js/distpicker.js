@@ -1,11 +1,11 @@
 /*!
- * Distpicker v2.0.0-alpha.2
+ * Distpicker v2.0.0-beta.1
  * https://github.com/fengyuanchen/distpicker
  *
  * Copyright (c) 2014-2016 Fengyuan Chen
  * Released under the MIT license
  *
- * Date: 2016-09-06T07:16:08.342Z
+ * Date: 2016-10-15T07:21:39.426Z
  */
 
 /******/ (function(modules) { // webpackBootstrap
@@ -263,6 +263,10 @@
 	        _jquery2.default.each(districts, function (i, name) {
 	          var selected = name === value;
 	
+	          if (options.valueType === 'code') {
+	            selected = i === String(value);
+	          }
+	
 	          if (selected) {
 	            matched = true;
 	          }
@@ -321,10 +325,13 @@
 	
 	      return list.join('');
 	    }
+	
+	    // eslint-disable-next-line class-methods-use-this
+	
 	  }, {
 	    key: 'getDistricts',
 	    value: function getDistricts() {
-	      var code = arguments.length <= 0 || arguments[0] === undefined ? DEFAULT_CODE : arguments[0];
+	      var code = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : DEFAULT_CODE;
 	
 	      return _districts2.default[code] || null;
 	    }
