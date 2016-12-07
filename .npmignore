@@ -1,4 +1,4 @@
 /.*
 docs
 bower.json
-gulpfile.js
+rollup.config.js

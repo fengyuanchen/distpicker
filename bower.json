@@ -44,7 +44,7 @@
     "tests",
     "test",
     "docs",
-    "gulpfile.js"
+    "rollup.config.js"
   ],
   "dependencies": {
     "jquery": ">= 1.9.1"
