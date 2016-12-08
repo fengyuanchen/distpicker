@@ -1,6 +1,11 @@
 # Changelog
 
 
+### 2.0.0-beta.2 (Dec 8, 2016)
+
+- Build the source code with [Rollup](https://github.com/rollup/rollup).
+
+
 ### 2.0.0-beta.1 (Oct 15, 2016)
 
 - Fixed the issue of restoring saved districts by code (#19).

@@ -24,8 +24,8 @@
 
 ```
 dist/
-├── distpicker.js     (104 KB)
-└── distpicker.min.js ( 72 KB)
+├── distpicker.js     (98 KB)
+└── distpicker.min.js (71 KB)
 ```
 
 
