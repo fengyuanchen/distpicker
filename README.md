@@ -274,7 +274,7 @@ If you have to use other plugin with the same namespace, just call the `$.fn.dis
 - Safari (latest)
 - Opera (latest)
 - Edge (latest)
-- Internet Explorer 8+
+- Internet Explorer 9+
 
 As a jQuery plugin, you also need to see the [jQuery Browser Support](http://jquery.com/browser-support/).
 

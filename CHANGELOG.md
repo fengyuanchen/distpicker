@@ -1,6 +1,11 @@
 # Changelog
 
 
+### 2.0.0-rc (Mar 4, 2017)
+
+- Updated districts.
+
+
 ### 2.0.0-beta.2 (Dec 8, 2016)
 
 - Build the source code with [Rollup](https://github.com/rollup/rollup).
