@@ -5,7 +5,7 @@
  * Copyright (c) 2014-2017 Fengyuan Chen
  * Released under the MIT license
  *
- * Date: 2017-03-04T07:50:05.377Z
+ * Date: 2017-05-03T10:49:11.861Z
  */
 
 
@@ -4293,7 +4293,7 @@ var Distpicker = function () {
       var list = [];
 
       $.each(data, function (i, n) {
-        var attrs = ['data-code="' + n.code + '"', 'data-text="' + n.name + '"', 'value="' + (options.valueType === 'name' && n.code ? n.name : n.code) + '"'];
+        var attrs = ['data-code="' + n.code + '"', 'data-text="' + n.name + '"', 'value="' + (options.valueType === 'name' && n.name ? n.name : n.code) + '"'];
 
         if (n.selected) {
           attrs.push('selected');

@@ -162,7 +162,7 @@ export default class Distpicker {
       const attrs = [
         `data-code="${n.code}"`,
         `data-text="${n.name}"`,
-        `value="${options.valueType === 'name' && n.code ? n.name : n.code}"`,
+        `value="${options.valueType === 'name' && n.name ? n.name : n.code}"`,
       ];
 
       if (n.selected) {
