@@ -118,6 +118,7 @@ export default class Distpicker {
         data.push({
           code: i,
           name,
+          value: options.valueType === 'name' ? name : i,
           selected,
         });
       });
@@ -143,6 +144,7 @@ export default class Distpicker {
       data.unshift({
         code: '',
         name: placeholders[type],
+        value: '',
         selected: false,
       });
     }
@@ -154,15 +156,15 @@ export default class Distpicker {
     }
   }
 
+  // eslint-disable-next-line class-methods-use-this
   getList(data) {
-    const options = this.options;
     const list = [];
 
     $.each(data, (i, n) => {
       const attrs = [
         `data-code="${n.code}"`,
         `data-text="${n.name}"`,
-        `value="${options.valueType === 'name' && n.code ? n.name : n.code}"`,
+        `value="${n.value}"`,
       ];
 
       if (n.selected) {
