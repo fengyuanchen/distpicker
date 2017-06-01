@@ -9,13 +9,11 @@
  */
 
 
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('jquery')) :
-  typeof define === 'function' && define.amd ? define(['jquery'], factory) :
-  (factory(global.jQuery));
-}(this, (function ($) { 'use strict';
+'use strict';
 
-$ = 'default' in $ ? $['default'] : $;
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var $ = _interopDefault(require('jquery'));
 
 var DEFAULTS = {
   // Selects the districts automatically.
@@ -4396,5 +4394,3 @@ $.fn.distpicker.noConflict = function noConflict() {
 $(function () {
   $('[data-toggle="distpicker"]').distpicker();
 });
-
-})));

@@ -12,6 +12,14 @@ module.exports = {
       dest: 'dist/distpicker.js',
     },
     {
+      dest: 'dist/distpicker.common.js',
+      format: 'cjs',
+    },
+    {
+      dest: 'dist/distpicker.esm.js',
+      format: 'es',
+    },
+    {
       dest: 'docs/js/distpicker.js',
     },
   ],
@@ -19,18 +27,17 @@ module.exports = {
   moduleName: 'Distpicker',
   external: ['jquery'],
   globals: {
-    jquery: '$',
+    jquery: 'jQuery',
   },
   plugins: [
-    babel({
-      exclude: '/node_modules/**',
-    }),
     commonjs(),
     nodeResolve({
       jsnext: true,
     }),
+    babel({
+      exclude: '/node_modules/**',
+    }),
   ],
-  sourceMap: true,
   banner: `/*!
  * Distpicker v${pkg.version}
  * https://github.com/${pkg.repository}

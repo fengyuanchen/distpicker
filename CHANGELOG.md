@@ -1,6 +1,14 @@
 # Changelog
 
 
+### 2.0.0 (Jun 1, 2017)
+
+- Updated districts.
+- Use `window.jQuery` instead of `window.$` for browser side usage.
+- Change the `main` field value from `dist/distpicker.js` (UMD) to `dist/distpicker.common.js` (CommonJS).
+- Added `module` and `browser` fields to `package.json`.
+
+
 ### 2.0.0-rc (Mar 4, 2017)
 
 - Updated districts.

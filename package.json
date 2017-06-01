@@ -1,8 +1,10 @@
 {
   "name": "distpicker",
   "description": "A simple jQuery plugin for picking provinces, cities and districts of China.",
-  "version": "2.0.0-rc",
-  "main": "dist/distpicker.js",
+  "version": "2.0.0",
+  "main": "dist/distpicker.common.js",
+  "module": "dist/distpicker.esm.js",
+  "browser": "dist/distpicker.js",
   "license": "MIT",
   "repository": "fengyuanchen/distpicker",
   "homepage": "https://fengyuanchen.github.io/distpicker",
@@ -44,7 +46,7 @@
     "lint": "eslint src",
     "postbuild": "npm run compress",
     "prebuild": "npm run lint",
-    "start": "rollup -c -w"
+    "start": "rollup -c -w -m"
   },
   "dependencies": {
     "jquery": ">= 1.9.1"

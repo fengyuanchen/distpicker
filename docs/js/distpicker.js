@@ -1,18 +1,18 @@
 /*!
- * Distpicker v2.0.0-rc
+ * Distpicker v2.0.0
  * https://github.com/fengyuanchen/distpicker
  *
  * Copyright (c) 2014-2017 Fengyuan Chen
  * Released under the MIT license
  *
- * Date: 2017-03-04T07:50:05.377Z
+ * Date: 2017-06-01T14:17:32.614Z
  */
 
 
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('jquery')) :
   typeof define === 'function' && define.amd ? define(['jquery'], factory) :
-  (factory(global.$));
+  (factory(global.jQuery));
 }(this, (function ($) { 'use strict';
 
 $ = 'default' in $ ? $['default'] : $;
@@ -1636,7 +1636,7 @@ var DISTRICTS = {
   360700: {
     360702: '章贡区',
     360703: '南康区',
-    360721: '赣县',
+    360721: '赣县区',
     360722: '信丰县',
     360723: '大余县',
     360724: '上犹县',
@@ -2025,7 +2025,7 @@ var DISTRICTS = {
   },
   411000: {
     411002: '魏都区',
-    411023: '许昌县',
+    411023: '建安区',
     411024: '鄢陵县',
     411025: '襄城县',
     411081: '禹州市',
@@ -2472,7 +2472,9 @@ var DISTRICTS = {
     440305: '南山区',
     440306: '宝安区',
     440307: '龙岗区',
-    440308: '盐田区'
+    440308: '盐田区',
+    440309: '龙华区',
+    440310: '坪山区'
   },
   440400: {
     440402: '香洲区',
@@ -2820,11 +2822,11 @@ var DISTRICTS = {
     500152: '潼南区',
     500153: '荣昌区',
     500154: '开州区',
-    500228: '梁平县',
+    500228: '梁平区',
     500229: '城口县',
     500230: '丰都县',
     500231: '垫江县',
-    500232: '武隆县',
+    500232: '武隆区',
     500233: '忠县',
     500235: '云阳县',
     500236: '奉节县',
@@ -2870,7 +2872,7 @@ var DISTRICTS = {
     510115: '温江区',
     510116: '双流区',
     510121: '金堂县',
-    510124: '郫县',
+    510124: '郫都区',
     510129: '大邑县',
     510131: '蒲江县',
     510132: '新津县',
@@ -3225,7 +3227,7 @@ var DISTRICTS = {
     530112: '西山区',
     530113: '东川区',
     530114: '呈贡区',
-    530122: '晋宁县',
+    530122: '晋宁区',
     530124: '富民县',
     530125: '宜良县',
     530126: '石林彝族自治县',
@@ -3501,7 +3503,7 @@ var DISTRICTS = {
     610117: '高陵区',
     610122: '蓝田县',
     610124: '周至县',
-    610125: '户县'
+    610125: '鄠邑区'
   },
   610200: {
     610202: '王益区',
@@ -4253,6 +4255,7 @@ var Distpicker = function () {
           data.push({
             code: i,
             name: name,
+            value: options.valueType === 'name' ? name : i,
             selected: selected
           });
         });
@@ -4276,6 +4279,7 @@ var Distpicker = function () {
         data.unshift({
           code: '',
           name: placeholders[type],
+          value: '',
           selected: false
         });
       }
@@ -4286,14 +4290,16 @@ var Distpicker = function () {
         $select.empty();
       }
     }
+
+    // eslint-disable-next-line class-methods-use-this
+
   }, {
     key: 'getList',
     value: function getList(data) {
-      var options = this.options;
       var list = [];
 
       $.each(data, function (i, n) {
-        var attrs = ['data-code="' + n.code + '"', 'data-text="' + n.name + '"', 'value="' + (options.valueType === 'name' && n.code ? n.name : n.code) + '"'];
+        var attrs = ['data-code="' + n.code + '"', 'data-text="' + n.name + '"', 'value="' + n.value + '"'];
 
         if (n.selected) {
           attrs.push('selected');
@@ -4392,4 +4398,3 @@ $(function () {
 });
 
 })));
-//# sourceMappingURL=distpicker.js.map

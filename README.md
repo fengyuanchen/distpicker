@@ -24,8 +24,10 @@
 
 ```
 dist/
-├── distpicker.js     (98 KB)
-└── distpicker.min.js (71 KB)
+├── distpicker.js        (98 KB, UMD)
+├── distpicker.min.js    (71 KB, UMD, compressed)
+├── distpicker.common.js (98 KB, CommonJS)
+└── distpicker.esm.js    (98 KB, ES Module)
 ```
 
 
@@ -177,6 +179,12 @@ Show placeholder (with an `<option>` element).
 - Default: `'name'`
 
 Defines the value type of the `<select>` element.
+
+Note that this option in `data-*` attribute should be `data-value-type`:
+
+```html
+<div data-toggle="distpicker" data-value-type="code">...</div>
+```
 
 
 ### province
