@@ -4360,7 +4360,6 @@ $.fn.distpicker = function jQueryDistpicker(option) {
 
   var result = void 0;
 
-  this.each(function each() {
     var $this = $(this);
     var data = $this.data(NAMESPACE);
 
@@ -4380,7 +4379,6 @@ $.fn.distpicker = function jQueryDistpicker(option) {
         result = fn.apply(data, args);
       }
     }
-  });
 
   return typeof result !== 'undefined' ? result : this;
 };
