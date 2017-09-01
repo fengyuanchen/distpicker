@@ -1,5 +1,8 @@
 # Changelog
 
+### 2.0.1 (Sep 1, 2017)
+
+- Updated districts.
 
 ### 2.0.0 (Jun 1, 2017)
 

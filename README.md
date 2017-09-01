@@ -24,10 +24,10 @@
 
 ```
 dist/
-├── distpicker.js        (98 KB, UMD)
-├── distpicker.min.js    (71 KB, UMD, compressed)
-├── distpicker.common.js (98 KB, CommonJS)
-└── distpicker.esm.js    (98 KB, ES Module)
+├── distpicker.js        (UMD)
+├── distpicker.min.js    (UMD, compressed)
+├── distpicker.common.js (CommonJS, default)
+└── distpicker.esm.js    (ES Module)
 ```
 
 

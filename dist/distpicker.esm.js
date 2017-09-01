@@ -1,11 +1,11 @@
 /*!
- * Distpicker v2.0.0
+ * Distpicker v2.0.1
  * https://github.com/fengyuanchen/distpicker
  *
  * Copyright (c) 2014-2017 Fengyuan Chen
  * Released under the MIT license
  *
- * Date: 2017-06-01T14:17:32.614Z
+ * Date: 2017-09-01T15:38:34.039Z
  */
 
 
@@ -73,7 +73,7 @@ var DISTRICTS = {
     820000: '澳门特别行政区'
   },
   110000: {
-    110100: '北京市市辖区'
+    110100: '北京城区'
   },
   110100: {
     110101: '东城区',
@@ -94,7 +94,7 @@ var DISTRICTS = {
     110119: '延庆区'
   },
   120000: {
-    120100: '天津市市辖区'
+    120100: '天津城区'
   },
   120100: {
     120101: '和平区',
@@ -1016,7 +1016,7 @@ var DISTRICTS = {
     232723: '漠河县'
   },
   310000: {
-    310100: '上海市市辖区'
+    310100: '上海城区'
   },
   310100: {
     310101: '黄浦区',
@@ -2102,6 +2102,9 @@ var DISTRICTS = {
     411728: '遂平县',
     411729: '新蔡县'
   },
+  419001: {
+    419001: '济源市'
+  },
   420000: {
     420100: '武汉市',
     420200: '黄石市',
@@ -2245,6 +2248,18 @@ var DISTRICTS = {
     422826: '咸丰县',
     422827: '来凤县',
     422828: '鹤峰县'
+  },
+  429004: {
+    429004: '仙桃市'
+  },
+  429005: {
+    429005: '潜江市'
+  },
+  429006: {
+    429006: '天门市'
+  },
+  429021: {
+    429021: '神农架林区'
   },
   430000: {
     430100: '长沙市',
@@ -2431,6 +2446,7 @@ var DISTRICTS = {
     441800: '清远市',
     441900: '东莞市',
     442000: '中山市',
+    442100: '东沙群岛',
     445100: '潮州市',
     445200: '揭阳市',
     445300: '云浮市'
@@ -2574,6 +2590,15 @@ var DISTRICTS = {
     441826: '连南瑶族自治县',
     441881: '英德市',
     441882: '连州市'
+  },
+  441900: {
+    441900: '东莞市'
+  },
+  442000: {
+    442000: '中山市'
+  },
+  442100: {
+    442100: '东沙群岛'
   },
   445100: {
     445102: '湘桥区',
@@ -2787,9 +2812,57 @@ var DISTRICTS = {
     460322: '南沙群岛',
     460323: '中沙群岛的岛礁及其海域'
   },
+  460400: {
+    460400: '儋州市'
+  },
+  469001: {
+    469001: '五指山市'
+  },
+  469002: {
+    469002: '琼海市'
+  },
+  469005: {
+    469005: '文昌市'
+  },
+  469006: {
+    469006: '万宁市'
+  },
+  469007: {
+    469007: '东方市'
+  },
+  469021: {
+    469021: '定安县'
+  },
+  469022: {
+    469022: '屯昌县'
+  },
+  469023: {
+    469023: '澄迈县'
+  },
+  469024: {
+    469024: '临高县'
+  },
+  469025: {
+    469025: '白沙黎族自治县'
+  },
+  469026: {
+    469026: '昌江黎族自治县'
+  },
+  469027: {
+    469027: '乐东黎族自治县'
+  },
+  469028: {
+    469028: '陵水黎族自治县'
+  },
+  469029: {
+    469029: '保亭黎族苗族自治县'
+  },
+  469030: {
+    469030: '琼中黎族苗族自治县'
+  },
   500000: {
-    500100: '重庆市市辖区',
-    500200: '重庆市郊县'
+    500100: '重庆城区',
+    500200: '重庆郊县'
   },
   500100: {
     500101: '万州区',
@@ -2815,7 +2888,9 @@ var DISTRICTS = {
     500151: '铜梁区',
     500152: '潼南区',
     500153: '荣昌区',
-    500154: '开州区',
+    500154: '开州区'
+  },
+  500200: {
     500228: '梁平区',
     500229: '城口县',
     500230: '丰都县',
@@ -3637,6 +3712,9 @@ var DISTRICTS = {
     620122: '皋兰县',
     620123: '榆中县'
   },
+  620200: {
+    620200: '嘉峪关市'
+  },
   620300: {
     620302: '金川区',
     620321: '永昌县'
@@ -3997,130 +4075,74 @@ var DISTRICTS = {
     654325: '青河县',
     654326: '吉木乃县'
   },
+  659001: {
+    659001: '石河子市'
+  },
+  659002: {
+    659002: '阿拉尔市'
+  },
+  659003: {
+    659003: '图木舒克市'
+  },
+  659004: {
+    659004: '五家渠市'
+  },
+  659005: {
+    659005: '北屯市'
+  },
+  659006: {
+    659006: '铁门关市'
+  },
+  659007: {
+    659007: '双河市'
+  },
+  659008: {
+    659008: '可克达拉市'
+  },
+  659009: {
+    659009: '昆玉市'
+  },
   810000: {
-    810001: '中西区',
-    810002: '湾仔区',
-    810003: '东区',
-    810004: '南区',
-    810005: '油尖旺区',
-    810006: '深水埗区',
-    810007: '九龙城区',
-    810008: '黄大仙区',
-    810009: '观塘区',
-    810010: '荃湾区',
-    810011: '屯门区',
-    810012: '元朗区',
-    810013: '北区',
-    810014: '大埔区',
-    810015: '西贡区',
-    810016: '沙田区',
-    810017: '葵青区',
-    810018: '离岛区'
+    810100: '香港城区'
+  },
+  810100: {
+    810101: '中西区',
+    810102: '湾仔区',
+    810103: '东区',
+    810104: '南区',
+    810105: '油尖旺区',
+    810106: '深水埗区',
+    810107: '九龙城区',
+    810108: '黄大仙区',
+    810109: '观塘区',
+    810110: '荃湾区',
+    810111: '屯门区',
+    810112: '元朗区',
+    810113: '北区',
+    810114: '大埔区',
+    810115: '西贡区',
+    810116: '沙田区',
+    810117: '葵青区',
+    810118: '离岛区'
   },
   820000: {
-    820001: '花地玛堂区',
-    820002: '花王堂区',
-    820003: '望德堂区',
-    820004: '大堂区',
-    820005: '风顺堂区',
-    820006: '嘉模堂区',
-    820007: '路凼填海区',
-    820008: '圣方济各堂区'
+    820100: '澳门城区'
+  },
+  820100: {
+    820101: '花地玛堂区',
+    820102: '花王堂区',
+    820103: '望德堂区',
+    820104: '大堂区',
+    820105: '风顺堂区',
+    820106: '嘉模堂区',
+    820107: '路凼填海区',
+    820108: '圣方济各堂区'
   }
 };
 
-var classCallCheck = function (instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-};
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var createClass = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];
-      descriptor.enumerable = descriptor.enumerable || false;
-      descriptor.configurable = true;
-      if ("value" in descriptor) descriptor.writable = true;
-      Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }
-
-  return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) defineProperties(Constructor, staticProps);
-    return Constructor;
-  };
-}();
-
-
-
-
-
-
-
-var get = function get(object, property, receiver) {
-  if (object === null) object = Function.prototype;
-  var desc = Object.getOwnPropertyDescriptor(object, property);
-
-  if (desc === undefined) {
-    var parent = Object.getPrototypeOf(object);
-
-    if (parent === null) {
-      return undefined;
-    } else {
-      return get(parent, property, receiver);
-    }
-  } else if ("value" in desc) {
-    return desc.value;
-  } else {
-    var getter = desc.get;
-
-    if (getter === undefined) {
-      return undefined;
-    }
-
-    return getter.call(receiver);
-  }
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var set = function set(object, property, value, receiver) {
-  var desc = Object.getOwnPropertyDescriptor(object, property);
-
-  if (desc === undefined) {
-    var parent = Object.getPrototypeOf(object);
-
-    if (parent !== null) {
-      set(parent, property, value, receiver);
-    }
-  } else if ("value" in desc && desc.writable) {
-    desc.value = value;
-  } else {
-    var setter = desc.set;
-
-    if (setter !== undefined) {
-      setter.call(receiver, value);
-    }
-  }
-
-  return value;
-};
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var NAMESPACE$1 = 'distpicker';
 var EVENT_CHANGE = 'change.' + NAMESPACE$1;
@@ -4131,7 +4153,7 @@ var DISTRICT = 'district';
 
 var Distpicker = function () {
   function Distpicker(element, options) {
-    classCallCheck(this, Distpicker);
+    _classCallCheck(this, Distpicker);
 
     var self = this;
 
@@ -4142,7 +4164,7 @@ var Distpicker = function () {
     self.init();
   }
 
-  createClass(Distpicker, [{
+  _createClass(Distpicker, [{
     key: 'init',
     value: function init() {
       var self = this;
@@ -4341,6 +4363,7 @@ var Distpicker = function () {
       $.extend(DEFAULTS, $.isPlainObject(options) && options);
     }
   }]);
+
   return Distpicker;
 }();
 
