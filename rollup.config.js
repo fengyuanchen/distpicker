@@ -6,25 +6,26 @@ const pkg = require('./package');
 const now = new Date();
 
 module.exports = {
-  entry: 'src/index.js',
-  targets: [
+  input: 'src/index.js',
+  output: [
     {
-      dest: 'dist/distpicker.js',
+      file: 'dist/distpicker.js',
+      format: 'umd',
     },
     {
-      dest: 'dist/distpicker.common.js',
+      file: 'dist/distpicker.common.js',
       format: 'cjs',
     },
     {
-      dest: 'dist/distpicker.esm.js',
+      file: 'dist/distpicker.esm.js',
       format: 'es',
     },
     {
-      dest: 'docs/js/distpicker.js',
+      file: 'docs/js/distpicker.js',
+      format: 'umd',
     },
   ],
-  format: 'umd',
-  moduleName: 'Distpicker',
+  name: 'Distpicker',
   external: ['jquery'],
   globals: {
     jquery: 'jQuery',
@@ -35,7 +36,7 @@ module.exports = {
       jsnext: true,
     }),
     babel({
-      exclude: '/node_modules/**',
+      exclude: 'node_modules/**',
     }),
   ],
   banner: `/*!
