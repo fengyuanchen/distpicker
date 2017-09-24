@@ -9,11 +9,17 @@
   <meta name="author" content="Fengyuan Chen">
   <title>Distpicker</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/highlightjs@9.10.0/styles/github.css">
   <link href="css/main.css" rel="stylesheet">
 </head>
 <body>
   <!--[if lt IE 9]>
-  <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <div class="alert alert-warning alert-dismissible fade show m-0 rounded-0" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+  </div>
   <![endif]-->
 
   <!-- Header -->
@@ -25,23 +31,27 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbar-collapse" role="navigation">
         <nav class="nav navbar-nav">
-          <a class="nav-link" href="https://github.com/fengyuanchen/distpicker/blob/master/README.md">Docs</a>
-          <a class="nav-link" href="https://github.com/fengyuanchen/distpicker">GitHub</a>
-          <a class="nav-link" href="https://fengyuanchen.github.io">More</a>
-          <a class="nav-link" href="http://chenfengyuan.com">About</a>
+          <a class="nav-link" href="https://github.com/fengyuanchen/distpicker/blob/master/README.md" data-toggle="tooltip" title="View the documentation">Docs</a>
+          <a class="nav-link" href="https://github.com/fengyuanchen/distpicker" data-toggle="tooltip" title="View the GitHub project">GitHub</a>
+          <a class="nav-link" href="https://fengyuanchen.github.io" data-toggle="tooltip" title="More projects">More</a>
+          <a class="nav-link" href="http://chenfengyuan.com" data-toggle="tooltip" title="About the author">About</a>
         </nav>
       </div>
     </nav>
   </header>
 
   <!-- Jumbotron -->
-  <div class="jumbotron docs-jumbotron">
+  <div class="jumbotron bg-primary text-white rounded-0">
     <div class="container">
-      <h1>Distpicker <small class="version">v2.0.1</small></h1>
-      <p class="lead">A simple jQuery plugin for picking provinces, cities and districts of China.</p>
-      <div class="docs-carbonads-container">
-        <div class="docs-carbonads">
-          <script id="_carbonads_js" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=fengyuanchen" async></script>
+      <div class="row">
+        <div class="col-md col-lg-8">
+          <h1>Distpicker <small class="h6">v2.0.1</small></h1>
+          <p class="lead">A simple jQuery plugin for picking provinces, cities and districts of China.</p>
+        </div>
+        <div class="col-md col-lg-4">
+          <div class="carbonads">
+            <script id="_carbonads_js" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=fengyuanchen" async></script>
+          </div>
         </div>
       </div>
     </div>
@@ -54,24 +64,24 @@
     <hr>
     <h3>Installation</h3>
     <p>Include files:</p>
-    <pre class="prettyprint">&lt;script src=&quot;/path/to/jquery.js&quot;&gt;&lt;/script&gt;&lt;!-- jQuery is required --&gt;
-&lt;script src=&quot;/path/to/distpicker.js&quot;&gt;&lt;/script&gt;</pre>
+    <pre><code class="language-html">&lt;script src=&quot;/path/to/jquery.js&quot;&gt;&lt;/script&gt;&lt;!-- jQuery is required --&gt;
+&lt;script src=&quot;/path/to/distpicker.js&quot;&gt;&lt;/script&gt;</code></pre>
 
     <p>Create HTML elements:</p>
-    <pre class="prettyprint">&lt;div&gt;&lt;!-- container --&gt;
+    <pre><code class="language-html">&lt;div&gt;&lt;!-- container --&gt;
   &lt;select&gt;&lt;/select&gt;&lt;!-- province --&gt;
   &lt;select&gt;&lt;/select&gt;&lt;!-- city --&gt;
   &lt;select&gt;&lt;/select&gt;&lt;!-- district --&gt;
-&lt;/div&gt;</pre>
+&lt;/div&gt;</code></pre>
 
     <h3>Initialize by <code>data-toggle=&quot;distpicker&quot;</code> attribute</h3>
     <h4>Basic</h4>
     <p>HTML:</p>
-    <pre class="prettyprint">&lt;div data-toggle=&quot;distpicker&quot;&gt;
+    <pre><code class="language-html">&lt;div data-toggle=&quot;distpicker&quot;&gt;
   &lt;select&gt;&lt;/select&gt;
   &lt;select&gt;&lt;/select&gt;
   &lt;select&gt;&lt;/select&gt;
-&lt;/div&gt;</pre>
+&lt;/div&gt;</code></pre>
     <p>Demo:</p>
     <form class="form-inline mt-2 mb-4">
       <div data-toggle="distpicker">
@@ -82,12 +92,12 @@
     </form>
     <h4>Custom placeholders</h4>
     <p>HTML:</p>
-    <pre class="prettyprint">&lt;div data-toggle=&quot;distpicker&quot;&gt;
+    <pre><code class="language-html">&lt;div data-toggle=&quot;distpicker&quot;&gt;
   &lt;select data-province=&quot;---- 选择省 ----&quot;&gt;&lt;/select&gt;
   &lt;select data-city=&quot;---- 选择市 ----&quot;&gt;&lt;/select&gt;
   &lt;select data-district=&quot;---- 选择区 ----&quot;&gt;&lt;/select&gt;
 &lt;/div&gt;
-</pre>
+</code></pre>
     <p>Demo:</p>
     <form class="form-inline mt-2 mb-4">
       <div data-toggle="distpicker">
@@ -98,11 +108,11 @@
     </form>
     <h4>Custom districts</h4>
     <p>HTML:</p>
-    <pre class="prettyprint">&lt;div data-toggle=&quot;distpicker&quot;&gt;
+    <pre><code class="language-html">&lt;div data-toggle=&quot;distpicker&quot;&gt;
   &lt;select data-province=&quot;浙江省&quot;&gt;&lt;/select&gt;
   &lt;select data-city=&quot;杭州市&quot;&gt;&lt;/select&gt;
   &lt;select data-district=&quot;西湖区&quot;&gt;&lt;/select&gt;
-&lt;/div&gt;</pre>
+&lt;/div&gt;</code></pre>
     <p>Demo:</p>
     <form class="form-inline mt-2 mb-4">
       <div data-toggle="distpicker">
@@ -115,13 +125,13 @@
     <h3>Initialize by <code>$.fn.distpicker</code> method</h3>
     <h4>Basic</h4>
     <p>HTML:</p>
-    <pre class="prettyprint">&lt;div id=&quot;distpicker1&quot;&gt;
+    <pre><code class="language-html">&lt;div id=&quot;distpicker1&quot;&gt;
   &lt;select&gt;&lt;/select&gt;
   &lt;select&gt;&lt;/select&gt;
   &lt;select&gt;&lt;/select&gt;
-&lt;/div&gt;</pre>
+&lt;/div&gt;</code></pre>
     <p>JavaScript:</p>
-    <pre class="prettyprint">$(&quot;#distpicker1&quot;).distpicker();</pre>
+    <pre><code class="language-js">$(&quot;#distpicker1&quot;).distpicker();</code></pre>
     <p>Demo:</p>
     <form class="form-inline mt-2 mb-4">
       <div id="distpicker1">
@@ -132,17 +142,17 @@
     </form>
     <h4>Custom placeholders</h4>
     <p>HTML:</p>
-    <pre class="prettyprint">&lt;div id=&quot;distpicker2&quot;&gt;
+    <pre><code class="language-html">&lt;div id=&quot;distpicker2&quot;&gt;
   &lt;select&gt;&lt;/select&gt;
   &lt;select&gt;&lt;/select&gt;
   &lt;select&gt;&lt;/select&gt;
-&lt;/div&gt;</pre>
+&lt;/div&gt;</code></pre>
     <p>JavaScript:</p>
-    <pre class="prettyprint">$(&quot;#distpicker2&quot;).distpicker({
+    <pre><code class="language-js">$(&quot;#distpicker2&quot;).distpicker({
   province: '---- 所在省 ----',
   city: '---- 所在市 ----',
   district: '---- 所在区 ----'
-});</pre>
+});</code></pre>
     <p>Demo:</p>
     <form class="form-inline mt-2 mb-4">
       <div id="distpicker2">
@@ -153,17 +163,17 @@
     </form>
     <h4>Custom districts</h4>
     <p>HTML:</p>
-    <pre class="prettyprint">&lt;div id=&quot;distpicker3&quot;&gt;
+    <pre><code class="language-html">&lt;div id=&quot;distpicker3&quot;&gt;
   &lt;select&gt;&lt;/select&gt;
   &lt;select&gt;&lt;/select&gt;
   &lt;select&gt;&lt;/select&gt;
-&lt;/div&gt;</pre>
+&lt;/div&gt;</code></pre>
     <p>JavaScript:</p>
-    <pre class="prettyprint">$(&quot;#distpicker3&quot;).distpicker({
+    <pre><code class="language-js">$(&quot;#distpicker3&quot;).distpicker({
   province: '浙江省',
   city: '杭州市',
   district: '西湖区'
-});</pre>
+});</code></pre>
     <p>Demo:</p>
     <form class="form-inline mt-2 mb-4">
       <div id="distpicker3">
@@ -178,11 +188,11 @@
     <hr>
     <p>Supports to set the options by <code>data-*</code> attributes:</p>
     <p>HTML:</p>
-    <pre class="prettyprint">&lt;div data-toggle=&quot;distpicker&quot; data-autoselect=&quot;3&quot; data-province=&quot;浙江省&quot;&gt;
+    <pre><code class="language-html">&lt;div data-toggle=&quot;distpicker&quot; data-autoselect=&quot;3&quot; data-province=&quot;浙江省&quot;&gt;
   &lt;select&gt;&lt;/select&gt;
   &lt;select&gt;&lt;/select&gt;
   &lt;select&gt;&lt;/select&gt;
-&lt;/div&gt;</pre>
+&lt;/div&gt;</code></pre>
     <p>Demo:</p>
     <form class="form-inline mt-2 mb-4">
       <div data-toggle="distpicker" data-autoselect="3" data-province="浙江省">
@@ -197,17 +207,17 @@
     <hr>
     <p>You can call methods by <code>$().distpicker('method', arg1, arg2, ..., argN)</code>.</p>
     <p>HTML:</p>
-    <pre class="prettyprint">&lt;div id=&quot;distpicker&quot;&gt;
+    <pre><code class="language-html">&lt;div id=&quot;distpicker&quot;&gt;
   &lt;select&gt;&lt;/select&gt;
   &lt;select&gt;&lt;/select&gt;
   &lt;select&gt;&lt;/select&gt;
-&lt;/div&gt;</pre>
+&lt;/div&gt;</code></pre>
     <p>JavaScript:</p>
-    <pre class="prettyprint">$(&quot;#distpicker&quot;).distpicker({
+    <pre><code class="language-js">$(&quot;#distpicker&quot;).distpicker({
   province: '福建省',
   city: '厦门市',
   district: '思明区'
-});</pre>
+});</code></pre>
     <p>Demo:</p>
     <div class="docs-methods mt-2 mb-4">
       <form class="form-inline mb-2">
@@ -229,10 +239,10 @@
     <hr>
     <h3>Only province and city</h3>
     <p>HTML:</p>
-    <pre class="prettyprint">&lt;div data-toggle=&quot;distpicker&quot;&gt;
+    <pre><code class="language-html">&lt;div data-toggle=&quot;distpicker&quot;&gt;
   &lt;select&gt;&lt;/select&gt;
   &lt;select&gt;&lt;/select&gt;
-&lt;/div&gt;</pre>
+&lt;/div&gt;</code></pre>
     <p>Demo:</p>
     <form class="form-inline mt-2 mb-4">
       <div data-toggle="distpicker">
@@ -243,9 +253,9 @@
 
     <h3>Only province</h3>
     <p>HTML:</p>
-    <pre class="prettyprint">&lt;div data-toggle=&quot;distpicker&quot;&gt;
+    <pre><code class="language-html">&lt;div data-toggle=&quot;distpicker&quot;&gt;
   &lt;select&gt;&lt;/select&gt;
-&lt;/div&gt;</pre>
+&lt;/div&gt;</code></pre>
 
     <p>Demo:</p>
     <form class="form-inline mt-2 mb-4">
@@ -256,12 +266,12 @@
 
     <h3>Select province automatically</h3>
     <p>HTML:</p>
-    <pre class="prettyprint">&lt;div data-toggle=&quot;distpicker&quot; data-autoselect=&quot;1&quot;&gt;
+    <pre><code class="language-html">&lt;div data-toggle=&quot;distpicker&quot; data-autoselect=&quot;1&quot;&gt;
   &lt;select&gt;&lt;/select&gt;
   &lt;select&gt;&lt;/select&gt;
   &lt;select&gt;&lt;/select&gt;
 &lt;/div&gt;
-</pre>
+</code></pre>
     <p>Demo:</p>
     <form class="form-inline mt-2 mb-4">
       <div data-toggle="distpicker" data-autoselect="1">
@@ -273,12 +283,12 @@
 
     <h3>Select province and city automatically</h3>
     <p>HTML:</p>
-    <pre class="prettyprint">&lt;div data-toggle=&quot;distpicker&quot; data-autoselect=&quot;2&quot;&gt;
+    <pre><code class="language-html">&lt;div data-toggle=&quot;distpicker&quot; data-autoselect=&quot;2&quot;&gt;
   &lt;select&gt;&lt;/select&gt;
   &lt;select&gt;&lt;/select&gt;
   &lt;select&gt;&lt;/select&gt;
 &lt;/div&gt;
-</pre>
+</code></pre>
     <p>Demo:</p>
     <form class="form-inline mt-2 mb-4">
       <div data-toggle="distpicker" data-autoselect="2">
@@ -290,12 +300,12 @@
 
     <h3>Select all districts automatically</h3>
     <p>HTML:</p>
-    <pre class="prettyprint">&lt;div data-toggle=&quot;distpicker&quot; data-autoselect=&quot;3&quot;&gt;
+    <pre><code class="language-html">&lt;div data-toggle=&quot;distpicker&quot; data-autoselect=&quot;3&quot;&gt;
   &lt;select&gt;&lt;/select&gt;
   &lt;select&gt;&lt;/select&gt;
   &lt;select&gt;&lt;/select&gt;
 &lt;/div&gt;
-</pre>
+</code></pre>
     <p>Demo:</p>
     <form class="form-inline mt-2 mb-4">
       <div data-toggle="distpicker" data-autoselect="3">
@@ -307,12 +317,12 @@
 
     <h3>Without placeholders</h3>
     <p>HTML:</p>
-    <pre class="prettyprint">&lt;div data-toggle=&quot;distpicker&quot; data-placeholder=&quot;false&quot;&gt;
+    <pre><code class="language-html">&lt;div data-toggle=&quot;distpicker&quot; data-placeholder=&quot;false&quot;&gt;
   &lt;select&gt;&lt;/select&gt;
   &lt;select&gt;&lt;/select&gt;
   &lt;select&gt;&lt;/select&gt;
 &lt;/div&gt;
-</pre>
+</code></pre>
     <p>Demo:</p>
     <form class="form-inline mt-2 mb-4">
       <div data-toggle="distpicker" data-placeholder="false">
@@ -327,7 +337,7 @@
   <footer class="docs-footer">
     <div class="container">
       <p class="heart"></p>
-      <nav class="nav flex-wrap justify-content-center">
+      <nav class="nav flex-wrap justify-content-center mb-3">
         <a class="nav-link" href="https://github.com/fengyuanchen/distpicker">GitHub</a>
         <a class="nav-link" href="https://github.com/fengyuanchen/distpicker/releases">Releases</a>
         <a class="nav-link" href="https://github.com/fengyuanchen/distpicker/issues">Issues</a>
@@ -341,7 +351,7 @@
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/highlightjs@9.10.0/highlight.pack.js"></script>
   <script src="https://fengyuanchen.github.io/js/common.js"></script>
   <script src="js/distpicker.js"></script>
   <script src="js/main.js"></script>

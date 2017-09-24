@@ -1,51 +1,13 @@
-/* Basic */
-
-body {
-  margin: 0;
-  overflow-x: hidden;
+.d-flex > .btn {
+  flex: 1;
 }
 
-.browserupgrade {
-  margin: 0;
-  padding: .5rem 1rem;
-  background-color: #fcfcfc;
-  text-align: center;
-}
-
-
-/* Jumbotron */
-
-.docs-jumbotron {
-  background-color: #0074d9;
-  border-radius: 0;
-  color: #fff;
-}
-
-.docs-jumbotron .version {
-  font-size: .875rem;
-  color: #fff;
-  filter: alpha(opacity=50);
-  opacity: 0.5;
-}
-
-@media (min-width: 992px) {
-  .docs-jumbotron h1,
-  .docs-jumbotron p {
-    margin-right: 380px;
-  }
-}
-
-.docs-carbonads-container {
-  position: relative;
-}
-
-.docs-carbonads {
-  font-size: .875rem;
-  max-width: 360px;
-  padding: 1rem;
-  border: 1px solid #ccc;
+.carbonads {
   border-radius: .25rem;
+  border: 1px solid #ccc;
+  font-size: .875rem;
   overflow: hidden;
+  padding: 1rem;
 }
 
 .carbon-wrap {
@@ -54,8 +16,8 @@ body {
 
 .carbon-img {
   clear: left;
-  float: left;
   display: block;
+  float: left;
 }
 
 .carbon-text,
@@ -78,70 +40,52 @@ body {
   text-decoration: none;
 }
 
-@media (min-width: 992px) {
-  .docs-carbonads {
-    position: absolute;
-    right: 0;
-    bottom: -1.25rem;
+@media (min-width: 768px) {
+  .carbonads {
+    float: right;
+    margin-bottom: -1rem;
+    margin-top: -1rem;
+    max-width: 360px;
   }
 }
 
-
-/* Footer */
-
-.docs-footer {
+.footer {
   font-size: .875rem;
   overflow: hidden;
 }
 
-.docs-footer .nav {
-  margin-bottom: 1rem;
-}
-
 .heart {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 2rem;
-  margin-top: 1rem;
-  margin-bottom: 0;
   color: #ddd;
-  font-size: 1.125rem;
+  display: block;
+  height: 2rem;
   line-height: 2rem;
+  margin-bottom: 0;
+  margin-top: 1rem;
+  position: relative;
   text-align: center;
+  width: 100%;
 }
 
 .heart:hover {
   color: #ff4136;
 }
 
-.heart:before {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  left: 0;
-  display: block;
-  height: 0;
+.heart::before {
   border-top: 1px solid #eee;
   content: " ";
+  display: block;
+  height: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
 }
 
-.heart:after {
-  position: relative;
-  z-index: 1;
-  padding-left: .5rem;
-  padding-right: .5rem;
+.heart::after {
   background-color: #fff;
   content: "♥";
-}
-
-
-
-/* Google Code Prettify */
-
-.prettyprint {
-  margin-top: 16px;
-  margin-bottom: 16px;
-  padding: 16px !important;
-  border: 1px solid #eee !important;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  position: relative;
+  z-index: 1;
 }
