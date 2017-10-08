@@ -20,7 +20,7 @@ $.fn.distpicker = function jQueryDistpicker(option, ...args) {
 
       const options = $.extend({}, $element.data(), $.isPlainObject(option) && option);
 
-      data = new Distpicker(this, options);
+      data = new Distpicker(element, options);
       $element.data(NAMESPACE, data);
     }
 
