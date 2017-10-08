@@ -1,9 +1,12 @@
 import $ from 'jquery';
 import DEFAULTS from './defaults';
 import DISTRICTS from './districts';
+import {
+  NAMESPACE,
+  EVENT_CHANGE,
+} from './constants';
 
-const NAMESPACE = 'distpicker';
-const EVENT_CHANGE = `change.${NAMESPACE}`;
+
 const DEFAULT_CODE = 100000;
 const PROVINCE = 'province';
 const CITY = 'city';

@@ -1,23 +1,27 @@
 import $ from 'jquery';
 import Distpicker from './distpicker';
+import {
+  NAMESPACE,
+} from './constants';
 
-const NAMESPACE = 'distpicker';
 const OtherDistpicker = $.fn.distpicker;
 
 $.fn.distpicker = function jQueryDistpicker(option, ...args) {
   let result;
 
-  this.each(function each() {
-    const $this = $(this);
-    let data = $this.data(NAMESPACE);
+  this.each((i, element) => {
+    const $element = $(element);
+    let data = $element.data(NAMESPACE);
 
     if (!data) {
       if (/destroy/.test(option)) {
         return;
       }
 
-      const options = $.extend({}, $this.data(), $.isPlainObject(option) && option);
-      $this.data(NAMESPACE, (data = new Distpicker(this, options)));
+      const options = $.extend({}, $element.data(), $.isPlainObject(option) && option);
+
+      data = new Distpicker(this, options);
+      $element.data(NAMESPACE, data);
     }
 
     if (typeof option === 'string') {
@@ -29,7 +33,7 @@ $.fn.distpicker = function jQueryDistpicker(option, ...args) {
     }
   });
 
-  return typeof result !== 'undefined' ? result : this;
+  return typeof result === 'undefined' ? this : result;
 };
 
 $.fn.distpicker.Constructor = Distpicker;
@@ -41,5 +45,5 @@ $.fn.distpicker.noConflict = function noConflict() {
 };
 
 $(() => {
-  $('[data-toggle="distpicker"]').distpicker();
+  $(`[data-toggle="${NAMESPACE}"]`).distpicker();
 });
