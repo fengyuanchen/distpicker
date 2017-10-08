@@ -1,12 +1,8 @@
-# Distpicker
-
-[![CDNJS](https://img.shields.io/cdnjs/v/distpicker.svg)](https://cdnjs.com/libraries/distpicker)
+# Distpicker [![CDNJS](https://img.shields.io/cdnjs/v/distpicker.svg)](https://cdnjs.com/libraries/distpicker)
 
 > A simple jQuery plugin for picking provinces, cities and districts of China.
 
 - [Website](https://fengyuanchen.github.io/distpicker)
-
-
 
 ## Table of contents
 
@@ -18,11 +14,9 @@
 - [Browser support](#browser-support)
 - [License](#license)
 
-
-
 ## Main
 
-```
+```text
 dist/
 ├── distpicker.js        (UMD)
 ├── distpicker.min.js    (UMD, compressed)
@@ -30,22 +24,13 @@ dist/
 └── distpicker.esm.js    (ES Module)
 ```
 
-
-
 ## Getting started
 
+### Install
 
-### Quick start
-
-Four quick start options are available:
-
-- [Download the latest release](https://github.com/fengyuanchen/distpicker/archive/master.zip).
-- Clone the repository: `git clone https://github.com/fengyuanchen/distpicker.git`.
-- Install with [NPM](https://npmjs.com): `npm install distpicker`.
-- Install with [Bower](https://bower.io): `bower install distpicker`.
-
-
-### Installation
+```shell
+npm install distpicker
+```
 
 Include files:
 
@@ -53,7 +38,6 @@ Include files:
 <script src="/path/to/jquery.js"></script><!-- jQuery is required -->
 <script src="/path/to/distpicker.js"></script>
 ```
-
 
 Create HTML elements:
 
@@ -65,12 +49,9 @@ Create HTML elements:
 </div>
 ```
 
-
-
 ### Usage
 
 #### Initialize with `data-toggle="distpicker"` attribute
-
 
 Basic
 
@@ -82,7 +63,6 @@ Basic
 </div>
 ```
 
-
 Custom placeholders
 
 ```html
@@ -93,7 +73,6 @@ Custom placeholders
 </div>
 ```
 
-
 Custom districts
 
 ```html
@@ -103,7 +82,6 @@ Custom districts
   <select data-district="西湖区"></select>
 </div>
 ```
-
 
 #### Initialize with `$.fn.distpicker` method
 
@@ -133,10 +111,7 @@ $('#target').distpicker({
 });
 ```
 
-
 [⬆ back to top](#table-of-contents)
-
-
 
 ## Options
 
@@ -161,7 +136,6 @@ Also supports to set the options by `data-*` attributes:
 
 Selects the districts automatically.
 
-
 ### placeholder
 
 - Type: `Boolean`
@@ -169,11 +143,10 @@ Selects the districts automatically.
 
 Show placeholder (with an `<option>` element).
 
-
 ### valueType
 
 - Type: `String`
-- Oprions:
+- Options:
   - `'name'`: administrative division name.
   - `'code'`: administrative division code.
 - Default: `'name'`
@@ -186,14 +159,12 @@ Note that this option in `data-*` attribute should be `data-value-type`:
 <div data-toggle="distpicker" data-value-type="code">...</div>
 ```
 
-
 ### province
 
 - Type: `String`
 - Default: `—— 省 ——`
 
 Defines the initial value of province `<select>`. If it is a valid province, it will be selected. If not, it will be used as a placeholder.
-
 
 ### city
 
@@ -202,7 +173,6 @@ Defines the initial value of province `<select>`. If it is a valid province, it 
 
 Defines the initial value of city `<select>`. If it is a valid city under the selected province, it will be selected. If not, it will be used as a placeholder.
 
-
 ### district
 
 - Type: `String`
@@ -210,10 +180,7 @@ Defines the initial value of city `<select>`. If it is a valid city under the se
 
 Defines the initial value of district `<select>`. If it is a valid district under the selected city, it will be selected. If not, it will be used as a placeholder.
 
-
 [⬆ back to top](#table-of-contents)
-
-
 
 ## Methods
 
@@ -255,10 +222,7 @@ Destroy the distpicker instance, but keep the selected districts.
 
 If you want to remove the selected districts, you can call `reset` method first and then call this method.
 
-
 [⬆ back to top](#table-of-contents)
-
-
 
 ## No conflict
 
@@ -273,8 +237,6 @@ If you have to use other plugin with the same namespace, just call the `$.fn.dis
 </script>
 ```
 
-
-
 ## Browser support
 
 - Chrome (latest)
@@ -286,11 +248,8 @@ If you have to use other plugin with the same namespace, just call the `$.fn.dis
 
 As a jQuery plugin, you also need to see the [jQuery Browser Support](http://jquery.com/browser-support/).
 
-
-
 ## License
 
 [MIT](http://opensource.org/licenses/MIT) © [Fengyuan Chen](http://chenfengyuan.com)
-
 
 [⬆ back to top](#table-of-contents)
