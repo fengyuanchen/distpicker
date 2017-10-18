@@ -250,6 +250,6 @@ As a jQuery plugin, you also need to see the [jQuery Browser Support](http://jqu
 
 ## License
 
-[MIT](http://opensource.org/licenses/MIT) © [Fengyuan Chen](http://chenfengyuan.com)
+[MIT](http://opensource.org/licenses/MIT) © [Chen Fengyuan](http://chenfengyuan.com)
 
 [⬆ back to top](#table-of-contents)
