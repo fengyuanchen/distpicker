@@ -13,20 +13,17 @@ const DISTRICT = 'district';
 
 export default class Distpicker {
   constructor(element, options) {
-    const self = this;
-
-    self.$element = $(element);
-    self.options = $.extend({}, DEFAULTS, $.isPlainObject(options) && options);
-    self.placeholders = $.extend({}, DEFAULTS);
-    self.ready = false;
-    self.init();
+    this.$element = $(element);
+    this.options = $.extend({}, DEFAULTS, $.isPlainObject(options) && options);
+    this.placeholders = $.extend({}, DEFAULTS);
+    this.ready = false;
+    this.init();
   }
 
   init() {
-    const self = this;
-    const options = self.options;
-    const $selects = self.$element.find('select');
-    const length = $selects.length;
+    const { options } = this;
+    const $selects = this.$element.find('select');
+    const { length } = $selects;
     const data = {};
 
     $selects.each((i, select) => $.extend(data, $(select).data()));
@@ -34,51 +31,45 @@ export default class Distpicker {
     $.each([PROVINCE, CITY, DISTRICT], (i, type) => {
       if (data[type]) {
         options[type] = data[type];
-        self[`$${type}`] = $selects.filter(`[data-${type}]`);
+        this[`$${type}`] = $selects.filter(`[data-${type}]`);
       } else {
-        self[`$${type}`] = length > i ? $selects.eq(i) : null;
+        this[`$${type}`] = length > i ? $selects.eq(i) : null;
       }
     });
 
-    self.bind();
+    this.bind();
 
     // Reset all the selects (after event binding)
-    self.reset();
-    self.ready = true;
+    this.reset();
+    this.ready = true;
   }
 
   bind() {
-    const self = this;
-
-    if (self.$province) {
-      self.$province.on(EVENT_CHANGE, (self.onChangeProvince = $.proxy(() => {
-        self.output(CITY);
-        self.output(DISTRICT);
-      }, self)));
+    if (this.$province) {
+      this.$province.on(EVENT_CHANGE, (this.onChangeProvince = $.proxy(() => {
+        this.output(CITY);
+        this.output(DISTRICT);
+      }, this)));
     }
 
-    if (self.$city) {
-      self.$city.on(EVENT_CHANGE, (self.onChangeCity = $.proxy(() => self.output(DISTRICT), self)));
+    if (this.$city) {
+      this.$city.on(EVENT_CHANGE, (this.onChangeCity = $.proxy(() => this.output(DISTRICT), this)));
     }
   }
 
   unbind() {
-    const self = this;
-
-    if (self.$province) {
-      self.$province.off(EVENT_CHANGE, self.onChangeProvince);
+    if (this.$province) {
+      this.$province.off(EVENT_CHANGE, this.onChangeProvince);
     }
 
-    if (self.$city) {
-      self.$city.off(EVENT_CHANGE, self.onChangeCity);
+    if (this.$city) {
+      this.$city.off(EVENT_CHANGE, this.onChangeCity);
     }
   }
 
   output(type) {
-    const self = this;
-    const options = self.options;
-    const placeholders = self.placeholders;
-    const $select = self[`$${type}`];
+    const { options, placeholders } = this;
+    const $select = this[`$${type}`];
 
     if (!$select || !$select.length) {
       return;
@@ -92,15 +83,15 @@ export default class Distpicker {
         break;
 
       case CITY:
-        code = self.$province && (self.$province.find(':selected').data('code') || '');
+        code = this.$province && (this.$province.find(':selected').data('code') || '');
         break;
 
       case DISTRICT:
-        code = self.$city && (self.$city.find(':selected').data('code') || '');
+        code = this.$city && (this.$city.find(':selected').data('code') || '');
         break;
     }
 
-    const districts = self.getDistricts(code);
+    const districts = this.getDistricts(code);
     const value = options[type];
     const data = [];
     let matched = false;
@@ -136,7 +127,7 @@ export default class Distpicker {
       }
 
       // Save the unmatched value as a placeholder at the first output
-      if (!self.ready && value) {
+      if (!this.ready && value) {
         placeholders[type] = value;
       }
     }
@@ -152,7 +143,7 @@ export default class Distpicker {
     }
 
     if (data.length) {
-      $select.html(self.getList(data));
+      $select.html(this.getList(data));
     } else {
       $select.empty();
     }
@@ -187,22 +178,18 @@ export default class Distpicker {
   }
 
   reset(deep) {
-    const self = this;
-
     if (!deep) {
-      self.output(PROVINCE);
-      self.output(CITY);
-      self.output(DISTRICT);
-    } else if (self.$province) {
-      self.$province.find(':first').prop('selected', true).end().trigger(EVENT_CHANGE);
+      this.output(PROVINCE);
+      this.output(CITY);
+      this.output(DISTRICT);
+    } else if (this.$province) {
+      this.$province.find(':first').prop('selected', true).end().trigger(EVENT_CHANGE);
     }
   }
 
   destroy() {
-    const self = this;
-
-    self.unbind();
-    self.$element.removeData(NAMESPACE);
+    this.unbind();
+    this.$element.removeData(NAMESPACE);
   }
 
   static setDefaults(options) {
