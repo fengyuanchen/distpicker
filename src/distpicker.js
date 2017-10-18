@@ -6,7 +6,6 @@ import {
   EVENT_CHANGE,
 } from './constants';
 
-
 const DEFAULT_CODE = 100000;
 const PROVINCE = 'province';
 const CITY = 'city';
@@ -157,6 +156,8 @@ export default class Distpicker {
     } else {
       $select.empty();
     }
+
+    $select.trigger(EVENT_CHANGE);
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -193,7 +194,7 @@ export default class Distpicker {
       self.output(CITY);
       self.output(DISTRICT);
     } else if (self.$province) {
-      self.$province.find(':first').prop('selected', true).trigger(EVENT_CHANGE);
+      self.$province.find(':first').prop('selected', true).end().trigger(EVENT_CHANGE);
     }
   }
 
