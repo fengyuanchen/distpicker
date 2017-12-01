@@ -1,13 +1,13 @@
 {
   "name": "distpicker",
   "description": "A simple jQuery plugin for picking provinces, cities and districts of China.",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "main": "dist/distpicker.common.js",
   "module": "dist/distpicker.esm.js",
   "browser": "dist/distpicker.js",
-  "license": "MIT",
   "repository": "fengyuanchen/distpicker",
   "homepage": "https://fengyuanchen.github.io/distpicker",
+  "license": "MIT",
   "author": {
     "name": "Chen Fengyuan",
     "url": "http://chenfengyuan.com"
@@ -47,25 +47,26 @@
   ],
   "scripts": {
     "build": "rollup -c",
+    "clear": "del-cli dist",
     "compress": "uglifyjs dist/distpicker.js -o dist/distpicker.min.js -c -m --comments /^!/",
     "lint": "eslint src --fix",
-    "postbuild": "npm run compress",
-    "prebuild": "npm run lint",
+    "release": "npm run clear && npm run lint && npm run build && npm run compress",
     "start": "rollup -c -m -w"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "eslint": "^4.9.0",
+    "del-cli": "^1.1.0",
+    "eslint": "^4.12.1",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-import": "^2.8.0",
     "jquery": "^3.2.1",
-    "rollup": "^0.50.0",
+    "rollup": "^0.52.0",
     "rollup-plugin-babel": "^3.0.2",
-    "rollup-plugin-commonjs": "^8.2.3",
+    "rollup-plugin-commonjs": "^8.2.6",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-watch": "^4.3.1",
-    "uglify-js": "^3.1.4"
+    "uglify-js": "^3.2.0"
   },
   "peerDependencies": {
     "jquery": ">= 1.9.1"
