@@ -1,10 +1,10 @@
 {
   "name": "distpicker",
   "description": "A simple jQuery plugin for picking provinces, cities and districts of China.",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "main": "dist/distpicker.common.js",
   "module": "dist/distpicker.esm.js",
-  "browser": "dist/distpicker.js",
+  "unpkg": "dist/distpicker.js",
   "repository": "fengyuanchen/distpicker",
   "homepage": "https://fengyuanchen.github.io/distpicker",
   "license": "MIT",
@@ -57,16 +57,16 @@
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "del-cli": "^1.1.0",
-    "eslint": "^4.12.1",
+    "eslint": "^4.18.1",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0",
-    "jquery": "^3.2.1",
-    "rollup": "^0.52.0",
-    "rollup-plugin-babel": "^3.0.2",
-    "rollup-plugin-commonjs": "^8.2.6",
-    "rollup-plugin-node-resolve": "^3.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "jquery": "^3.3.1",
+    "rollup": "^0.56.3",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-commonjs": "^8.3.0",
+    "rollup-plugin-node-resolve": "^3.0.3",
     "rollup-watch": "^4.3.1",
-    "uglify-js": "^3.2.0"
+    "uglify-js": "^3.3.12"
   },
   "peerDependencies": {
     "jquery": ">= 1.9.1"

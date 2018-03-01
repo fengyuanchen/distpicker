@@ -1,11 +1,11 @@
 /*!
- * Distpicker v2.0.2
+ * Distpicker v2.0.3
  * https://github.com/fengyuanchen/distpicker
  *
- * Copyright (c) 2014-2017 Chen Fengyuan
+ * Copyright (c) 2014-2018 Chen Fengyuan
  * Released under the MIT license
  *
- * Date: 2017-12-01T15:28:35.167Z
+ * Date: 2018-03-01T12:52:03.658Z
  */
 
 import $ from 'jquery';
@@ -1198,7 +1198,7 @@ var DISTRICTS = {
     330122: '桐庐县',
     330127: '淳安县',
     330182: '建德市',
-    330185: '临安市'
+    330185: '临安区'
   },
   330200: {
     330203: '海曙区',
@@ -1278,12 +1278,12 @@ var DISTRICTS = {
     331002: '椒江区',
     331003: '黄岩区',
     331004: '路桥区',
-    331021: '玉环市',
     331022: '三门县',
     331023: '天台县',
     331024: '仙居县',
     331081: '温岭市',
-    331082: '临海市'
+    331082: '临海市',
+    331083: '玉环市'
   },
   331100: {
     331102: '莲都区',
@@ -1475,7 +1475,7 @@ var DISTRICTS = {
     350125: '永泰县',
     350128: '平潭县',
     350181: '福清市',
-    350182: '长乐市'
+    350182: '长乐区'
   },
   350200: {
     350203: '思明区',
@@ -1605,7 +1605,7 @@ var DISTRICTS = {
   360400: {
     360402: '濂溪区',
     360403: '浔阳区',
-    360421: '九江县',
+    360421: '柴桑区',
     360423: '武宁县',
     360424: '修水县',
     360425: '永修县',
@@ -1689,7 +1689,7 @@ var DISTRICTS = {
   361100: {
     361102: '信州区',
     361103: '广丰区',
-    361121: '上饶县',
+    361121: '广信区',
     361123: '玉山县',
     361124: '铅山县',
     361125: '横峰县',
@@ -1739,7 +1739,7 @@ var DISTRICTS = {
     370213: '李沧区',
     370214: '城阳区',
     370281: '胶州市',
-    370282: '即墨市',
+    370282: '即墨区',
     370283: '平度市',
     370285: '莱西市'
   },
@@ -2977,7 +2977,7 @@ var DISTRICTS = {
   510600: {
     510603: '旌阳区',
     510623: '中江县',
-    510626: '罗江县',
+    510626: '罗江区',
     510681: '广汉市',
     510682: '什邡市',
     510683: '绵竹市'
@@ -3014,7 +3014,7 @@ var DISTRICTS = {
     511011: '东兴区',
     511024: '威远县',
     511025: '资中县',
-    511028: '隆昌市'
+    511083: '隆昌市'
   },
   511100: {
     511102: '市中区',
@@ -3180,7 +3180,7 @@ var DISTRICTS = {
     520201: '钟山区',
     520203: '六枝特区',
     520221: '水城县',
-    520222: '盘州市'
+    520281: '盘州市'
   },
   520300: {
     520302: '红花岗区',
@@ -3639,7 +3639,7 @@ var DISTRICTS = {
   },
   610700: {
     610702: '汉台区',
-    610721: '南郑县',
+    610721: '南郑区',
     610722: '城固县',
     610723: '洋县',
     610724: '西乡县',
@@ -4353,7 +4353,6 @@ var Distpicker = function () {
     key: 'destroy',
     value: function destroy() {
       this.unbind();
-      this.$element.removeData(NAMESPACE);
     }
   }], [{
     key: 'setDefaults',
@@ -4377,24 +4376,29 @@ if ($.fn) {
 
     this.each(function (i, element) {
       var $element = $(element);
-      var data = $element.data(NAMESPACE);
+      var isDestroy = option === 'destroy';
+      var distpicker = $element.data(NAMESPACE);
 
-      if (!data) {
-        if (/destroy/.test(option)) {
+      if (!distpicker) {
+        if (isDestroy) {
           return;
         }
 
         var options = $.extend({}, $element.data(), $.isPlainObject(option) && option);
 
-        data = new Distpicker(element, options);
-        $element.data(NAMESPACE, data);
+        distpicker = new Distpicker(element, options);
+        $element.data(NAMESPACE, distpicker);
       }
 
       if (typeof option === 'string') {
-        var fn = data[option];
+        var fn = distpicker[option];
 
         if ($.isFunction(fn)) {
-          result = fn.apply(data, args);
+          result = fn.apply(distpicker, args);
+
+          if (isDestroy) {
+            $element.removeData(NAMESPACE);
+          }
         }
       }
     });
