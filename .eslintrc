@@ -4,8 +4,8 @@
     "browser": true
   },
   "rules": {
-    "default-case": 0,
-    "arrow-body-style": 0,
-    "no-param-reassign": 0
+    "default-case": "off",
+    "arrow-body-style": "off",
+    "no-param-reassign": "off"
   }
 }

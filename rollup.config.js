@@ -4,40 +4,7 @@ const nodeResolve = require('rollup-plugin-node-resolve');
 const pkg = require('./package');
 
 const now = new Date();
-
-module.exports = {
-  input: 'src/index.js',
-  output: [
-    {
-      file: 'dist/distpicker.js',
-      format: 'umd',
-    },
-    {
-      file: 'dist/distpicker.common.js',
-      format: 'cjs',
-    },
-    {
-      file: 'dist/distpicker.esm.js',
-      format: 'es',
-    },
-    {
-      file: 'docs/js/distpicker.js',
-      format: 'umd',
-    },
-  ],
-  name: 'Distpicker',
-  external: ['jquery'],
-  globals: {
-    jquery: 'jQuery',
-  },
-  plugins: [
-    nodeResolve(),
-    commonjs(),
-    babel({
-      exclude: 'node_modules/**',
-    }),
-  ],
-  banner: `/*!
+const banner = `/*!
  * Distpicker v${pkg.version}
  * https://github.com/${pkg.repository}
  *
@@ -46,5 +13,52 @@ module.exports = {
  *
  * Date: ${now.toISOString()}
  */
-`,
+`;
+
+module.exports = {
+  input: 'src/index.js',
+  output: [
+    {
+      banner,
+      file: 'dist/distpicker.js',
+      format: 'umd',
+      name: 'Distpicker',
+      globals: {
+        jquery: 'jQuery',
+      },
+    },
+    {
+      banner,
+      file: 'dist/distpicker.common.js',
+      format: 'cjs',
+      globals: {
+        jquery: 'jQuery',
+      },
+    },
+    {
+      banner,
+      file: 'dist/distpicker.esm.js',
+      format: 'es',
+      globals: {
+        jquery: 'jQuery',
+      },
+    },
+    {
+      banner,
+      file: 'docs/js/distpicker.js',
+      format: 'umd',
+      name: 'Distpicker',
+      globals: {
+        jquery: 'jQuery',
+      },
+    },
+  ],
+  external: ['jquery'],
+  plugins: [
+    nodeResolve(),
+    commonjs(),
+    babel({
+      exclude: 'node_modules/**',
+    }),
+  ],
 };
