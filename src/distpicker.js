@@ -1,10 +1,7 @@
 import $ from 'jquery';
 import DEFAULTS from './defaults';
 import DISTRICTS from './districts';
-import {
-  NAMESPACE,
-  EVENT_CHANGE,
-} from './constants';
+import { EVENT_CHANGE } from './constants';
 
 const DEFAULT_CODE = 100000;
 const PROVINCE = 'province';
@@ -189,7 +186,6 @@ export default class Distpicker {
 
   destroy() {
     this.unbind();
-    this.$element.removeData(NAMESPACE);
   }
 
   static setDefaults(options) {

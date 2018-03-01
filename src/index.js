@@ -13,24 +13,29 @@ if ($.fn) {
 
     this.each((i, element) => {
       const $element = $(element);
-      let data = $element.data(NAMESPACE);
+      const isDestroy = option === 'destroy';
+      let distpicker = $element.data(NAMESPACE);
 
-      if (!data) {
-        if (/destroy/.test(option)) {
+      if (!distpicker) {
+        if (isDestroy) {
           return;
         }
 
         const options = $.extend({}, $element.data(), $.isPlainObject(option) && option);
 
-        data = new Distpicker(element, options);
-        $element.data(NAMESPACE, data);
+        distpicker = new Distpicker(element, options);
+        $element.data(NAMESPACE, distpicker);
       }
 
       if (typeof option === 'string') {
-        const fn = data[option];
+        const fn = distpicker[option];
 
         if ($.isFunction(fn)) {
-          result = fn.apply(data, args);
+          result = fn.apply(distpicker, args);
+
+          if (isDestroy) {
+            $element.removeData(NAMESPACE);
+          }
         }
       }
     });
