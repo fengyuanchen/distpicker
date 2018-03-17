@@ -48,7 +48,7 @@
   "scripts": {
     "build": "rollup -c",
     "clear": "del-cli dist",
-    "compress": "uglifyjs dist/distpicker.js -o dist/distpicker.min.js -c -m --comments /^!/",
+    "compress": "uglifyjs dist/distpicker.js -o dist/distpicker.min.js -c -m --ie8 --comments /^!/",
     "lint": "eslint src --fix",
     "release": "npm run clear && npm run lint && npm run build && npm run compress",
     "start": "rollup -c -m -w"
@@ -61,9 +61,9 @@
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.9.0",
     "jquery": "^3.3.1",
-    "rollup": "^0.56.3",
+    "rollup": "^0.57.0",
     "rollup-plugin-babel": "^3.0.3",
-    "rollup-plugin-commonjs": "^8.3.0",
+    "rollup-plugin-commonjs": "^9.1.0",
     "rollup-plugin-node-resolve": "^3.0.3",
     "rollup-watch": "^4.3.1",
     "uglify-js": "^3.3.12"
