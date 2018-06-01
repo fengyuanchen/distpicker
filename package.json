@@ -1,7 +1,7 @@
 {
   "name": "distpicker",
   "description": "A simple jQuery plugin for picking provinces, cities and districts of China.",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "main": "dist/distpicker.common.js",
   "module": "dist/distpicker.esm.js",
   "unpkg": "dist/distpicker.js",
@@ -49,24 +49,26 @@
     "build": "rollup -c",
     "clear": "del-cli dist",
     "compress": "uglifyjs dist/distpicker.js -o dist/distpicker.min.js -c -m --comments /^!/",
-    "lint": "eslint src --fix",
+    "lint": "eslint src *.js --fix",
     "release": "npm run clear && npm run lint && npm run build && npm run compress",
     "start": "rollup -c -m -w"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "change-case": "^3.0.2",
+    "create-banner": "^1.0.0",
     "del-cli": "^1.1.0",
-    "eslint": "^4.18.1",
+    "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-import": "^2.12.0",
     "jquery": "^3.3.1",
-    "rollup": "^0.56.3",
-    "rollup-plugin-babel": "^3.0.3",
-    "rollup-plugin-commonjs": "^8.3.0",
-    "rollup-plugin-node-resolve": "^3.0.3",
+    "rollup": "^0.59.4",
+    "rollup-plugin-babel": "^3.0.4",
+    "rollup-plugin-commonjs": "^9.1.3",
+    "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-watch": "^4.3.1",
-    "uglify-js": "^3.3.12"
+    "uglify-js": "^3.3.28"
   },
   "peerDependencies": {
     "jquery": ">= 1.9.1"

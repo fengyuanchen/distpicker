@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.4 (Jun 1, 2018)
+
+- Update districts.
+
 ## 2.0.3 (Mar 1, 2018)
 
 - Update districts.
