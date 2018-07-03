@@ -49,8 +49,6 @@ module.exports = {
   plugins: [
     nodeResolve(),
     commonjs(),
-    babel({
-      exclude: 'node_modules/**',
-    }),
+    babel(),
   ],
 };

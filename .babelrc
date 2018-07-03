@@ -6,5 +6,6 @@
         "browsers": ["last 2 versions", "ie >= 9"]
       }
     }]
-  ]
+  ],
+  "plugins": ["external-helpers"]
 }
