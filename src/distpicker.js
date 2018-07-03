@@ -95,21 +95,17 @@ export default class Distpicker {
 
     if ($.isPlainObject(districts)) {
       $.each(districts, (i, name) => {
-        let selected = name === value;
-
-        if (options.valueType === 'code') {
-          selected = i === String(value);
-        }
+        const selected = name === value || i === String(value);
 
         if (selected) {
           matched = true;
         }
 
         data.push({
-          code: i,
           name,
-          value: options.valueType === 'name' ? name : i,
           selected,
+          code: i,
+          value: options.valueType === 'name' ? name : i,
         });
       });
     }
