@@ -1,5 +1,9 @@
 # Changelog
 
+## next
+
+- Fixed the issue of trigger change event twice (#68).
+
 ## 2.0.4 (Jun 1, 2018)
 
 - Update districts.

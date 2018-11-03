@@ -45,12 +45,15 @@ export default class Distpicker {
     if (this.$province) {
       this.$province.on(EVENT_CHANGE, (this.onChangeProvince = $.proxy(() => {
         this.output(CITY);
-        this.output(DISTRICT);
+        this.output(DISTRICT, true);
       }, this)));
     }
 
     if (this.$city) {
-      this.$city.on(EVENT_CHANGE, (this.onChangeCity = $.proxy(() => this.output(DISTRICT), this)));
+      this.$city.on(
+        EVENT_CHANGE,
+        (this.onChangeCity = $.proxy(() => this.output(DISTRICT, true), this)),
+      );
     }
   }
 
@@ -64,7 +67,7 @@ export default class Distpicker {
     }
   }
 
-  output(type) {
+  output(type, triggerEvent = false) {
     const { options, placeholders } = this;
     const $select = this[`$${type}`];
 
@@ -141,7 +144,9 @@ export default class Distpicker {
       $select.empty();
     }
 
-    $select.trigger(EVENT_CHANGE);
+    if (triggerEvent) {
+      $select.trigger(EVENT_CHANGE);
+    }
   }
 
   // eslint-disable-next-line class-methods-use-this
