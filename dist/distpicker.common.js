@@ -1,11 +1,11 @@
 /*!
- * Distpicker v2.0.4
+ * Distpicker v2.0.5
  * https://fengyuanchen.github.io/distpicker
  *
  * Copyright 2014-present Chen Fengyuan
  * Released under the MIT license
  *
- * Date: 2018-06-01T12:33:03.031Z
+ * Date: 2018-12-01T09:59:25.126Z
  */
 
 'use strict';
@@ -14,6 +14,28 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var $ = _interopDefault(require('jquery'));
 
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
 var DEFAULTS = {
   // Selects the districts automatically.
   // 0 -> Disable autoselect
@@ -21,19 +43,14 @@ var DEFAULTS = {
   // 2 -> Autoselect province and city only
   // 3 -> Autoselect all (province, city and district)
   autoselect: 0,
-
   // Show placeholder.
   placeholder: true,
-
   // Select value. Options: 'name' and 'code'
   valueType: 'name',
-
   // Defines the initial value of province.
   province: '—— 省 ——',
-
   // Defines the initial value of city.
   city: '—— 市 ——',
-
   // Defines the initial value of district.
   district: '—— 区 ——'
 };
@@ -4148,16 +4165,14 @@ var WINDOW = typeof window !== 'undefined' ? window : {};
 var NAMESPACE = 'distpicker';
 var EVENT_CHANGE = 'change';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 var DEFAULT_CODE = 100000;
 var PROVINCE = 'province';
 var CITY = 'city';
 var DISTRICT = 'district';
 
-var Distpicker = function () {
+var Distpicker =
+/*#__PURE__*/
+function () {
   function Distpicker(element, options) {
     _classCallCheck(this, Distpicker);
 
@@ -4169,56 +4184,51 @@ var Distpicker = function () {
   }
 
   _createClass(Distpicker, [{
-    key: 'init',
+    key: "init",
     value: function init() {
       var _this = this;
 
       var options = this.options;
-
       var $selects = this.$element.find('select');
       var length = $selects.length;
-
       var data = {};
-
       $selects.each(function (i, select) {
         return $.extend(data, $(select).data());
       });
-
       $.each([PROVINCE, CITY, DISTRICT], function (i, type) {
         if (data[type]) {
           options[type] = data[type];
-          _this['$' + type] = $selects.filter('[data-' + type + ']');
+          _this["$".concat(type)] = $selects.filter("[data-".concat(type, "]"));
         } else {
-          _this['$' + type] = length > i ? $selects.eq(i) : null;
+          _this["$".concat(type)] = length > i ? $selects.eq(i) : null;
         }
       });
+      this.bind(); // Reset all the selects (after event binding)
 
-      this.bind();
-
-      // Reset all the selects (after event binding)
       this.reset();
       this.ready = true;
     }
   }, {
-    key: 'bind',
+    key: "bind",
     value: function bind() {
       var _this2 = this;
 
       if (this.$province) {
         this.$province.on(EVENT_CHANGE, this.onChangeProvince = $.proxy(function () {
           _this2.output(CITY);
-          _this2.output(DISTRICT);
+
+          _this2.output(DISTRICT, true);
         }, this));
       }
 
       if (this.$city) {
         this.$city.on(EVENT_CHANGE, this.onChangeCity = $.proxy(function () {
-          return _this2.output(DISTRICT);
+          return _this2.output(DISTRICT, true);
         }, this));
       }
     }
   }, {
-    key: 'unbind',
+    key: "unbind",
     value: function unbind() {
       if (this.$province) {
         this.$province.off(EVENT_CHANGE, this.onChangeProvince);
@@ -4229,18 +4239,18 @@ var Distpicker = function () {
       }
     }
   }, {
-    key: 'output',
+    key: "output",
     value: function output(type) {
+      var triggerEvent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
       var options = this.options,
           placeholders = this.placeholders;
-
-      var $select = this['$' + type];
+      var $select = this["$".concat(type)];
 
       if (!$select || !$select.length) {
         return;
       }
 
-      var code = void 0;
+      var code;
 
       switch (type) {
         case PROVINCE:
@@ -4263,21 +4273,17 @@ var Distpicker = function () {
 
       if ($.isPlainObject(districts)) {
         $.each(districts, function (i, name) {
-          var selected = name === value;
-
-          if (options.valueType === 'code') {
-            selected = i === String(value);
-          }
+          var selected = name === value || i === String(value);
 
           if (selected) {
             matched = true;
           }
 
           data.push({
-            code: i,
             name: name,
-            value: options.valueType === 'name' ? name : i,
-            selected: selected
+            selected: selected,
+            code: i,
+            value: options.valueType === 'name' ? name : i
           });
         });
       }
@@ -4287,15 +4293,15 @@ var Distpicker = function () {
 
         if (data.length && (type === PROVINCE && autoselect > 0 || type === CITY && autoselect > 1 || type === DISTRICT && autoselect > 2)) {
           data[0].selected = true;
-        }
+        } // Save the unmatched value as a placeholder at the first output
 
-        // Save the unmatched value as a placeholder at the first output
+
         if (!this.ready && value) {
           placeholders[type] = value;
         }
-      }
+      } // Add placeholder option
 
-      // Add placeholder option
+
       if (options.placeholder) {
         data.unshift({
           code: '',
@@ -4311,40 +4317,35 @@ var Distpicker = function () {
         $select.empty();
       }
 
-      $select.trigger(EVENT_CHANGE);
-    }
-
-    // eslint-disable-next-line class-methods-use-this
+      if (triggerEvent) {
+        $select.trigger(EVENT_CHANGE);
+      }
+    } // eslint-disable-next-line class-methods-use-this
 
   }, {
-    key: 'getList',
+    key: "getList",
     value: function getList(data) {
       var list = [];
-
       $.each(data, function (i, n) {
-        var attrs = ['data-code="' + n.code + '"', 'data-text="' + n.name + '"', 'value="' + n.value + '"'];
+        var attrs = ["data-code=\"".concat(n.code, "\""), "data-text=\"".concat(n.name, "\""), "value=\"".concat(n.value, "\"")];
 
         if (n.selected) {
           attrs.push('selected');
         }
 
-        list.push('<option ' + attrs.join(' ') + '>' + n.name + '</option>');
+        list.push("<option ".concat(attrs.join(' '), ">").concat(n.name, "</option>"));
       });
-
       return list.join('');
-    }
-
-    // eslint-disable-next-line class-methods-use-this
+    } // eslint-disable-next-line class-methods-use-this
 
   }, {
-    key: 'getDistricts',
+    key: "getDistricts",
     value: function getDistricts() {
       var code = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : DEFAULT_CODE;
-
       return DISTRICTS[code] || null;
     }
   }, {
-    key: 'reset',
+    key: "reset",
     value: function reset(deep) {
       if (!deep) {
         this.output(PROVINCE);
@@ -4355,12 +4356,12 @@ var Distpicker = function () {
       }
     }
   }, {
-    key: 'destroy',
+    key: "destroy",
     value: function destroy() {
       this.unbind();
     }
   }], [{
-    key: 'setDefaults',
+    key: "setDefaults",
     value: function setDefaults(options) {
       $.extend(DEFAULTS, $.isPlainObject(options) && options);
     }
@@ -4373,12 +4374,11 @@ if ($.fn) {
   var AnotherDistpicker = $.fn.distpicker;
 
   $.fn.distpicker = function jQueryDistpicker(option) {
-    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
       args[_key - 1] = arguments[_key];
     }
 
-    var result = void 0;
-
+    var result;
     this.each(function (i, element) {
       var $element = $(element);
       var isDestroy = option === 'destroy';
@@ -4390,7 +4390,6 @@ if ($.fn) {
         }
 
         var options = $.extend({}, $element.data(), $.isPlainObject(option) && option);
-
         distpicker = new Distpicker(element, options);
         $element.data(NAMESPACE, distpicker);
       }
@@ -4407,7 +4406,6 @@ if ($.fn) {
         }
       }
     });
-
     return typeof result === 'undefined' ? this : result;
   };
 
@@ -4422,6 +4420,6 @@ if ($.fn) {
 
 if (WINDOW.document) {
   $(function () {
-    $('[data-toggle="' + NAMESPACE + '"]').distpicker();
+    $("[data-toggle=\"".concat(NAMESPACE, "\"]")).distpicker();
   });
 }

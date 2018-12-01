@@ -1,6 +1,6 @@
 # Changelog
 
-## next
+## 2.0.5 (Dec 1, 2018)
 
 - Fixed the issue of trigger change event twice (#68).
 
