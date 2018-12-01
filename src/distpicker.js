@@ -116,9 +116,9 @@ export default class Distpicker {
     if (!matched) {
       const autoselect = options.autoselect || options.autoSelect;
 
-      if (data.length && ((type === PROVINCE && autoselect > 0) ||
-        (type === CITY && autoselect > 1) ||
-        (type === DISTRICT && autoselect > 2))) {
+      if (data.length && ((type === PROVINCE && autoselect > 0)
+        || (type === CITY && autoselect > 1)
+        || (type === DISTRICT && autoselect > 2))) {
         data[0].selected = true;
       }
 
