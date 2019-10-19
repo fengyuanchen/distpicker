@@ -1,21 +1,26 @@
 {
   "name": "distpicker",
   "description": "A simple jQuery plugin for picking provinces, cities and districts of China.",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "main": "dist/distpicker.common.js",
   "module": "dist/distpicker.esm.js",
-  "unpkg": "dist/distpicker.js",
-  "repository": "fengyuanchen/distpicker",
-  "homepage": "https://fengyuanchen.github.io/distpicker",
-  "license": "MIT",
-  "author": {
-    "name": "Chen Fengyuan",
-    "url": "https://chenfengyuan.com"
-  },
+  "browser": "dist/distpicker.js",
   "files": [
     "src",
     "dist"
   ],
+  "scripts": {
+    "build": "rollup -c",
+    "clear": "del-cli dist",
+    "compress": "uglifyjs dist/distpicker.js -o dist/distpicker.min.js -c -m --comments /^!/",
+    "lint": "eslint src *.js --fix",
+    "release": "npm run clear && npm run lint && npm run build && npm run compress",
+    "start": "rollup -c -m -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fengyuanchen/distpicker.git"
+  },
   "keywords": [
     "中国",
     "省份",
@@ -45,36 +50,59 @@
     "web",
     "development"
   ],
-  "scripts": {
-    "build": "rollup -c",
-    "clear": "del-cli dist",
-    "compress": "uglifyjs dist/distpicker.js -o dist/distpicker.min.js -c -m --comments /^!/",
-    "lint": "eslint src *.js --fix",
-    "release": "npm run clear && npm run lint && npm run build && npm run compress",
-    "start": "rollup -c -m -w"
+  "author": {
+    "name": "Chen Fengyuan",
+    "url": "https://chenfengyuan.com"
   },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fengyuanchen/distpicker/issues"
+  },
+  "homepage": "https://fengyuanchen.github.io/distpicker",
   "devDependencies": {
-    "@babel/core": "^7.1.6",
-    "@babel/preset-env": "^7.1.6",
-    "@commitlint/cli": "^7.2.1",
-    "@commitlint/config-conventional": "^7.1.2",
-    "change-case": "^3.0.2",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "change-case": "^3.1.0",
     "create-banner": "^1.0.0",
-    "del-cli": "^1.1.0",
-    "eslint": "^5.9.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "husky": "^1.2.0",
-    "jquery": "^3.3.1",
-    "lint-staged": "^8.1.0",
-    "rollup": "^0.67.3",
-    "rollup-plugin-babel": "^4.0.3",
-    "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-node-resolve": "^3.4.0",
+    "del-cli": "^3.0.0",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "husky": "^3.0.9",
+    "jquery": "^3.4.1",
+    "lint-staged": "^9.4.2",
+    "rollup": "^1.25.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-watch": "^4.3.1",
-    "uglify-js": "^3.4.9"
+    "uglify-js": "^3.6.2"
   },
   "peerDependencies": {
-    "jquery": ">= 1.9.1"
+    "jquery": ">=1.9.1"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not ie <= 8"
+  ],
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.js|*.config.js": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
