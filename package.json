@@ -52,7 +52,7 @@
   ],
   "author": {
     "name": "Chen Fengyuan",
-    "url": "https://chenfengyuan.com"
+    "url": "https://chenfengyuan.com/"
   },
   "license": "MIT",
   "bugs": {
@@ -60,25 +60,24 @@
   },
   "homepage": "https://fengyuanchen.github.io/distpicker",
   "devDependencies": {
-    "@babel/core": "^7.6.4",
-    "@babel/preset-env": "^7.6.3",
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
-    "change-case": "^3.1.0",
+    "change-case": "^4.1.0",
     "create-banner": "^1.0.0",
     "del-cli": "^3.0.0",
-    "eslint": "^6.5.1",
+    "eslint": "^6.7.2",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.18.2",
-    "husky": "^3.0.9",
+    "eslint-plugin-import": "^2.19.1",
+    "husky": "^3.1.0",
     "jquery": "^3.4.1",
-    "lint-staged": "^9.4.2",
-    "rollup": "^1.25.0",
+    "lint-staged": "^9.5.0",
+    "rollup": "^1.27.12",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-watch": "^4.3.1",
-    "uglify-js": "^3.6.2"
+    "uglify-js": "^3.7.2"
   },
   "peerDependencies": {
     "jquery": ">=1.9.1"
