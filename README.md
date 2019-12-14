@@ -250,10 +250,10 @@ If you have to use other plugin with the same namespace, just call the `$.fn.dis
 - Edge (latest)
 - Internet Explorer 9+
 
-As a jQuery plugin, you also need to see the [jQuery Browser Support](http://jquery.com/browser-support/).
+As a jQuery plugin, you also need to see the [jQuery Browser Support](https://jquery.com/browser-support/).
 
 ## License
 
-[MIT](https://opensource.org/licenses/MIT) © [Chen Fengyuan](https://chenfengyuan.com)
+[MIT](https://opensource.org/licenses/MIT) © [Chen Fengyuan](https://chenfengyuan.com/)
 
 [⬆ back to top](#table-of-contents)
