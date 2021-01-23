@@ -1,6 +1,6 @@
 # Distpicker
 
-[![Downloads](https://img.shields.io/npm/dm/distpicker.svg)](https://www.npmjs.com/package/distpicker) [![Version](https://img.shields.io/npm/v/distpicker.svg)](https://www.npmjs.com/package/distpicker)
+[![Downloads](https://img.shields.io/npm/dm/distpicker.svg)](https://www.npmjs.com/package/distpicker) [![Version](https://img.shields.io/npm/v/distpicker.svg)](https://www.npmjs.com/package/distpicker) [![Gzip Size](https://img.shields.io/bundlephobia/minzip/distpicker.svg)](https://unpkg.com/distpicker/dist/distpicker.common.js)
 
 > A simple jQuery plugin for picking provinces, cities and districts of China.
 
