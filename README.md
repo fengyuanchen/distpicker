@@ -18,7 +18,7 @@
 - [Browser support](#browser-support)
 - [License](#license)
 
-## Main
+## Main files
 
 ```text
 dist/

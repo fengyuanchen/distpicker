@@ -1,4 +1,4 @@
-/*! Distpicker v2.0.7 | (c) 2014-present Chen Fengyuan | MIT */
+/*! Distpicker v2.0.8 | (c) 2014-present Chen Fengyuan | MIT */
 import $ from 'jquery';
 
 function _classCallCheck(instance, Constructor) {
@@ -6,21 +6,36 @@ function _classCallCheck(instance, Constructor) {
     throw new TypeError("Cannot call a class as a function");
   }
 }
-
 function _defineProperties(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
     descriptor.enumerable = descriptor.enumerable || false;
     descriptor.configurable = true;
     if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
+    Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
   }
 }
-
 function _createClass(Constructor, protoProps, staticProps) {
   if (protoProps) _defineProperties(Constructor.prototype, protoProps);
   if (staticProps) _defineProperties(Constructor, staticProps);
+  Object.defineProperty(Constructor, "prototype", {
+    writable: false
+  });
   return Constructor;
+}
+function _toPrimitive(input, hint) {
+  if (typeof input !== "object" || input === null) return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== undefined) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res !== "object") return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
+}
+function _toPropertyKey(arg) {
+  var key = _toPrimitive(arg, "string");
+  return typeof key === "symbol" ? key : String(key);
 }
 
 var DEFAULTS = {
@@ -220,7 +235,6 @@ var DISTRICTS = {
     130533: '威县',
     130534: '清河县',
     130535: '临西县',
-    130571: '河北邢台经济开发区',
     130581: '南宫市',
     130582: '沙河市'
   },
@@ -1097,19 +1111,18 @@ var DISTRICTS = {
     320507: '相城区',
     320508: '姑苏区',
     320509: '吴江区',
-    320571: '苏州工业园区',
     320581: '常熟市',
     320582: '张家港市',
     320583: '昆山市',
     320585: '太仓市'
   },
   320600: {
-    320602: '崇川区',
     320612: '通州区',
+    320613: '崇川区',
+    320614: '海门区',
     320623: '如东县',
     320681: '启东市',
     320682: '如皋市',
-    320684: '海门区',
     320685: '海安市'
   },
   320700: {
@@ -1186,8 +1199,6 @@ var DISTRICTS = {
   },
   330100: {
     330102: '上城区',
-    330103: '下城区',
-    330104: '江干区',
     330105: '拱墅区',
     330106: '西湖区',
     330108: '滨江区',
@@ -1195,6 +1206,8 @@ var DISTRICTS = {
     330110: '余杭区',
     330111: '富阳区',
     330112: '临安区',
+    330113: '临平区',
+    330114: '钱塘区',
     330122: '桐庐县',
     330127: '淳安县',
     330182: '建德市'
@@ -1327,10 +1340,10 @@ var DISTRICTS = {
   },
   340200: {
     340202: '镜湖区',
-    340203: '弋江区',
     340207: '鸠江区',
-    340221: '湾沚区',
-    340222: '繁昌区',
+    340209: '弋江区',
+    340210: '湾沚区',
+    340212: '繁昌区',
     340223: '南陵县',
     340281: '无为市'
   },
@@ -1492,14 +1505,13 @@ var DISTRICTS = {
     350322: '仙游县'
   },
   350400: {
-    350402: '梅列区',
-    350403: '三元区',
+    350404: '三元区',
+    350405: '沙县区',
     350421: '明溪县',
     350423: '清流县',
     350424: '宁化县',
     350425: '大田县',
     350426: '尤溪县',
-    350427: '沙县',
     350428: '将乐县',
     350429: '泰宁县',
     350430: '建宁县',
@@ -1522,15 +1534,15 @@ var DISTRICTS = {
   350600: {
     350602: '芗城区',
     350603: '龙文区',
+    350604: '龙海区',
+    350605: '长泰区',
     350622: '云霄县',
     350623: '漳浦县',
     350624: '诏安县',
-    350625: '长泰县',
     350626: '东山县',
     350627: '南靖县',
     350628: '平和县',
-    350629: '华安县',
-    350681: '龙海市'
+    350629: '华安县'
   },
   350700: {
     350702: '延平区',
@@ -1935,17 +1947,16 @@ var DISTRICTS = {
     410303: '西工区',
     410304: '瀍河回族区',
     410305: '涧西区',
-    410306: '吉利区',
+    410307: '偃师区',
+    410308: '孟津区',
     410311: '洛龙区',
-    410322: '孟津县',
     410323: '新安县',
     410324: '栾川县',
     410325: '嵩县',
     410326: '汝阳县',
     410327: '宜阳县',
     410328: '洛宁县',
-    410329: '伊川县',
-    410381: '偃师市'
+    410329: '伊川县'
   },
   410400: {
     410402: '新华区',
@@ -2202,11 +2213,11 @@ var DISTRICTS = {
     421002: '沙市区',
     421003: '荆州区',
     421022: '公安县',
-    421023: '监利市',
     421024: '江陵县',
     421081: '石首市',
     421083: '洪湖市',
-    421087: '松滋市'
+    421087: '松滋市',
+    421088: '监利市'
   },
   421100: {
     421102: '黄州区',
@@ -2380,7 +2391,6 @@ var DISTRICTS = {
   431100: {
     431102: '零陵区',
     431103: '冷水滩区',
-    431121: '祁阳县',
     431122: '东安县',
     431123: '双牌县',
     431124: '道县',
@@ -2388,7 +2398,8 @@ var DISTRICTS = {
     431126: '宁远县',
     431127: '蓝山县',
     431128: '新田县',
-    431129: '江华瑶族自治县'
+    431129: '江华瑶族自治县',
+    431181: '祁阳市'
   },
   431200: {
     431202: '鹤城区',
@@ -2638,7 +2649,7 @@ var DISTRICTS = {
     450124: '马山县',
     450125: '上林县',
     450126: '宾阳县',
-    450127: '横县'
+    450181: '横州市'
   },
   450200: {
     450202: '城中区',
@@ -3127,10 +3138,10 @@ var DISTRICTS = {
   },
   513400: {
     513401: '西昌市',
+    513402: '会理市',
     513422: '木里藏族自治县',
     513423: '盐源县',
     513424: '德昌县',
-    513425: '会理县',
     513426: '会东县',
     513427: '宁南县',
     513428: '普格县',
@@ -3170,7 +3181,7 @@ var DISTRICTS = {
   520200: {
     520201: '钟山区',
     520203: '六枝特区',
-    520221: '水城区',
+    520204: '水城区',
     520281: '盘州市'
   },
   520300: {
@@ -3200,12 +3211,12 @@ var DISTRICTS = {
   520500: {
     520502: '七星关区',
     520521: '大方县',
-    520522: '黔西县',
     520523: '金沙县',
     520524: '织金县',
     520525: '纳雍县',
     520526: '威宁彝族回族苗族自治县',
-    520527: '赫章县'
+    520527: '赫章县',
+    520581: '黔西市'
   },
   520600: {
     520602: '碧江区',
@@ -3368,6 +3379,7 @@ var DISTRICTS = {
   },
   532300: {
     532301: '楚雄市',
+    532302: '禄丰市',
     532322: '双柏县',
     532323: '牟定县',
     532324: '南华县',
@@ -3375,8 +3387,7 @@ var DISTRICTS = {
     532326: '大姚县',
     532327: '永仁县',
     532328: '元谋县',
-    532329: '武定县',
-    532331: '禄丰县'
+    532329: '武定县'
   },
   532500: {
     532501: '个旧市',
@@ -3574,7 +3585,7 @@ var DISTRICTS = {
     610302: '渭滨区',
     610303: '金台区',
     610304: '陈仓区',
-    610322: '凤翔县',
+    610305: '凤翔区',
     610323: '岐山县',
     610324: '扶风县',
     610326: '眉县',
@@ -3664,8 +3675,8 @@ var DISTRICTS = {
     610925: '岚皋县',
     610926: '平利县',
     610927: '镇坪县',
-    610928: '旬阳县',
-    610929: '白河县'
+    610929: '白河县',
+    610981: '旬阳市'
   },
   611000: {
     611002: '商州区',
@@ -3941,7 +3952,8 @@ var DISTRICTS = {
     659007: '双河市',
     659008: '可克达拉市',
     659009: '昆玉市',
-    659010: '胡杨河市'
+    659010: '胡杨河市',
+    659011: '新星市'
   },
   650100: {
     650102: '天山区',
@@ -4052,8 +4064,8 @@ var DISTRICTS = {
   654200: {
     654201: '塔城市',
     654202: '乌苏市',
+    654203: '沙湾市',
     654221: '额敏县',
-    654223: '沙湾县',
     654224: '托里县',
     654225: '裕民县',
     654226: '和布克赛尔蒙古自治县'
@@ -4096,6 +4108,9 @@ var DISTRICTS = {
   },
   659010: {
     659010: '胡杨河市'
+  },
+  659011: {
+    659011: '新星市'
   },
   810000: {
     810100: '香港城区'
@@ -4143,23 +4158,19 @@ var DEFAULT_CODE = 100000;
 var PROVINCE = 'province';
 var CITY = 'city';
 var DISTRICT = 'district';
-
 var Distpicker = /*#__PURE__*/function () {
   function Distpicker(element, options) {
     _classCallCheck(this, Distpicker);
-
     this.$element = $(element);
     this.options = $.extend({}, DEFAULTS, $.isPlainObject(options) && options);
     this.placeholders = $.extend({}, DEFAULTS);
     this.ready = false;
     this.init();
   }
-
   _createClass(Distpicker, [{
     key: "init",
     value: function init() {
       var _this = this;
-
       var options = this.options;
       var $selects = this.$element.find('select');
       var length = $selects.length;
@@ -4175,8 +4186,9 @@ var Distpicker = /*#__PURE__*/function () {
           _this["$".concat(type)] = length > i ? $selects.eq(i) : null;
         }
       });
-      this.bind(); // Reset all the selects (after event binding)
+      this.bind();
 
+      // Reset all the selects (after event binding)
       this.reset();
       this.ready = true;
     }
@@ -4184,15 +4196,12 @@ var Distpicker = /*#__PURE__*/function () {
     key: "bind",
     value: function bind() {
       var _this2 = this;
-
       if (this.$province) {
         this.$province.on(EVENT_CHANGE, this.onChangeProvince = $.proxy(function () {
           _this2.output(CITY);
-
           _this2.output(DISTRICT, true);
         }, this));
       }
-
       if (this.$city) {
         this.$city.on(EVENT_CHANGE, this.onChangeCity = $.proxy(function () {
           return _this2.output(DISTRICT, true);
@@ -4205,7 +4214,6 @@ var Distpicker = /*#__PURE__*/function () {
       if (this.$province) {
         this.$province.off(EVENT_CHANGE, this.onChangeProvince);
       }
-
       if (this.$city) {
         this.$city.off(EVENT_CHANGE, this.onChangeCity);
       }
@@ -4215,42 +4223,33 @@ var Distpicker = /*#__PURE__*/function () {
     value: function output(type) {
       var triggerEvent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
       var options = this.options,
-          placeholders = this.placeholders;
+        placeholders = this.placeholders;
       var $select = this["$".concat(type)];
-
       if (!$select || !$select.length) {
         return;
       }
-
       var code;
-
       switch (type) {
         case PROVINCE:
           code = DEFAULT_CODE;
           break;
-
         case CITY:
           code = this.$province && (this.$province.find(':selected').data('code') || '');
           break;
-
         case DISTRICT:
           code = this.$city && (this.$city.find(':selected').data('code') || '');
           break;
       }
-
       var districts = this.getDistricts(code);
       var value = options[type];
       var data = [];
       var matched = false;
-
       if ($.isPlainObject(districts)) {
         $.each(districts, function (i, name) {
           var selected = name === value || i === String(value);
-
           if (selected) {
             matched = true;
           }
-
           data.push({
             name: name,
             selected: selected,
@@ -4259,21 +4258,19 @@ var Distpicker = /*#__PURE__*/function () {
           });
         });
       }
-
       if (!matched) {
         var autoselect = options.autoselect || options.autoSelect;
-
         if (data.length && (type === PROVINCE && autoselect > 0 || type === CITY && autoselect > 1 || type === DISTRICT && autoselect > 2)) {
           data[0].selected = true;
-        } // Save the unmatched value as a placeholder at the first output
+        }
 
-
+        // Save the unmatched value as a placeholder at the first output
         if (!this.ready && value) {
           placeholders[type] = value;
         }
-      } // Add placeholder option
+      }
 
-
+      // Add placeholder option
       if (options.placeholder) {
         data.unshift({
           code: '',
@@ -4282,34 +4279,32 @@ var Distpicker = /*#__PURE__*/function () {
           selected: false
         });
       }
-
       if (data.length) {
         $select.html(this.getList(data));
       } else {
         $select.empty();
       }
-
       if (triggerEvent) {
         $select.trigger(EVENT_CHANGE);
       }
-    } // eslint-disable-next-line class-methods-use-this
+    }
 
+    // eslint-disable-next-line class-methods-use-this
   }, {
     key: "getList",
     value: function getList(data) {
       var list = [];
       $.each(data, function (i, n) {
         var attrs = ["data-code=\"".concat(n.code, "\""), "data-text=\"".concat(n.name, "\""), "value=\"".concat(n.value, "\"")];
-
         if (n.selected) {
           attrs.push('selected');
         }
-
         list.push("<option ".concat(attrs.join(' '), ">").concat(n.name, "</option>"));
       });
       return list.join('');
-    } // eslint-disable-next-line class-methods-use-this
+    }
 
+    // eslint-disable-next-line class-methods-use-this
   }, {
     key: "getDistricts",
     value: function getDistricts() {
@@ -4338,40 +4333,32 @@ var Distpicker = /*#__PURE__*/function () {
       $.extend(DEFAULTS, $.isPlainObject(options) && options);
     }
   }]);
-
   return Distpicker;
 }();
 
 if ($.fn) {
   var AnotherDistpicker = $.fn.distpicker;
-
   $.fn.distpicker = function jQueryDistpicker(option) {
     for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
       args[_key - 1] = arguments[_key];
     }
-
     var result;
     this.each(function (i, element) {
       var $element = $(element);
       var isDestroy = option === 'destroy';
       var distpicker = $element.data(NAMESPACE);
-
       if (!distpicker) {
         if (isDestroy) {
           return;
         }
-
         var options = $.extend({}, $element.data(), $.isPlainObject(option) && option);
         distpicker = new Distpicker(element, options);
         $element.data(NAMESPACE, distpicker);
       }
-
       if (typeof option === 'string') {
         var fn = distpicker[option];
-
         if ($.isFunction(fn)) {
           result = fn.apply(distpicker, args);
-
           if (isDestroy) {
             $element.removeData(NAMESPACE);
           }
@@ -4380,16 +4367,13 @@ if ($.fn) {
     });
     return typeof result === 'undefined' ? this : result;
   };
-
   $.fn.distpicker.Constructor = Distpicker;
   $.fn.distpicker.setDefaults = Distpicker.setDefaults;
-
   $.fn.distpicker.noConflict = function noConflict() {
     $.fn.distpicker = AnotherDistpicker;
     return this;
   };
 }
-
 if (WINDOW.document) {
   $(function () {
     $("[data-toggle=\"".concat(NAMESPACE, "\"]")).distpicker();
