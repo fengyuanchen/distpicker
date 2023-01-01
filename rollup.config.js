@@ -1,10 +1,10 @@
-import babel from '@rollup/plugin-babel';
-import changeCase from 'change-case';
-import commonjs from '@rollup/plugin-commonjs';
-import createBanner from 'create-banner';
-import nodeResolve from '@rollup/plugin-node-resolve';
-import { terser } from 'rollup-plugin-terser';
-import pkg from './package.json';
+const babel = require('@rollup/plugin-babel');
+const changeCase = require('change-case');
+const commonjs = require('@rollup/plugin-commonjs');
+const createBanner = require('create-banner');
+const nodeResolve = require('@rollup/plugin-node-resolve');
+const terser = require('@rollup/plugin-terser');
+const pkg = require('./package.json');
 
 const name = changeCase.pascalCase(pkg.name);
 const banner = createBanner({
@@ -18,7 +18,7 @@ const globals = {
   jquery: 'jQuery',
 };
 
-export default {
+module.exports = {
   input: 'src/index.js',
   output: [
     {
